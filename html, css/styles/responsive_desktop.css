@@ -1,0 +1,38 @@
+/*
+filename		: responsive.css
+author			: Phan Huy Hoang Nguyen
+created			: 8/11/2016
+last modified	: 20/11/2016
+description		: Responsive for my website
+*/
+
+@media screen and (max-width: 1199px){
+#productdisplay ul li {
+	float: none;
+	width: 40%;
+}
+
+nav ul li, nav ul ul{
+	width: 25%;
+}
+
+#banner{
+	height: 100%;
+}
+
+#maincontentwrapper{
+	width: 98%;
+	margin: 0 auto;
+}
+
+.searchwrapper{
+	padding: 40px 10px;
+}
+
+.column1-4 ul li{
+	height:100%;
+	width: 100%;
+	float: none;
+}
+
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Friendly Pharmacy | Sale Reporting and Prediction System</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="Sale Reporting and Prediction System"/>
+	<meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
+	<meta name="author" content="Phan Huy Hoang Nguyen"/>
+	
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<link href="styles/layout.css" rel="stylesheet" type="text/css"/>
+	
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- References to external responsive CSS file -->
+	<link href="styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+	<link href="styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+</head>
+
+<body>
+		<div class="center">
+				<img src="images/logo.png" alt="FriendlyPharmacy Logo" title="Main Screen - FriendlyPharmacy"/>
+		
+			<form id="loginform" method="post" action="home.html">
+						<input class="formtextfield" type="text" size="25" name="uname" id="uname" pattern="[a-zA-Z]{1,15}" placeholder="User name" required/>
+						<input class="formtextfield" type="password" size="25" name="pwd" id="pwd" pattern="[a-zA-Z]{1,15}" placeholder="Password" required/>
+					<p>
+						<input class="formbutton" type="submit" value="Login"/>
+						<a href="home.html"> <p>Forgot Password</p></a>
+					</p>
+			</form>
+		</div>
+</body>
+</html>

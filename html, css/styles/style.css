@@ -1,0 +1,562 @@
+/*
+filename		: style.css
+author			: Phan Huy Hoang Nguyen
+created			: 8/11/2016
+last modified	: 20/11/2016
+description		: apply Css for my website
+*/
+
+.center{
+	margin: 120px auto 0 auto;
+	width: 25%;
+	text-align: center;
+}
+
+.center img{
+	margin: 0 auto;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
+
+.formtextfield {
+	display: block;
+	margin: 10px auto;
+	padding: 5px;
+	text-align: center;
+	width: 70%;	
+	background-color: white;
+	border: solid 1px #26bfe5;
+	border-radius: 4px;
+}
+
+
+
+*{	/*select and apply to all element on the webpage*/
+	margin			: 0px;			
+	padding			: 0px;
+	list-style-type	: none;
+	text-decoration	: none;
+}
+
+
+body {
+	font-family: 'Open Sans', sans-serif;}
+
+a:hover {
+	color: white;
+}
+
+nav{
+	width			: 100%;
+	height			: 50px;
+	margin			: 0 auto;
+	background-color: white;
+	clear			: both;
+	font-size		: 90%;
+	overflow		: hidden;
+	text-align		: center;
+}
+
+nav ul li{
+	float		: none;
+	font-weight	: bold;
+	text-align	: center;
+	height		: 45px;
+	display: inline-block;
+	width		: 30%;
+}
+
+nav ul li img {
+	width: 20px;
+	display: block;
+	text-align: center;
+	padding: 0 47%;
+}
+
+nav ul li span {
+	display: block;
+}
+
+nav ul li:hover{
+	background-color: green;
+}
+
+nav ul li:hover a{
+	color	: white;
+}
+
+#active{
+	border-top: solid 2px green;
+}
+
+nav ul li a{
+	color		: black;
+	width		: 100%;
+	height		: 100%;			/* able to click the whole box*/
+	display		: block;
+}
+
+nav ul li a span{
+	line-height	: 28px;
+	height: 100%;
+}
+
+nav ul ul{					/* drop-down box*/
+	display		: none;
+	position	: absolute;
+	z-index		: 1000;
+	background	: white;
+	border		: solid 1px #000;
+	height		: 45px;
+	width		: 20%;
+}
+
+nav ul ul li {
+	height		: 100%;
+	width		: 100%;
+}
+
+
+
+nav ul li:hover ul{
+	display : block;
+	background-color: white;
+}
+
+nav ul li:hover ul a{
+	color	: black;
+}
+
+nav ul li:hover ul a:hover{
+	background-color: black;
+	color	: white;
+}
+
+.headerwrapper{
+	display			: block;
+	background-color: #66BB6A;
+	clear			: both;
+	height: 170px;
+}
+
+#maincontentwrapper{
+	padding-top	: 20px;
+	width		: 100%;
+	margin		: 0px auto;
+}
+
+#maincontentwrapper a:link{
+	color: red;
+	display: block;
+}
+
+.buttonstyle{
+	border			: none;
+	background		: white;			
+	text-align		: center;
+	padding			: 15px;
+	text-transform	: uppercase;
+	color			: green;
+	border-radius	: 3px;
+	font-size		: 12px;
+	font-weight		: bold;
+	font-family		: "Arial";
+	margin-top		: 5px;
+	margin-bottom	: 10px;
+	display			: inline-block;
+}
+
+.buttonstyle:hover{
+	background: green;				
+	cursor: pointer;
+	color: white;
+}
+
+/* CSS Homepage */
+.topwrapper{
+	width		: 100%;
+	height		: 50px;
+	display		: block;
+	
+}
+.topwrapper a{
+	float			: right;
+	color			: green;
+	text-decoration : none;
+	background-color: white;
+	height: 100%;
+	font-size: 0.75em;
+}
+
+.topwrapper a img{
+	display: block;
+	width: 25px;
+	padding: 5px 30px 5px 30px;
+	margin-left: 1px;
+	text-align: center;
+}
+
+.topwrapper a span{
+	display: block;
+	text-align: center;
+	padding: 0 2px;
+}
+.topwrapper a:hover{
+	color		: black;
+}
+
+#logoandsearch{
+	max-width		: 1250px;		
+	margin			: 0 auto 1em auto;
+	display : block;
+	background-color: green;
+}
+
+#logoandsearch img{
+	width		: 180px;
+	height		: 120px;
+	float		: left;	
+}
+
+.searchwrapper{
+	float			: right;
+    padding			: 40px 0 0 22%;
+	width			: 60%;
+}
+
+.searchwrapper input[type=text] {
+    width				: 35%;			
+    box-sizing			: border-box;
+    border				: 1px solid #ccc;
+    border-radius		: 4px;
+    font-size			: 16px;
+    background-color	: white;
+	background-image	: url('../images/searchicon.png');
+	background-size		: 30px;
+	background-position	: 1px;
+	background-repeat	: no-repeat;
+	padding				: 6px 35px;
+    transition			: width 0.5s ease-in-out;
+}
+
+.searchwrapper input[type=text]:focus {
+    width		: 55%;
+	border-color: rgb(0, 153, 255);
+}
+
+#horizontalbar1, #horizontalbar2{
+	clear	: both;
+	overflow : hidden;
+	padding-bottom: 5px;
+}
+
+#horizontalbar1 ul, #horizontalbar2 ul{
+	text-align: center;
+	padding: 5px 0;
+}
+
+#horizontalbar1 li, #horizontalbar2 li{
+	display : inline-block;
+	width: 22.1%;
+}
+
+#horizontalbar1 a span, #horizontalbar2 a span{
+	display: inline-block;
+	background-repeat: no-repeat;
+	text-indent: 40px;
+	padding: 10px;
+}
+
+#horizontalbar1{
+	background-color: #2E7D32;
+}
+
+#horizontalbar2 {
+	background-color: #81C784;
+}
+
+#addSale, #editSale, #removeSale, #popular, #chart, #export, #predict{
+	background-size: 40px;
+}
+#addSale{
+	background-image: url('../images/addsale.png');
+}
+
+#editSale{
+	background-image: url('../images/editsale.png');
+}
+
+#removeSale{
+	background-image: url('../images/removesale.png');
+}
+
+#popular{
+	background-image: url('../images/popular.png');
+}
+
+#chart{
+	background-image: url('../images/chart.png');
+}
+
+#export{
+	background-image: url('../images/export.png');
+}
+
+#predict{
+	background-image: url('../images/predict.png');
+}
+
+#productdisplay ul li{
+	display: inline-block;
+	margin: 0 55px;
+}
+
+#productdisplay ul li img{
+	height : 330px;			/*resize the img*/
+	width	: 250px;
+}
+
+#productdisplay2 ul li{
+	display: inline-block;
+	margin: 0 38px;
+}
+
+#productdisplay2 ul li img{
+	height : 330px;			/*resize the img*/
+	width	: 250px;
+}
+
+#hr1, #hr2{ 
+	border		: none; 
+	border-top	: medium solid #d91e26;
+	color		: black; 
+} 
+#hr1::after { 
+	content		: "NEW ARRIVAL";
+	font-weight	: bold;
+	display		: inline-block; 
+	position	: relative; 
+	top			: -0.7em; 
+	font-size	: 1.5em; 
+	padding		: 0 0.25em; 
+	background	: white; 
+}
+
+.titlename{
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.description{
+	font-size: 14px;
+}
+
+#hr2::after { 
+	content		: "BEST SELLERS";
+	font-weight	: bold;
+	display		: inline-block; 
+	position	: relative; 
+	top			: -0.7em; 
+	font-size	: 1.5em; 
+	padding		: 0 0.25em; 
+	background	: white; 
+}
+
+/* CSS About Us Page*/
+
+.stylequote {
+	font-size: 40px;
+	font-family: 'Times';
+	padding: 10px;
+	text-align: center;
+	color: white;
+	overflow: hidden;
+	font-style: bold;
+}
+
+.column1{
+	float: left;
+	width: 45%;
+}
+
+.column1 h1, .column2 h1{
+	margin-bottom: 20px;
+	padding-top: 20px;
+}
+
+.imgcolumn{
+	float: right;
+	width: 48%;
+	padding: 20px 4px 0 0;
+}
+
+.imgcolumn img{
+	height: 318px;
+	margin-top: 60px;
+	width: 100%;
+}
+
+.section2{
+	clear: both;
+	padding-top: 10px;
+}
+
+.section2 ol li, .list,.list li{
+	margin: 10px 20px;
+	list-style-type: decimal;
+}
+
+.section2 ol li ul li{
+	list-style-type: none;
+}
+
+/* CSS Services Page */
+.sectiontitle h1{
+	text-decoration: underline;
+	text-decoration-color: black;
+	text-align: center;
+	margin: 10px;
+	font-size: 32px;
+}
+
+.column1-4 ul{
+	margin-top: 10px;
+	width: 100%;
+}
+
+.column1-4 ul li{
+	width: 49%;
+	height: 140px;
+	margin: 0 10px 10px 0;
+	float: left;
+	border: solid 1px red;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.column1-4 ul li h3{
+	width: 100%;
+	background: #d91e26;
+	color: white;
+}
+
+table{
+	width: 100%;
+	border: 1px solid #dcdfe1;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tr,th,tfoot, tbody, td{	
+	border: 1px solid #dcdfe1;
+	padding: 8px;
+}
+
+#tableReport{
+	background-color: white;
+	color: grey;
+}
+
+/* CSS Contact page*/
+
+
+#maincontentwrapper header h2 span {
+	text-transform: uppercase;
+}
+
+.verticalwrapper1{
+	width	: 60%;
+	float	: left;
+	border: solid 2px #7e7e7e;
+}
+
+#formwrapper{
+	margin	: 0px auto;	
+	max-width: 1250px;
+}
+
+#formwrapper form{
+	width	: 100%;
+	padding : 30px 0 0 30px;
+}
+
+p label{
+	text-transform	: uppercase;
+	width 	: 25%;
+}
+
+.row{
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+.row label{
+	padding-bottom: 8px;
+	float: left;
+	padding-right: 10px;
+	text-align: left;
+}
+
+.row input{
+	max-width: 426px;
+	padding: 2px;
+}
+
+.boxform, textarea{
+	background-color: white;
+	border: solid 1px #26bfe5;
+	border-radius: 4px;
+	width: 30%;
+}
+
+.boxform{
+	height: 30px;
+}
+
+.boxform:focus, textarea:focus{
+	border: solid 1px red;
+}
+
+.radiostyle{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.row-select{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.formbutton{
+	height			: 30px;
+	width 			: 50%;
+	border			: none;
+	background		: white;
+	text-align		: center;
+	text-transform	: uppercase;
+	color			: #81C784;
+	font-size		: 12px;
+	border-radius	: 3px;
+	font-weight		: bold;
+	font-family		: "Arial";
+	margin			: 10px auto;
+}
+
+.formbutton:hover{
+	background	: green;
+	cursor: pointer;
+	color: white;
+}
+
+/* Common CSS rules*/
+#productdisplay, #productdisplay2, #pricing, .column1-4, #imgheadercontact{
+	width: 100%;
+	text-align: center;
+}
+
+.stylequote, body{
+	background-color: #66BB6A;
+	
+}

@@ -1,0 +1,41 @@
+/*
+filename		: layout.css
+author			: Phan Huy Hoang Nguyen
+created			: 8/11/2016
+last modified	: 20/11/2016
+description		: apply Css for my website
+*/
+
+header{
+	background-color: white; 
+	clear			: both;
+	top				: 0;
+	width			: 100%;
+}
+
+aside{
+	float       : left;
+	width       : 25%;
+	background	: white;
+	margin-left	: 25px;
+	padding		: 25px;
+	border		: solid 2px #7e7e7e;
+}
+
+footer {
+	margin-top	: 20px;
+	clear		: both;			/* make footer clear floated*/
+	border-top	: 2px solid #d91e26;
+	width		: 100%;
+}
+footer a:link{
+	color: red;
+}
+footer ul, footer a{
+	margin: 0 20px 10px 0;
+}
+
+footer ul li{
+	display: inline-block;
+	float: right;
+}

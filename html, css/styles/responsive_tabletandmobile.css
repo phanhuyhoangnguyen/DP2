@@ -1,0 +1,65 @@
+/*
+filename		: responsive.css
+author			: Phan Huy Hoang Nguyen
+created			: 8/11/2016
+last modified	: 20/11/2016
+description		: Responsive for my website
+*/
+
+@media screen and (max-width: 680px) {
+#headerwrapper{
+	 width: 100%;
+}
+
+aside, #formwrapper{
+	width: 98%;
+	margin: 0px auto;	
+}
+
+#imgheadercontact {
+	line-height: 3em;
+}
+
+.verticalwrapper1, aside{
+	width	: 90%;
+	float	: none;
+	margin	: 4px;
+	padding	: 4px;
+}
+
+#maincontentwrapper ul li {
+	float: none;
+	width: 100%;
+}
+
+#horizontalbar1 ul li{
+	width: 100%;
+}
+
+.column1,.imgcolumn{
+	float: none;
+	width: 100%;
+}
+
+tr, th, tfoot, tbody, td{
+	font-size: 10px;
+	padding	: 0;
+}
+
+}
+
+@media screen and (max-width: 320px){
+#formwrapper form{
+	width	: 80%;
+	padding : 30px 0 0 30px;
+}
+
+.boxform, textarea{
+	width: 100%;
+}
+.row label{
+	float: none;
+	width: 100%;
+}
+
+}
