@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Pharmacy</title>
+</head>
+<body>
+
+<form id="add_category" method="post" action="add_category.php">
+    <fieldset>
+        <legend>
+            Add Category
+        </legend>
+
+        <label for="categoryID">CategoryID: </label>
+        <input type="text" id="categoryID" name="categoryID"/><br/>
+
+        <label for="category_name">Category Name: </label>
+        <input type="text" id="category_name" name="category_name"/>
+
+        <br/><input type="submit" id="submit_add_category" name="submit_add_category" value="Add Category"/>
+    </fieldset>
+</form><br/>
+
+<form id="add_item" method="post" action="add_item.php">
+    <fieldset>
+        <legend>
+            Add Item to Table
+        </legend>
+
+        <label for="itemID">ItemID: </label>
+        <input type="text" id="itemID" name="itemID"/><br/>
+
+        <label for="item_name">Item Name: </label>
+        <input type="text" id="item_name" name="item_name"/><br/>
+
+        <label for="item_category">CategoryID: </label>
+        <input type="text" id="item_category" name="item_category"/>
+
+        <br/><input type="submit" id="submit_add_item" name="submit_add_item" value="Add Item"/>
+    </fieldset>
+</form><br/>
+
+<form id="edit_inventory" method="post" action="edit_inventory.php">
+    <fieldset>
+        <legend>
+            Manage Inventory
+        </legend>
+
+        <label for="inv_itemID">ItemID: </label>
+        <input type="text" id="inv_itemID" name="inv_itemID"/><br/>
+
+        <label for="inv_quantity">Quantity: </label>
+        <input type="text" id="inv_quantity" name="inv_quantity"/><br/>
+
+        <label for="inv_purchased_price">Purchased Price: </label>
+        <input type="text" id="inv_purchased_price" name="inv_purchased_price"/><br/>
+
+        <label for="inv_selling_price">Selling Price: </label>
+        <input type="text" id="inv_selling_price" name="inv_selling_price"/><br/>
+
+        <!-- total cost = purchased_price * quantity -->
+        <input type="hidden" id="inv_total_cost" name="inv_total_cost"/>
+        <!-- latest_update = date() -->
+        <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
+
+        <label for="inv_update_reason">Update Reason: </label>
+        <select id="inv_update_reason" name="inv_update_reason">
+            <option value="">Select an option</option>
+            <option value="add_new">Added New Item</option>
+            <!-- Greyed them out, use later for update purpose. At this moment, just add new item to inventory -->
+            <!--
+            <option value="change_quantity">Changed Quantity</option>
+            <option value="change_selling_price">Changed Selling Price</option>
+            <option value="change_purchased_price">Changed Purchased Price</option>
+            -->
+        </select>
+
+        <!-- Assign username with username of logged in user -->
+        <input type="hidden" id="inv_username" name="inv_username"/>
+
+        <br/><input type="submit" id="submit_edit_inventory" name="submit_edit_inventory" value="Update"/>
+    </fieldset>
+</form><br/>
+
+<form id="add_sale_record" method="post" action="add_sale_record.php">
+    <fieldset>
+        <legend>
+            Add Sale Record
+        </legend>
+
+        <label for="rec_itemID">ItemID: </label>
+        <input type="text" id="rec_itemID" name="rec_itemID"/><br/>
+
+        <!-- Assign rec_date a value of current datetime when the sale record updated -->
+        <input type="hidden" id="rec_date" name="rec_date"/>
+
+        <label for="rec_quantity">Sold Quantity: </label>
+        <input type="text" id="rec_quantity" name="rec_quantity"/>
+
+        <!-- Calculated by multiple selling_price of the item with its sold quantity  -->
+        <input type="hidden" id="rec_revenue" name="rec_revenue"/>
+
+        <!-- Calculated by minus revenue with total cost  -->
+        <input type="hidden" id="rec_profit" name="rec_profit"/>
+
+        <!-- Assign username with username of logged in user -->
+        <input type="hidden" id="rec_username" name="rec_username"/>
+
+        <br/><input type="submit" id="submit_add_sale_record" name="submit_add_sale_record" value="Add Record"/>
+    </fieldset>
+</form><br/>
+
+<form id="display_record" method="post" action="display_records.php">
+    <fieldset>
+        <legend>
+            Display sale records
+        </legend>
+        <input type="submit" id="display_sale_record" name="display_sale_record" value="Display Sale Records"/>
+    </fieldset>
+</form><br/>
+
+<form id="display_inventory" method="post" action="display_inventory.php">
+    <fieldset>
+        <legend>
+            Display Inventory
+        </legend>
+        <input type="submit" id="display_inv" name="display_inv" value="Display Inventory"/>
+    </fieldset>
+</form>
+
+</body>
+</html>
