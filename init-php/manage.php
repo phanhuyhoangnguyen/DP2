@@ -47,7 +47,6 @@
             $cat_query = "SELECT categoryID, CONCAT('(',categoryID,') - ',category_name) AS cat_full FROM $category__table ORDER BY categoryID ASC";
             $list_category = mysqli_query($connection, $cat_query);
 
-
             echo '<option value="">Click to select</option>';
 
             while ($row = $list_category->fetch_assoc())
@@ -86,7 +85,6 @@
 
         $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
         $list_item = mysqli_query($connection, $itm_query);
-
 
         echo '<option value="">Click to select</option>';
 
