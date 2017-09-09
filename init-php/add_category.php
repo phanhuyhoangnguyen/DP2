@@ -28,15 +28,15 @@ if (!$connection)
     $category_name = mysqli_real_escape_string($connection, $_POST["category_name"]);
 
     if ($categoryID=="") {
-        $errMsg .= "You must provide an ID for category. ";
+        $errMsg .= "<p>You must provide an ID for category.</p>";
     } else if (!preg_match("/^[A-Z0-9 ]*$/", $categoryID)) {
-        $errMsg .= "Only uppercase alpha letters and numbers allowed for categoryID. ";
+        $errMsg .= "<p>Only uppercase alpha letters and numbers allowed for categoryID.</p>";
     }
 
     if ($category_name=="") {
-        $errMsg .= "You must provide category name. ";
+        $errMsg .= "<p>You must provide category name.</p>";
     } else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
-        $errMsg .= "Only alpha letters, numbers and hyphens allowed for category name. ";
+        $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
     }
 
     if ($errMsg != "") {
