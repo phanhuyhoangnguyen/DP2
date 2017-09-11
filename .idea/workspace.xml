@@ -17,15 +17,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="manage.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/manage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="69" column="73" lean-forward="false" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
+            <state relative-caret-position="471">
+              <caret line="239" column="7" lean-forward="false" selection-start-line="239" selection-start-column="7" selection-end-line="239" selection-end-column="7" />
               <folding>
-                <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-                <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-                <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+                <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+                <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+                <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
               </folding>
             </state>
           </provider>
@@ -34,12 +34,9 @@
       <file leaf-file-name="add_item.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/add_item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding>
-                <marker date="1505114139000" expanded="true" signature="1397:1425" ph="SELECT DISTI... ${$table}" />
-                <marker date="1505114139000" expanded="true" signature="2380:2481" ph="INSERT INTO ${$table}... " />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,11 +45,11 @@
         <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="307">
-              <caret line="61" column="110" lean-forward="true" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
+              <caret line="61" column="110" lean-forward="false" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
               <folding>
-                <marker date="1505121061000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
-                <marker date="1505121061000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
-                <marker date="1505121061000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
+                <marker date="1505123187000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
+                <marker date="1505123187000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
+                <marker date="1505123187000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
               </folding>
             </state>
           </provider>
@@ -62,21 +59,34 @@
         <entry file="file://$PROJECT_DIR$/init-php/display_records.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="342">
-              <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+              <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
               <folding>
-                <marker date="1505120375000" expanded="true" signature="676:906" ph="SELECT * FRO... ${$table}" />
+                <marker date="1505123187000" expanded="true" signature="676:906" ph="SELECT rec.*... ${$table}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="display_inventory.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="display_month_report.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/init-php/display_month_report.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1505123187000" expanded="true" signature="725:823" ph="SELECT * FRO... ${$records_table}" />
+                <marker date="1505123187000" expanded="true" signature="897:1240" ph="SELECT inv.i... ${$inventory_table}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="display_inventory.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init-php/display_inventory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="42" column="46" lean-forward="true" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+            <state relative-caret-position="239">
+              <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
               <folding>
-                <marker date="1505122766000" expanded="true" signature="624:829" ph="SELECT * FRO... ${$table}" />
+                <marker date="1505123720000" expanded="true" signature="624:829" ph="SELECT inv.*... ${$table}" />
               </folding>
             </state>
           </provider>
@@ -85,12 +95,9 @@
       <file leaf-file-name="add_category.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/add_category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="495">
               <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="23" />
-              <folding>
-                <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-                <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -188,7 +196,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,6 +255,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -283,16 +296,18 @@
       <updated>1504966682927</updated>
       <workItem from="1504966684213" duration="1810000" />
       <workItem from="1505104071097" duration="12101000" />
+      <workItem from="1505123229465" duration="463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14828000" />
+    <option name="totallyTimeSpent" value="15291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1011" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17199148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17358893" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -300,27 +315,16 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28726876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28726876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28726876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17199148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,12 +340,80 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/init-php/manage.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/add_item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="61" column="110" lean-forward="true" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
+          <folding>
+            <marker date="1505123187000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
+            <marker date="1505123187000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
+            <marker date="1505123187000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/display_records.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding>
+            <marker date="1505123187000" expanded="true" signature="676:906" ph="SELECT rec.*... ${$table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/display_inventory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" column="46" lean-forward="true" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+          <folding>
+            <marker date="1505123720000" expanded="true" signature="624:829" ph="SELECT inv.*... ${$table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/add_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/edit_inventory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/manage.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -350,10 +422,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -361,10 +430,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="23" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -373,7 +439,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1505122766000" expanded="true" signature="624:829" ph="SELECT * FRO... ${$table}" />
+            <marker date="1505123720000" expanded="true" signature="624:829" ph="SELECT inv.*... ${$table}" />
           </folding>
         </state>
       </provider>
@@ -383,7 +449,7 @@
         <state relative-caret-position="342">
           <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
           <folding>
-            <marker date="1505120375000" expanded="true" signature="676:906" ph="SELECT * FRO... ${$table}" />
+            <marker date="1505123187000" expanded="true" signature="676:906" ph="SELECT rec.*... ${$table}" />
           </folding>
         </state>
       </provider>
@@ -393,9 +459,9 @@
         <state relative-caret-position="307">
           <caret line="61" column="110" lean-forward="true" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
           <folding>
-            <marker date="1505121061000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
-            <marker date="1505121061000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
-            <marker date="1505121061000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
+            <marker date="1505123187000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
+            <marker date="1505123187000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
+            <marker date="1505123187000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
           </folding>
         </state>
       </provider>
@@ -404,10 +470,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1397:1425" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2380:2481" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -434,9 +497,9 @@
         <state relative-caret-position="95">
           <caret line="69" column="73" lean-forward="false" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -446,9 +509,9 @@
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -457,10 +520,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -469,9 +529,9 @@
         <state relative-caret-position="515">
           <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -480,10 +540,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="23" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -500,7 +557,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1505122766000" expanded="true" signature="624:829" ph="SELECT * FRO... ${$table}" />
+            <marker date="1505123720000" expanded="true" signature="624:829" ph="SELECT inv.*... ${$table}" />
           </folding>
         </state>
       </provider>
@@ -510,7 +567,7 @@
         <state relative-caret-position="342">
           <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
           <folding>
-            <marker date="1505120375000" expanded="true" signature="676:906" ph="SELECT * FRO... ${$table}" />
+            <marker date="1505123187000" expanded="true" signature="676:906" ph="SELECT rec.*... ${$table}" />
           </folding>
         </state>
       </provider>
@@ -519,10 +576,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1397:1425" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2380:2481" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -531,9 +585,9 @@
         <state relative-caret-position="307">
           <caret line="61" column="110" lean-forward="true" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
           <folding>
-            <marker date="1505121061000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
-            <marker date="1505121061000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
-            <marker date="1505121061000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
+            <marker date="1505123187000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
+            <marker date="1505123187000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
+            <marker date="1505123187000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
           </folding>
         </state>
       </provider>
@@ -543,9 +597,9 @@
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -554,61 +608,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init-php/add_category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="495">
           <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="23" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1428:1460" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2375:2462" ph="INSERT INTO ${$table}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/display_records.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding>
-            <marker date="1505120375000" expanded="true" signature="676:906" ph="SELECT * FRO... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="61" column="110" lean-forward="true" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
-          <folding>
-            <marker date="1505121061000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
-            <marker date="1505121061000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
-            <marker date="1505121061000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init-php/add_item.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1505114139000" expanded="true" signature="1397:1425" ph="SELECT DISTI... ${$table}" />
-            <marker date="1505114139000" expanded="true" signature="2380:2481" ph="INSERT INTO ${$table}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/edit_inventory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        <state relative-caret-position="285">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -623,24 +638,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/display_inventory.php">
+    <entry file="file://$PROJECT_DIR$/init-php/manage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="42" column="46" lean-forward="true" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+        <state relative-caret-position="471">
+          <caret line="239" column="7" lean-forward="false" selection-start-line="239" selection-start-column="7" selection-end-line="239" selection-end-column="7" />
           <folding>
-            <marker date="1505122766000" expanded="true" signature="624:829" ph="SELECT * FRO... ${$table}" />
+            <marker date="1505123605000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505123605000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505123605000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/manage.php">
+    <entry file="file://$PROJECT_DIR$/init-php/edit_inventory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="69" column="73" lean-forward="false" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
+        <state relative-caret-position="270">
+          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="61" column="110" lean-forward="false" selection-start-line="61" selection-start-column="110" selection-end-line="61" selection-end-column="110" />
           <folding>
-            <marker date="1505121979000" expanded="true" signature="1444:1564" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505121979000" expanded="true" signature="2799:2899" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505121979000" expanded="true" signature="5047:5219" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505123187000" expanded="true" signature="965:1054" ph="SELECT quant... Inventory" />
+            <marker date="1505123187000" expanded="true" signature="2322:2449" ph="UPDATE ${$in... " />
+            <marker date="1505123187000" expanded="true" signature="2557:2733" ph="INSERT INTO ${$record_table}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/display_records.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding>
+            <marker date="1505123187000" expanded="true" signature="676:906" ph="SELECT rec.*... ${$table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/display_month_report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505123187000" expanded="true" signature="725:823" ph="SELECT * FRO... ${$records_table}" />
+            <marker date="1505123187000" expanded="true" signature="897:1240" ph="SELECT inv.i... ${$inventory_table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/display_inventory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <marker date="1505123720000" expanded="true" signature="624:829" ph="SELECT inv.*... ${$table}" />
           </folding>
         </state>
       </provider>

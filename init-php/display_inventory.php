@@ -31,7 +31,7 @@ if (!$connection)
     echo "<tr>"
         ."<th scope=\"col\">Item ID</th>"
         ."<th scope=\"col\">Item Description</th>"
-        ."<th scope=\"col\">Item's Category</th>"
+        ."<th scope=\"col\">Category of Item</th>"
         ."<th scope=\"col\">Available Quantity</th>"
         ."<th scope=\"col\">Purchased Price</th>"
         ."<th scope=\"col\">Selling Price</th>"
