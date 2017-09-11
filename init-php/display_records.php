@@ -10,7 +10,12 @@
 error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "Records";
+$inv_table = "Inventory";
+$item_table = "Item";
+
 @mysqli_select_db($connection, $table);
+@mysqli_select_db($connection, $inv_table);
+@mysqli_select_db($connection, $item_table);
 /*events after button "Show" is clicked*/
 
 if (!$connection)
@@ -20,29 +25,35 @@ if (!$connection)
     echo "</script>";
 } else if (isset($_POST["display_sale_record"]))
 {
-    $query = "SELECT * FROM $table ORDER BY saleID ASC";
+    $query = "SELECT rec.*, itm.item_name AS item_name, inv.selling_price AS selling_price, inv.quantity AS remaining FROM $table rec, $inv_table inv, $item_table itm WHERE rec.itemID = inv.itemID AND inv.itemID = itm.itemID ORDER BY saleID ASC";
     $result = mysqli_query($connection, $query);
 
     echo "<h1>Results</h1>\n";
     echo "<table border=\"1\">";
     echo "<tr>"
-        ."<th scope=\"col\">SaleID</th>"
-        ."<th scope=\"col\">itemID</th>"
+        ."<th scope=\"col\">Sale ID</th>"
         ."<th scope=\"col\">Date</th>"
+        ."<th scope=\"col\">Item ID</th>"
+        ."<th scope=\"col\">Item Description</th>"
+        ."<th scope=\"col\">Selling Price</th>"
         ."<th scope=\"col\">Sold Quantity</th>"
         ."<th scope=\"col\">Revenue</th>"
         ."<th scope=\"col\">Profit</th>"
+        ."<th scope=\"col\">Remaining in Stock</th>"
         ."<th scope=\"col\">Cashier</th>"
         ."</tr>";
     while ($row = mysqli_fetch_assoc($result))
     {
         echo "<tr>";
         echo "<td>",$row["saleID"],"</td>";
-        echo "<td>",$row["itemID"],"</td>";
         echo "<td>",$row["date"],"</td>";
+        echo "<td>",$row["itemID"],"</td>";
+        echo "<td>",$row["item_name"],"</td>";
+        echo "<td>",$row["selling_price"],"</td>";
         echo "<td>",$row["sold_quantity"],"</td>";
         echo "<td>",$row["revenue"],"</td>";
         echo "<td>",$row["profit"],"</td>";
+        echo "<td>",$row["remaining"],"</td>";
         echo "<td>",$row["username"],"</td>";
         echo "</tr>";
     }
