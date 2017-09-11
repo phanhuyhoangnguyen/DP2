@@ -27,22 +27,41 @@ if (!$connection)
     $categoryID = mysqli_real_escape_string($connection, $_POST["categoryID"]);
     $category_name = mysqli_real_escape_string($connection, $_POST["category_name"]);
 
+    /* validates categoryID input */
+    //case categoryID is empty
     if ($categoryID=="") {
         $errMsg .= "<p>You must provide an ID for category.</p>";
-    } else if (!preg_match("/^[A-Z0-9 ]*$/", $categoryID)) {
-        $errMsg .= "<p>Only uppercase alpha letters and numbers allowed for categoryID.</p>";
+    }
+    //case categoryID is filled with wrong format
+    else if (!preg_match("/^[A-Z]{3}[0-9]{4}$/", $categoryID)) {
+        $errMsg .= "<p>Category ID must follow this form: ABCxxxx where ABC is first 3 uppercase characters of category name and xxxx is category's index number.</p>";
     }
 
+    /* validates category_name */
+    //case category_name is empty
     if ($category_name=="") {
         $errMsg .= "<p>You must provide category name.</p>";
-    } else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
+    }
+    //case category_name is filled with wrong format
+    else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
         $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
     }
 
+    /* validates duplicate categoryID */
+    $search_duplicate_categoryID_query = "SELECT DISTINCT categoryID FROM $table";
+    $search_duplicate_categoryID = mysqli_query($connection, $search_duplicate_categoryID_query);
+
+    while ($exist_categoryID = $search_duplicate_categoryID->fetch_assoc())
+    {
+        $added_categoryID = $exist_categoryID['categoryID'];
+        if ($added_categoryID == $categoryID) {
+            $errMsg .= "<p>$categoryID is already added.</p>";
+        }
+    }
+
+    /* display error message when it is not empty */
     if ($errMsg != "") {
-        echo "<script type='text/javascript'>";
-        echo "alert('$errMsg');";
-        echo "</script>";
+        echo $errMsg;
     } else {
         $query = "INSERT INTO $table (categoryID, category_name) VALUES ('$categoryID', '$category_name')";
         $add_category = mysqli_query($connection, $query);
