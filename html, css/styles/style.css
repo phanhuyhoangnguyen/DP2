@@ -1,8 +1,8 @@
 /*
 filename		: style.css
 author			: Phan Huy Hoang Nguyen
-created			: 8/11/2016
-last modified	: 20/11/2016
+created			: 29/08/2017
+last modified	: 31/08/2017
 description		: apply Css for my website
 */
 
@@ -444,6 +444,7 @@ nav ul li:hover ul a:hover{
 
 table{
 	width: 100%;
+	text-align: center;
 	border: 1px solid #dcdfe1;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -490,6 +491,7 @@ p label{
 .row{
 	margin-bottom: 30px;
 	width: 100%;
+	text-align: center;
 }
 
 .row label{
@@ -551,7 +553,7 @@ p label{
 }
 
 /* Common CSS rules*/
-#productdisplay, #productdisplay2, #pricing, .column1-4, #imgheadercontact{
+#productdisplay, #productdisplay2, .column1-4, #imgheadercontact{
 	width: 100%;
 	text-align: center;
 }
