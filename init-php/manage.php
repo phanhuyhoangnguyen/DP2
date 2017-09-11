@@ -67,10 +67,10 @@
     </fieldset>
 </form><br/>
 
-<form id="edit_inventory" method="post" action="edit_inventory.php">
+<form id="edit_inventory" method="post" action="add_item_to_inventory.php.php">
     <fieldset>
         <legend>
-            Manage Inventory
+            Add Item to Inventory
         </legend>
 
         <label for="inv_itemID">ItemID: </label>
@@ -116,17 +116,7 @@
         <!-- latest_update = date() -->
         <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
 
-        <label for="inv_update_reason">Update Reason: </label>
-        <select id="inv_update_reason" name="inv_update_reason">
-            <option value="">Select an option</option>
-            <option value="add_new">Added New Item</option>
-            <!-- Greyed them out, use later for update purpose. At this moment, just add new item to inventory -->
-            <!--
-            <option value="change_quantity">Changed Quantity</option>
-            <option value="change_selling_price">Changed Selling Price</option>
-            <option value="change_purchased_price">Changed Purchased Price</option>
-            -->
-        </select>
+        <input type="hidden" id="inv_update_reason" name="add_new"/>
 
         <!-- Assign username with username of logged in user -->
         <input type="hidden" id="inv_username" name="inv_username"/>
