@@ -36,15 +36,8 @@ if (!$connection)
     else if (!preg_match("/^[A-Z]{3}[0-9]{4}$/", $categoryID)) {
         $errMsg .= "<p>Category ID must follow this form: ABCxxxx where ABC is first 3 uppercase characters of category name and xxxx is category's index number.</p>";
     }
-
-    /* validates category_name */
-    //case category_name is empty
-    if ($category_name=="") {
-        $errMsg .= "<p>You must provide category name.</p>";
-    }
-    //case category_name is filled with wrong format
-    else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
-        $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
+    else if (preg_match("/^[A-Z]{3}[0]{4}$/", $categoryID)) {
+        $errMsg .= "<p>Index number for category cannot be zero.</p>";
     }
 
     /* validates duplicate categoryID */
@@ -55,8 +48,18 @@ if (!$connection)
     {
         $added_categoryID = $exist_categoryID['categoryID'];
         if ($added_categoryID == $categoryID) {
-            $errMsg .= "<p>$categoryID is already added.</p>";
+            $errMsg .= "<p>$categoryID is already added. Please try again!</p>";
         }
+    }
+
+    /* validates category_name */
+    //case category_name is empty
+    if ($category_name=="") {
+        $errMsg .= "<p>You must provide category name.</p>";
+    }
+    //case category_name is filled with wrong format
+    else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
+        $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
     }
 
     /* display error message when it is not empty */
