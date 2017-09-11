@@ -6,6 +6,26 @@
 </head>
 <body>
 
+<form id="login" method="post" action="login.php">
+    <fieldset>
+        <legend>
+            User Login
+        </legend>
+
+        <label for="user_id">
+            Username:
+        </label>
+        <input type="text" id="user_id" name="user_id"/><br/>
+
+        <label for="password">
+            Password:
+        </label>
+        <input type="password" id="password" name="password"/><br/>
+
+        <input type="submit" id="submit_login" name="submit_login" value="Login"/>
+    </fieldset>
+</form><br/>
+
 <form id="add_category" method="post" action="add_category.php">
     <fieldset>
         <legend>
