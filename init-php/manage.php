@@ -125,7 +125,7 @@
     </fieldset>
 </form><br/>
 
-<form id="update_inventory" method="post" action="edit_inventory.php.php">
+<form id="update_inventory" method="post" action="edit_inventory.php">
     <fieldset>
         <legend>
             Update Inventory
