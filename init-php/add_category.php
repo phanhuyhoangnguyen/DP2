@@ -12,6 +12,7 @@ $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westu
 $table = "Category";
 @mysqli_select_db($connection, $table);
 /*events after button "Show" is clicked*/
+session_start();
 
 if (!$connection)
 {
@@ -20,53 +21,54 @@ if (!$connection)
     echo "</script>";
 } else if (isset($_POST["submit_add_category"]))
 {
-    /*error messages*/
-    $errMsg = "";
-
-    /*defines*/
-    $categoryID = mysqli_real_escape_string($connection, $_POST["categoryID"]);
-    $category_name = mysqli_real_escape_string($connection, $_POST["category_name"]);
-
-    /* validates categoryID input */
-    //case categoryID is empty
-    if ($categoryID=="") {
-        $errMsg .= "<p>You must provide an ID for category.</p>";
-    }
-    //case categoryID is filled with wrong format
-    else if (!preg_match("/^[A-Z]{3}[0-9]{4}$/", $categoryID)) {
-        $errMsg .= "<p>Category ID must follow this form: ABCxxxx where ABC is first 3 uppercase characters of category name and xxxx is category's index number.</p>";
-    }
-    else if (preg_match("/^[A-Z]{3}[0]{4}$/", $categoryID)) {
-        $errMsg .= "<p>Index number for category cannot be zero.</p>";
-    }
-
-    /* validates duplicate categoryID */
-    $search_duplicate_categoryID_query = "SELECT DISTINCT categoryID FROM $table";
-    $search_duplicate_categoryID = mysqli_query($connection, $search_duplicate_categoryID_query);
-
-    while ($exist_categoryID = $search_duplicate_categoryID->fetch_assoc())
+    if ($_SESSION["username"] == "")
     {
-        $added_categoryID = $exist_categoryID['categoryID'];
-        if ($added_categoryID == $categoryID) {
-            $errMsg .= "<p>$categoryID is already added. Please try again!</p>";
-        }
-    }
-
-    /* validates category_name */
-    //case category_name is empty
-    if ($category_name=="") {
-        $errMsg .= "<p>You must provide category name.</p>";
-    }
-    //case category_name is filled with wrong format
-    else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
-        $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
-    }
-
-    /* display error message when it is not empty */
-    if ($errMsg != "") {
-        echo $errMsg;
+        echo "<p>You must login to add a category into the system.</p>";
     } else {
-        $query = "INSERT INTO $table (categoryID, category_name) VALUES ('$categoryID', '$category_name')";
-        $add_category = mysqli_query($connection, $query);
+        /*error messages*/
+        $errMsg = "";
+
+        /*defines*/
+        $categoryID = mysqli_real_escape_string($connection, $_POST["categoryID"]);
+        $category_name = mysqli_real_escape_string($connection, $_POST["category_name"]);
+
+        /* validates categoryID input */
+        //case categoryID is empty
+        if ($categoryID == "") {
+            $errMsg .= "<p>You must provide an ID for category.</p>";
+        } //case categoryID is filled with wrong format
+        else if (!preg_match("/^[A-Z]{3}[0-9]{4}$/", $categoryID)) {
+            $errMsg .= "<p>Category ID must follow this form: ABCxxxx where ABC is first 3 uppercase characters of category name and xxxx is category's index number.</p>";
+        } else if (preg_match("/^[A-Z]{3}[0]{4}$/", $categoryID)) {
+            $errMsg .= "<p>Index number for category cannot be zero.</p>";
+        }
+
+        /* validates duplicate categoryID */
+        $search_duplicate_categoryID_query = "SELECT DISTINCT categoryID FROM $table";
+        $search_duplicate_categoryID = mysqli_query($connection, $search_duplicate_categoryID_query);
+
+        while ($exist_categoryID = $search_duplicate_categoryID->fetch_assoc()) {
+            $added_categoryID = $exist_categoryID['categoryID'];
+            if ($added_categoryID == $categoryID) {
+                $errMsg .= "<p>$categoryID is already added. Please try again!</p>";
+            }
+        }
+
+        /* validates category_name */
+        //case category_name is empty
+        if ($category_name == "") {
+            $errMsg .= "<p>You must provide category name.</p>";
+        } //case category_name is filled with wrong format
+        else if (!preg_match("/^[a-zA-Z0-9- ]*$/", $category_name)) {
+            $errMsg .= "<p>Only alpha letters, numbers and hyphens allowed for category name.</p>";
+        }
+
+        /* display error message when it is not empty */
+        if ($errMsg != "") {
+            echo $errMsg;
+        } else {
+            $query = "INSERT INTO $table (categoryID, category_name) VALUES ('$categoryID', '$category_name')";
+            $add_category = mysqli_query($connection, $query);
+        }
     }
 }
