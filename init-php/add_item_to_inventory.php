@@ -18,7 +18,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["submit_edit_inventory"]))
+} else if (isset($_POST["submit_add_item_to_inventory"]))
 {
     /* Error message */
     $errMsg = "";
