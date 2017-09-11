@@ -45,7 +45,7 @@
 
 <nav>
     <ul>
-        <li id="active"><a href="home.html"><img src="images/home.png"/><span>Home</span></a></li>
+        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="images/home.png"/><span>Home</span></a></li>
         <li><a href=""><img src="images/notification.png"/><span>Notification</span></a></li>
         <li><a href=""><img src="images/setting.png"/><span>Setting</span></a></li>
     </ul>
@@ -83,7 +83,7 @@
     </select>
 
     <select id="view_select" name="view_select" class="boxform">
-        <option value="date_view" select="selected">View By Day</option>
+        <option value="date_view" select="selected">View By Date</option>
         <option value="item_view">View By Item</option>
     </select>
 
@@ -94,7 +94,7 @@
     <ul >
         <li><a href="reportdaily.html"><span id="icon1">Daily</span></a></li>
         <li><a href="reportweekly.html"><span id="icon2">Weekly</span></a></li>
-        <li class="active"><a href="reportmonthly.php"><span id="icon3">Monthly</span></a></li>
+        <li class="active"><a href="display_monthly_report.php"><span id="icon3">Monthly</span></a></li>
     </ul>
 </div>
 
@@ -148,7 +148,7 @@ else if(isset($_POST["time_select"])) {
                           MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY r.itemID ";
         $result_item = mysqli_query($connection, $v_item_query);
 
-        if (mysql_num_rows($result_item) > 0) {
+       if ($result_item -> num_rows > 0) {
 
             echo "<h1>Sale By Item</h1>\n";
             echo "<table border=\"1\">";
@@ -189,7 +189,7 @@ else if(isset($_POST["time_select"])) {
         $result_date = mysqli_query($connection, $v_date_query);
         $result_total = mysqli_query($connection, $total_query);
 
-        if (mysql_num_rows($result_item) > 0) {
+        if ($result_date -> num_rows > 0) {
             echo "<h1>Report</h1>\n";
             echo "<table border=\"1\">";
             echo "<tr>"
@@ -223,8 +223,9 @@ else if(isset($_POST["time_select"])) {
                 echo "</tr>";
             }
             echo "</table>";
-        } else
+        } else {
             echo "There is no Record!";
+        }
     }
 }
 ?>
