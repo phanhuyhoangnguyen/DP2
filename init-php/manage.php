@@ -67,7 +67,7 @@
     </fieldset>
 </form><br/>
 
-<form id="edit_inventory" method="post" action="add_item_to_inventory.php.php">
+<form id="edit_inventory" method="post" action="add_item_to_inventory.php">
     <fieldset>
         <legend>
             Add Item to Inventory
@@ -109,7 +109,7 @@
         <input type="text" id="inv_purchased_price" name="inv_purchased_price"/><br/>
 
         <label for="inv_selling_price">Selling Price: </label>
-        <input type="text" id="inv_selling_price" name="inv_selling_price"/><br/>
+        <input type="text" id="inv_selling_price" name="inv_selling_price"/>
 
         <!-- total cost = purchased_price * quantity -->
         <input type="hidden" id="inv_total_cost" name="inv_total_cost"/>
