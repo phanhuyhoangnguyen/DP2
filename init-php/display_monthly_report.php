@@ -7,32 +7,32 @@
     <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
     <meta name="author" content="Phan Huy Hoang Nguyen"/>
 
-    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
-    <link href="styles/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="../html,%20css/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../html,%20css/styles/layout.css" rel="stylesheet" type="text/css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- References to external responsive CSS file -->
-    <link href="styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
-    <link href="styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+    <link href="../html,%20css/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../html,%20css/styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
 </head>
 
 <body>
 <header class="headerwrapper">
     <div class="topwrapper">
-        <a href="login.html">
-            <img src="images/logout_n.png" alt="admin Icon"/>
+        <a href="login.php">
+            <img src="../html,%20css/images/logout_n.png" alt="admin Icon"/>
             <span>Log Out</span></a>
 
         <a href="">
-            <img src="images/admin.png" alt="logout"/>
+            <img src="../html,%20css/images/admin.png" alt="logout"/>
             <span id="adminIcon">Login as Admin</span>
         </a>
     </div>
 
     <div id="logoandsearch">
-        <a href="index.php"><img src="images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+        <a href="index.php"><img src="../html,%20css/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
 
         <div class="searchwrapper">
             <form>
@@ -45,9 +45,9 @@
 
 <nav>
     <ul>
-        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="images/home.png"/><span>Home</span></a></li>
-        <li><a href=""><img src="images/notification.png"/><span>Notification</span></a></li>
-        <li><a href=""><img src="images/setting.png"/><span>Setting</span></a></li>
+        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="../html,%20css/images/home.png"/><span>Home</span></a></li>
+        <li><a href=""><img src="../html,%20css/images/notification.png"/><span>Notification</span></a></li>
+        <li><a href=""><img src="../html,%20css/images/setting.png"/><span>Setting</span></a></li>
     </ul>
 </nav>
 
@@ -57,43 +57,13 @@
 
 <form method="post" class="row" action="">
     <!--<select id="month_select" name="month_select" onchange="if(this.value != 0) {this.form.submit();}" class="boxform">-->
-    <select id="month_select" name="month_select" class="boxform">
-        <option value="0">Please Select Month</option>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7" select = "selected">July</option>
-        <option value="8">August</option>
-        <option value="9" >September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
 
-    <!--<select id="year_select" name="year_select" onchange="if(this.value != 0) {this.form.submit();}" class="boxform">-->
-    <select id="year_select" name="year_select" class="boxform">
-        <option value="0">Please Select Year</option>
-        <option value="2016">2016</option>
-        <option value="2017" select="selected">2017</option>
-        <option value="2018">2018</option>
-        <option value="2019">2019</option>
-    </select>
-
-    <select id="view_select" name="view_select" class="boxform">
-        <option value="date_view" select="selected">View By Date</option>
-        <option value="item_view">View By Item</option>
-    </select>
-
-    <input type="submit" id="time_select" name="time_select" value="Display Report"/>
 </form>
 
 <div id="horizontalbar1">
     <ul >
-        <li><a href="reportdaily.html"><span id="icon1">Daily</span></a></li>
-        <li><a href="reportweekly.html"><span id="icon2">Weekly</span></a></li>
+        <li><a href="reportdaily.php"><span id="icon1">Daily</span></a></li>
+        <li><a href="reportweekly.php"><span id="icon2">Weekly</span></a></li>
         <li class="active"><a href="display_monthly_report.php"><span id="icon3">Monthly</span></a></li>
     </ul>
 </div>
@@ -149,9 +119,8 @@ else if(isset($_POST["time_select"])) {
         $result_item = mysqli_query($connection, $v_item_query);
 
        if ($result_item -> num_rows > 0) {
-
-            echo "<h1>Sale By Item</h1>\n";
-            echo "<table border=\"1\">";
+           echo "<p class='stylequote'>Report</p>\n";
+           echo "<table id='tableReport'>";
             echo "<tr>"
                 . "<th scope=\"col\">itemID</th>"
                 . "<th scope=\"col\">Total Sales Quantity</th>"
@@ -190,8 +159,8 @@ else if(isset($_POST["time_select"])) {
         $result_total = mysqli_query($connection, $total_query);
 
         if ($result_date -> num_rows > 0) {
-            echo "<h1>Report</h1>\n";
-            echo "<table border=\"1\">";
+            echo "<p class='stylequote'>Report</p>\n";
+            echo "<table id='tableReport'>";
             echo "<tr>"
                 . "<th scope=\"col\">Date</th>"
                 . "<th scope=\"col\">Total Sale Quanity</th>"
