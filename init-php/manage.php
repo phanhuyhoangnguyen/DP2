@@ -26,6 +26,15 @@
     </fieldset>
 </form><br/>
 
+<form id="logout" method="post" action="logout.php">
+    <fieldset>
+        <legend>
+            Logout
+        </legend>
+        <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/>
+    </fieldset>
+</form><br/>
+
 <form id="add_category" method="post" action="add_category.php">
     <fieldset>
         <legend>
