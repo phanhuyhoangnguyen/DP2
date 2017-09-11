@@ -58,11 +58,15 @@ if (!$connection)
     $profit = round(($revenue - ($purchased_price * $sold_quantity)), 2);
     $new_quantity = $inv_quantity - $sold_quantity;
 
+    if ($new_quantity < 0) {
+        $errMsg .= "<p>Out of stock. Current item's quantity amount in stock is $inv_quantity. Please reduce your cart.</p>";
+    }
 
     if ($errMsg != "")
     {
         echo $errMsg;
     } else {
+
         $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_quantity', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$rec_itemID'";
         $general_update = mysqli_query($connection, $general_update_inv_table_query);
 
