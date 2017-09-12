@@ -6,6 +6,50 @@
 </head>
 <body>
 
+<form id="register" method="post" action="register.php">
+    <fieldset>
+        <legend>
+            Register
+        </legend>
+
+        <label for="full_name">
+            Full Name:
+        </label>
+        <input type="text" id="full_name" name="full_name"/><br/>
+
+        <label for="user_id">
+            Username:
+        </label>
+        <input type="text" id="user_id" name="user_id"/><br/>
+
+        <label for="password">
+            Password:
+        </label>
+        <input type="password" id="password" name="password"/><br/>
+
+        <label for="confirm_password">
+            Confirm Password:
+        </label>
+        <input type="password" id="confirm_password" name="confirm_password"/><br/>
+
+        <label for="email">
+            Email:
+        </label>
+        <input type="text" id="email" name="email"/><br/>
+
+        <label for="role">
+            Role:
+        </label>
+        <select id="role" name="role">
+            <option value="">Click to select</option>
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
+        </select><br/>
+
+        <input type="submit" id="submit_register" name="submit_register" value="Register"/>
+    </fieldset>
+</form><br/>
+
 <form id="login" method="post" action="login.php">
     <fieldset>
         <legend>
