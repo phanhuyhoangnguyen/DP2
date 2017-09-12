@@ -6,35 +6,6 @@
 </head>
 <body>
 
-<form id="login" method="post" action="login.php">
-    <fieldset>
-        <legend>
-            User Login
-        </legend>
-
-        <label for="user_id">
-            Username:
-        </label>
-        <input type="text" id="user_id" name="user_id"/><br/>
-
-        <label for="password">
-            Password:
-        </label>
-        <input type="password" id="password" name="password"/><br/>
-
-        <input type="submit" id="submit_login" name="submit_login" value="Login"/>
-    </fieldset>
-</form><br/>
-
-<form id="logout" method="post" action="logout.php">
-    <fieldset>
-        <legend>
-            Logout
-        </legend>
-        <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/>
-    </fieldset>
-</form><br/>
-
 <form id="add_category" method="post" action="add_category.php">
     <fieldset>
         <legend>
@@ -96,10 +67,10 @@
     </fieldset>
 </form><br/>
 
-<form id="add_item_to_inventory" method="post" action="add_item_to_inventory.php">
+<form id="edit_inventory" method="post" action="edit_inventory.php">
     <fieldset>
         <legend>
-            Add Item to Inventory
+            Manage Inventory
         </legend>
 
         <label for="inv_itemID">ItemID: </label>
@@ -138,64 +109,6 @@
         <input type="text" id="inv_purchased_price" name="inv_purchased_price"/><br/>
 
         <label for="inv_selling_price">Selling Price: </label>
-        <input type="text" id="inv_selling_price" name="inv_selling_price"/>
-
-        <!-- total cost = purchased_price * quantity -->
-        <input type="hidden" id="inv_total_cost" name="inv_total_cost"/>
-        <!-- latest_update = date() -->
-        <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
-
-        <input type="hidden" id="inv_update_reason" name="add_new"/>
-
-        <!-- Assign username with username of logged in user -->
-        <input type="hidden" id="inv_username" name="inv_username"/>
-
-        <br/><input type="submit" id="submit_add_item_to_inventory" name="submit_add_item_to_inventory" value="Add Item to Inventory"/>
-    </fieldset>
-</form><br/>
-
-<form id="update_inventory" method="post" action="edit_inventory.php">
-    <fieldset>
-        <legend>
-            Update Inventory
-        </legend>
-
-        <label for="inv_itemID">ItemID: </label>
-        <!-- <input type="text" id="inv_itemID" name="inv_itemID"/><br/> -->
-
-        <select id="inv_itemID" name="inv_itemID">
-            <?php
-            /*connect database*/
-            error_reporting(0);
-            $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
-            $item__table = "Item";
-            @mysqli_select_db($connection, $category__table);
-
-            $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
-            $list_item = mysqli_query($connection, $itm_query);
-
-
-            echo '<option value="">Click to select</option>';
-
-            while ($row = $list_item->fetch_assoc())
-            {
-                unset($itm);
-                $itm = $row['itemID'];
-                $itm_full = $row['itm_full'];
-                echo '<option value="'.$itm.'">'.$itm_full.'</option>';
-            }
-
-            mysqli_close($connection);
-            ?>
-        </select><br/>
-
-        <label for="inv_quantity">Quantity: </label>
-        <input type="text" id="inv_quantity" name="inv_quantity"/><br/>
-
-        <label for="inv_purchased_price">Purchased Price: </label>
-        <input type="text" id="inv_purchased_price" name="inv_purchased_price"/><br/>
-
-        <label for="inv_selling_price">Selling Price: </label>
         <input type="text" id="inv_selling_price" name="inv_selling_price"/><br/>
 
         <!-- total cost = purchased_price * quantity -->
@@ -203,19 +116,22 @@
         <!-- latest_update = date() -->
         <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
 
-        <label for="inv_update_reason">
-            Update Reason:
-        </label>
+        <label for="inv_update_reason">Update Reason: </label>
         <select id="inv_update_reason" name="inv_update_reason">
-            <option value="">Click to Select</option>
-            <option value="update_quantity">Update Quantity</option>
-            <option value="update_selling price">Update Selling Prices</option>
+            <option value="">Select an option</option>
+            <option value="add_new">Added New Item</option>
+            <!-- Greyed them out, use later for update purpose. At this moment, just add new item to inventory -->
+            <!--
+            <option value="change_quantity">Changed Quantity</option>
+            <option value="change_selling_price">Changed Selling Price</option>
+            <option value="change_purchased_price">Changed Purchased Price</option>
+            -->
         </select>
 
         <!-- Assign username with username of logged in user -->
         <input type="hidden" id="inv_username" name="inv_username"/>
 
-        <br/><input type="submit" id="submit_edit_inventory" name="submit_edit_inventory" value="Update Inventory"/>
+        <br/><input type="submit" id="submit_edit_inventory" name="submit_edit_inventory" value="Update"/>
     </fieldset>
 </form><br/>
 
@@ -336,7 +252,37 @@
         <legend>
             Export to CSV File
         </legend>
-        <input type="submit" id="export" name="export" value="Export to CSV File"/>
+        <!-- Select Month   >-->
+        <select id="month_select_csv" name="month_select_csv" class="boxform">
+            <option value="0">Please Select Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7" select = "selected">July</option>
+            <option value="8">August</option>
+            <option value="9" >September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <!-- Select Year   >-->
+        <select id="year_select_csv" name="year_select_csv" class="boxform">
+            <option value="0">Please Select Year</option>
+            <option value="2016">2016</option>
+            <option value="2017" select="selected">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+        </select>
+        <!-- Select View   >-->
+        <select id="view_select_csv" name="view_select_csv" class="boxform">
+            <option value="date_view" select="selected">View By Date</option>
+            <option value="item_view">View By Item</option>
+        </select>
+
+        <br/><br/><input type="submit" id="export" name="export" value="Export to CSV File"/>
     </fieldset>
 </form>
 
