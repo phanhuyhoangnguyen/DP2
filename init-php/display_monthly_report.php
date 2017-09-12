@@ -7,32 +7,32 @@
     <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
     <meta name="author" content="Phan Huy Hoang Nguyen"/>
 
-    <link href="../html,%20css/styles/style.css" rel="stylesheet" type="text/css"/>
-    <link href="../html,%20css/styles/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/layout.css" rel="stylesheet" type="text/css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- References to external responsive CSS file -->
-    <link href="../html,%20css/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
-    <link href="../html,%20css/styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+    <link href="resources/css/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="resources/css/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
 </head>
 
 <body>
 <header class="headerwrapper">
     <div class="topwrapper">
         <a href="login.php">
-            <img src="../html,%20css/images/logout_n.png" alt="admin Icon"/>
+            <img src="resources/images/logout_n.png" alt="admin Icon"/>
             <span>Log Out</span></a>
 
         <a href="">
-            <img src="../html,%20css/images/admin.png" alt="logout"/>
+            <img src="resources/images/admin.png" alt="logout"/>
             <span id="adminIcon">Login as Admin</span>
         </a>
     </div>
 
     <div id="logoandsearch">
-        <a href="index.php"><img src="../html,%20css/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+        <a href="index.php"><img src="resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
 
         <div class="searchwrapper">
             <form>
@@ -45,9 +45,9 @@
 
 <nav>
     <ul>
-        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="../html,%20css/images/home.png"/><span>Home</span></a></li>
-        <li><a href=""><img src="../html,%20css/images/notification.png"/><span>Notification</span></a></li>
-        <li><a href=""><img src="../html,%20css/images/setting.png"/><span>Setting</span></a></li>
+        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="resources/images/home.png"/><span>Home</span></a></li>
+        <li><a href=""><img src="resources/images/notification.png"/><span>Notification</span></a></li>
+        <li><a href=""><img src="resources/images/setting.png"/><span>Setting</span></a></li>
     </ul>
 </nav>
 
@@ -113,16 +113,25 @@ else if(isset($_POST["time_select"])) {
     else if ($view == "item_view") {
 
         /*Query to retrieve info from database*/
-        $v_item_query = "SELECT r.itemID, COUNT(r.itemID) AS TOTAL_ITEM, SUM(r.sold_quantity) AS TOTAL_SALE, SUM(r.revenue) AS TOTAL_REV, 
-                          SUM(r.profit) AS TOTAL_PROFIT, i.total_cost FROM Records r INNER JOIN Inventory i ON i.itemID = r.itemID WHERE 
-                          MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY r.itemID ";
+        $v_item_query = "SELECT REC.itemID, ITM.item_name, CAT.category_name, INV.quantity AS stock_count, COUNT(REC.itemID) AS TOTAL_SALE,
+                          INV.selling_price, INV.purchased_price, SUM(REC.sold_quantity) AS TOTAL_ITEM, SUM(REC.revenue) AS TOTAL_REV, 
+                          SUM(REC.profit) AS TOTAL_PROFIT, INV.total_cost FROM Records REC 
+                          INNER JOIN Inventory INV ON INV.itemID = REC.itemID 
+                          INNER JOIN Item ITM ON ITM.itemID = INV.itemID
+                          INNER JOIN Category CAT ON ITM.categoryID = CAT.categoryID
+                          WHERE MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY REC.itemID ";
         $result_item = mysqli_query($connection, $v_item_query);
 
        if ($result_item -> num_rows > 0) {
            echo "<p class='stylequote'>Report</p>\n";
            echo "<table id='tableReport'>";
             echo "<tr>"
-                . "<th scope=\"col\">itemID</th>"
+                . "<th scope=\"col\">ItemID</th>"
+                . "<th scope=\"col\">Item Name</th>"
+                . "<th scope=\"col\">Category</th>"
+                . "<th scope=\"col\">Stock Count</th>"
+                . "<th scope=\"col\">Selling Price</th>"
+                . "<th scope=\"col\">Purchased Price</th>"
                 . "<th scope=\"col\">Total Sales Quantity</th>"
                 . "<th scope=\"col\">Total Item Sold</th>"
                 . "<th scope=\"col\">Total Revenue</th>"
@@ -132,6 +141,11 @@ else if(isset($_POST["time_select"])) {
             while ($row = mysqli_fetch_assoc($result_item)) {
                 echo "<tr>";
                 echo "<td>", $row["itemID"], "</td>";
+                echo "<td>", $row["item_name"], "</td>";
+                echo "<td>", $row["category_name"], "</td>";
+                echo "<td>", $row["stock_count"], "</td>";
+                echo "<td>", $row["selling_price"], "</td>";
+                echo "<td>", $row["purchased_price"], "</td>";
                 echo "<td>", $row["TOTAL_SALE"], "</td>";
                 echo "<td>", $row["TOTAL_ITEM"], "</td>";
                 echo "<td>", $row["TOTAL_REV"], "</td>";
