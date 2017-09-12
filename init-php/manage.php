@@ -6,6 +6,35 @@
 </head>
 <body>
 
+<form id="login" method="post" action="login.php">
+    <fieldset>
+        <legend>
+            User Login
+        </legend>
+
+        <label for="user_id">
+            Username:
+        </label>
+        <input type="text" id="user_id" name="user_id"/><br/>
+
+        <label for="password">
+            Password:
+        </label>
+        <input type="password" id="password" name="password"/><br/>
+
+        <input type="submit" id="submit_login" name="submit_login" value="Login"/>
+    </fieldset>
+</form><br/>
+
+<form id="logout" method="post" action="logout.php">
+    <fieldset>
+        <legend>
+            Logout
+        </legend>
+        <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/>
+    </fieldset>
+</form><br/>
+
 <form id="add_category" method="post" action="add_category.php">
     <fieldset>
         <legend>
@@ -43,13 +72,9 @@
             $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
             $category__table = "Category";
             @mysqli_select_db($connection, $category__table);
-
             $cat_query = "SELECT categoryID, CONCAT('(',categoryID,') - ',category_name) AS cat_full FROM $category__table ORDER BY categoryID ASC";
             $list_category = mysqli_query($connection, $cat_query);
-
-
             echo '<option value="">Click to select</option>';
-
             while ($row = $list_category->fetch_assoc())
             {
                 unset($cat);
@@ -57,7 +82,6 @@
                 $cat_full = $row['cat_full'];
                 echo '<option value="'.$cat.'">'.$cat_full.'</option>';
             }
-
             mysqli_close($connection);
         ?>
 
@@ -67,10 +91,10 @@
     </fieldset>
 </form><br/>
 
-<form id="edit_inventory" method="post" action="edit_inventory.php">
+<form id="add_item_to_inventory" method="post" action="add_item_to_inventory.php">
     <fieldset>
         <legend>
-            Manage Inventory
+            Add Item to Inventory
         </legend>
 
         <label for="inv_itemID">ItemID: </label>
@@ -83,13 +107,9 @@
         $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
         $item__table = "Item";
         @mysqli_select_db($connection, $category__table);
-
         $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
         $list_item = mysqli_query($connection, $itm_query);
-
-
         echo '<option value="">Click to select</option>';
-
         while ($row = $list_item->fetch_assoc())
         {
             unset($itm);
@@ -97,9 +117,61 @@
             $itm_full = $row['itm_full'];
             echo '<option value="'.$itm.'">'.$itm_full.'</option>';
         }
-
         mysqli_close($connection);
         ?>
+        </select><br/>
+
+        <label for="inv_quantity">Quantity: </label>
+        <input type="text" id="inv_quantity" name="inv_quantity"/><br/>
+
+        <label for="inv_purchased_price">Purchased Price: </label>
+        <input type="text" id="inv_purchased_price" name="inv_purchased_price"/><br/>
+
+        <label for="inv_selling_price">Selling Price: </label>
+        <input type="text" id="inv_selling_price" name="inv_selling_price"/>
+
+        <!-- total cost = purchased_price * quantity -->
+        <input type="hidden" id="inv_total_cost" name="inv_total_cost"/>
+        <!-- latest_update = date() -->
+        <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
+
+        <input type="hidden" id="inv_update_reason" name="add_new"/>
+
+        <!-- Assign username with username of logged in user -->
+        <input type="hidden" id="inv_username" name="inv_username"/>
+
+        <br/><input type="submit" id="submit_add_item_to_inventory" name="submit_add_item_to_inventory" value="Add Item to Inventory"/>
+    </fieldset>
+</form><br/>
+
+<form id="update_inventory" method="post" action="edit_inventory.php">
+    <fieldset>
+        <legend>
+            Update Inventory
+        </legend>
+
+        <label for="inv_itemID">ItemID: </label>
+        <!-- <input type="text" id="inv_itemID" name="inv_itemID"/><br/> -->
+
+        <select id="inv_itemID" name="inv_itemID">
+            <?php
+            /*connect database*/
+            error_reporting(0);
+            $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
+            $item__table = "Item";
+            @mysqli_select_db($connection, $category__table);
+            $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
+            $list_item = mysqli_query($connection, $itm_query);
+            echo '<option value="">Click to select</option>';
+            while ($row = $list_item->fetch_assoc())
+            {
+                unset($itm);
+                $itm = $row['itemID'];
+                $itm_full = $row['itm_full'];
+                echo '<option value="'.$itm.'">'.$itm_full.'</option>';
+            }
+            mysqli_close($connection);
+            ?>
         </select><br/>
 
         <label for="inv_quantity">Quantity: </label>
@@ -116,22 +188,19 @@
         <!-- latest_update = date() -->
         <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
 
-        <label for="inv_update_reason">Update Reason: </label>
+        <label for="inv_update_reason">
+            Update Reason:
+        </label>
         <select id="inv_update_reason" name="inv_update_reason">
-            <option value="">Select an option</option>
-            <option value="add_new">Added New Item</option>
-            <!-- Greyed them out, use later for update purpose. At this moment, just add new item to inventory -->
-            <!--
-            <option value="change_quantity">Changed Quantity</option>
-            <option value="change_selling_price">Changed Selling Price</option>
-            <option value="change_purchased_price">Changed Purchased Price</option>
-            -->
+            <option value="">Click to Select</option>
+            <option value="update_quantity">Update Quantity</option>
+            <option value="update_selling price">Update Selling Prices</option>
         </select>
 
         <!-- Assign username with username of logged in user -->
         <input type="hidden" id="inv_username" name="inv_username"/>
 
-        <br/><input type="submit" id="submit_edit_inventory" name="submit_edit_inventory" value="Update"/>
+        <br/><input type="submit" id="submit_edit_inventory" name="submit_edit_inventory" value="Update Inventory"/>
     </fieldset>
 </form><br/>
 
@@ -152,13 +221,9 @@
         $item_table = "Item";
         @mysqli_select_db($connection, $category__table);
         @mysqli_select_db($connection, $item_table);
-
         $itm_query = "SELECT inv.itemID AS ID, CONCAT('(',inv.itemID,') - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm WHERE inv.itemID = itm.itemID ORDER BY inv.itemID ASC";
         $list_item = mysqli_query($connection, $itm_query);
-
-
         echo '<option value="">Click to select</option>';
-
         while ($row = $list_item->fetch_assoc())
         {
             unset($itm);
@@ -166,7 +231,6 @@
             $itm_full = $row['itm_full'];
             echo '<option value="'.$itm.'">'.$itm_full.'</option>';
         }
-
         mysqli_close($connection);
         ?>
         </select><br/>
