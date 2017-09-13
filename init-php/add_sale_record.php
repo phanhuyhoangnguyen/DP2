@@ -71,6 +71,8 @@ if (!$connection)
             } else {
                 $profit = round($revenue - (($stock_with_old_prices * $previous_purchased_price) + (((int)$sold_quantity - $stock_with_old_prices) * $purchased_price)), 2);
             }
+        } else {
+            $profit = round(($revenue - ($purchased_price * (int)$sold_quantity)), 2);
         }
 
         $rec_username = $_SESSION["username"];
