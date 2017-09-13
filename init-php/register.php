@@ -20,7 +20,7 @@ if (!$connection)
     echo "</script>";
 } else if (isset($_POST["submit_register"])) {
 
-    if (!($_SESSION["role"] == "manager") || !($_SESSION["role"] == "admin")) {
+    if (!($_SESSION["role"] == "manager")) {
         echo "Only manager and administrator can create new user.";
     } else {
         $errMsg = "";
@@ -75,7 +75,10 @@ if (!$connection)
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-            echo "Fuck";
+            $register_query = "INSERT INTO $table (username, password, email, full_name, role) VALUES ('$username', '$password', '$email', '$full_name', '$role')";
+            $register = mysqli_query($connection, $register_query);
         }
     }
+
+    mysqli_close($connection);
 }
