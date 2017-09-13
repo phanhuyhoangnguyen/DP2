@@ -42,14 +42,25 @@ if (!$connection)
         // View By Item
         if($view == "item_view")
         {
-            $a =  array('itemID','Total Sales Quantity','Total Item Sold','Total Revenue','Total Cost','Total Profit');
-            $query = "SELECT r.itemID, SUM(r.sold_quantity), COUNT(r.itemID),  SUM(r.revenue), i.total_cost , SUM(r.profit) 
-                      FROM Records r 
-                      INNER JOIN Inventory i
-                      ON i.itemID = r.itemID 
+            $a =  array('itemID','Item Name','Category','Stock Count','Selling Price','Purchased Price',
+                        'Total Sales Quantity','Total Item Sold','Total Revenue','Total Cost','Total Profit');
+                        
+            $query = "SELECT REC.itemID, ITM.item_name, CAT.category_name, INV.quantity , INV.selling_price,
+                             INV.purchased_price,COUNT(REC.itemID), SUM(REC.sold_quantity) , SUM(REC.revenue) , 
+                             INV.total_cost ,  SUM(REC.profit)
+                      FROM Records REC 
+
+                      INNER JOIN Inventory INV 
+                      ON INV.itemID = REC.itemID 
+                          
+                      INNER JOIN Item ITM 
+                      ON ITM.itemID = INV.itemID
+
+                      INNER JOIN Category CAT 
+                      ON ITM.categoryID = CAT.categoryID
                       WHERE MONTH(date)='$month' 
                       AND YEAR(date)='$year' 
-                      GROUP BY r.itemID ";
+                      GROUP BY REC.itemID ";
                             
         }
         // View By Date
