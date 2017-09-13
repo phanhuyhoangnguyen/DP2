@@ -40,7 +40,6 @@ if (!$connection)
         $inv_query = "SELECT quantity, purchased_price, selling_price FROM Inventory WHERE itemID='$rec_itemID'";
         $inv_query_fetch = $connection->query($inv_query)->fetch_assoc();
         $selling_price = $inv_query_fetch["selling_price"];
-        $purchased_price = $inv_query_fetch["purchased_price"];
         $inv_quantity = $inv_query_fetch["quantity"];
 
         /*defines*/
@@ -48,6 +47,9 @@ if (!$connection)
         $inv_latest_update = $rec_date;
 
         $sold_quantity = mysqli_real_escape_string($connection, $_POST["rec_quantity"]);
+
+        $purchased_price = $inv_query_fetch["purchased_price"];
+
         /* validates sold quantity */
         if ($sold_quantity == "") {
             $errMsg .= "<p>You must provide sold quantity amount of the item.</p>";
@@ -55,10 +57,23 @@ if (!$connection)
             $errMsg .= "<p>You must enter a valid number for sold quantity.</p>";
         }
 
-        $rec_username = $_SESSION["username"];
-
         $revenue = round(($selling_price * $sold_quantity), 2);
-        $profit = round(($revenue - ($purchased_price * $sold_quantity)), 2);
+        $profit = 0;
+
+        $previous_data_query = "SELECT previous_purchased_price, stock_with_old_prices FROM $inv_table WHERE itemID = '$rec_itemID'";
+        $previous_data_fetch = $connection->query($previous_data_query)->fetch_assoc();
+        $stock_with_old_prices = $previous_data_fetch["stock_with_old_prices"];
+        $previous_purchased_price = $previous_data_fetch["previous_purchased_price"];
+
+        if ($stock_with_old_prices > 0) {
+            if ($stock_with_old_prices >= $sold_quantity) {
+                $profit = round(($revenue - ($previous_purchased_price * (int)$sold_quantity)), 2);
+            } else {
+                $profit = round($revenue - (($stock_with_old_prices * $previous_purchased_price) + (((int)$sold_quantity - $stock_with_old_prices) * $purchased_price)), 2);
+            }
+        }
+
+        $rec_username = $_SESSION["username"];
         $new_quantity = $inv_quantity - $sold_quantity;
 
         if ($new_quantity < 0) {
@@ -68,7 +83,6 @@ if (!$connection)
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-
             $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_quantity', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$rec_itemID'";
             $general_update = mysqli_query($connection, $general_update_inv_table_query);
 
