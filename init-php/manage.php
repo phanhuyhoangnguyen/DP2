@@ -13,7 +13,7 @@
         </legend>
 
         <label for="full_name">
-            Full Name:
+            User's Full Name:
         </label>
         <input type="text" id="full_name" name="full_name"/><br/>
 
@@ -23,22 +23,22 @@
         <input type="text" id="user_id" name="user_id"/><br/>
 
         <label for="password">
-            Password:
+            User's Passcode:
         </label>
         <input type="password" id="password" name="password"/><br/>
 
         <label for="confirm_password">
-            Confirm Password:
+            Confirm Passcode:
         </label>
         <input type="password" id="confirm_password" name="confirm_password"/><br/>
 
         <label for="email">
-            Email:
+            User's Email:
         </label>
         <input type="text" id="email" name="email"/><br/>
 
         <label for="role">
-            Role:
+            User's Role:
         </label>
         <select id="role" name="role">
             <option value="">Click to select</option>

@@ -11,7 +11,6 @@ error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "User";
 @mysqli_select_db($connection, $table);
-/*events after button "Show" is clicked*/
 
 if (!$connection)
 {
@@ -53,6 +52,7 @@ if (!$connection)
         //$_SESSION["logged_user"] = true;
         $_SESSION["username"] = $username;
         $_SESSION["role"] = $user_role_fetch["role"];
+
 
         header("Location: manage.php");
     }
