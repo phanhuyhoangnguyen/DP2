@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b49b4ff-824f-4ea8-9fed-a8e289be9cd2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init-php/add_sale_record.php" afterPath="$PROJECT_DIR$/init-php/add_sale_record.php" />
-    </list>
+    <list default="true" id="9b49b4ff-824f-4ea8-9fed-a8e289be9cd2" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_sale_record.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add_sale_record.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state relative-caret-position="570">
               <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
               <folding>
                 <marker date="1505312239000" expanded="true" signature="1090:1179" ph="SELECT quant... Inventory" />
@@ -60,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="display_month_report.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="display_month_report.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/display_month_report.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1011">
@@ -281,12 +278,12 @@
       <workItem from="1505123229465" duration="2395000" />
       <workItem from="1505136169398" duration="3337000" />
       <workItem from="1505202825770" duration="2102000" />
-      <workItem from="1505293136601" duration="11806000" />
+      <workItem from="1505293136601" duration="12184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34468000" />
+    <option name="totallyTimeSpent" value="34846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1011" extended-state="6" />
@@ -840,19 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding>
-            <marker date="1505312239000" expanded="true" signature="1090:1179" ph="SELECT quant... Inventory" />
-            <marker date="1505312239000" expanded="true" signature="2061:2160" ph="SELECT previ... ${$table}" />
-            <marker date="1505312239000" expanded="true" signature="3236:3363" ph="UPDATE ${$in... " />
-            <marker date="1505312239000" expanded="true" signature="3479:3655" ph="INSERT INTO ${$record_table}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init-php/display_monthly_report.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2394">
@@ -872,6 +856,19 @@
           <folding>
             <marker date="1505123187000" expanded="true" signature="725:823" ph="SELECT * FRO... ${$records_table}" />
             <marker date="1505123187000" expanded="true" signature="897:1240" ph="SELECT inv.i... ${$inventory_table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+          <folding>
+            <marker date="1505312239000" expanded="true" signature="1090:1179" ph="SELECT quant... Inventory" />
+            <marker date="1505312239000" expanded="true" signature="2061:2160" ph="SELECT previ... ${$table}" />
+            <marker date="1505312239000" expanded="true" signature="3236:3363" ph="UPDATE ${$in... " />
+            <marker date="1505312239000" expanded="true" signature="3479:3655" ph="INSERT INTO ${$record_table}... " />
           </folding>
         </state>
       </provider>
