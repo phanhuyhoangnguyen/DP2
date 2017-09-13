@@ -238,7 +238,7 @@
         <select id="inv_update_reason" name="inv_update_reason">
             <option value="">Click to Select</option>
             <option value="update_quantity">Update Quantity</option>
-            <option value="update_selling price">Update Selling Prices</option>
+            <option value="update_selling_price">Update Selling Prices</option>
         </select>
 
         <!-- Assign username with username of logged in user -->
