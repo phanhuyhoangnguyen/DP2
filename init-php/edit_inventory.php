@@ -52,12 +52,13 @@ if (!$connection)
 
         $new_update_cost = round(($new_quantity * $new_purchased_price), 2);
 
-        $previous_data_query = "SELECT quantity, purchased_price, total_cost FROM $table WHERE itemID = '$itemID'";
+        $previous_data_query = "SELECT quantity, purchased_price, selling_price, total_cost FROM $table WHERE itemID = '$itemID'";
         $previous_data_fetch = $connection->query($previous_data_query)->fetch_assoc();
 
         $previous_quantity = $previous_data_fetch["quantity"];
         $previous_total_cost = $previous_data_fetch["total_cost"];
         $previous_purchased_price = $previous_data_fetch["purchased_price"];
+        $previous_selling_price = $previous_data_fetch["selling_price"];
 
         $new_total_update = $previous_total_cost + $new_update_cost;
         $new_quantity_available = $previous_quantity + (int)$new_quantity;
@@ -84,19 +85,27 @@ if (!$connection)
             }
         }
 
+        if ($update_reason == "update_both") {
+            if (($new_quantity == "") || ($new_purchased_price == "") || ($new_selling_price == ""))
+            {
+                $errMsg .= "<p>You must provide all required information for this update reason.</p>";
+            }
+        }
+
         if ($errMsg != "") {
             echo $errMsg;
         } else {
 
+            $update_query = "";
             if ($update_reason == "update_quantity") {
-                $update_quantity_query = "UPDATE $table SET quantity='$new_quantity_available', purchased_price='$new_purchased_price', total_cost='$new_total_update', latest_update = '$latest_update_date', update_reason = '$update_reason', username = '$who_updated', previous_purchased_price = '$previous_purchased_price', stock_with_old_prices = '$previous_quantity' WHERE itemID = '$itemID'";
-
-                //echo $who_updated;
-                $update_quantity = mysqli_query($connection, $update_quantity_query);
-                header("Location: manage.php");
+                $update_query = "UPDATE $table SET quantity='$new_quantity_available', purchased_price='$new_purchased_price', total_cost='$new_total_update', latest_update = '$latest_update_date', update_reason = '$update_reason', username = '$who_updated', previous_purchased_price = '$previous_purchased_price', stock_with_old_prices = '$previous_quantity' WHERE itemID = '$itemID'";
+            } else if ($update_reason == "update_selling_price") {
+                $update_query = "UPDATE $table SET selling_price='$new_selling_price', latest_update = '$latest_update_date', update_reason = '$update_reason', username = '$who_updated', previous_selling_price = '$previous_selling_price' WHERE itemID = '$itemID'";
             } else {
-                echo "Wait a second";
+                $update_query = "UPDATE $table SET quantity='$new_quantity_available', purchased_price='$new_purchased_price', total_cost='$new_total_update', latest_update = '$latest_update_date', update_reason = '$update_reason', username = '$who_updated', previous_purchased_price = '$previous_purchased_price', stock_with_old_prices = '$previous_quantity', previous_selling_price = '$previous_selling_price' WHERE itemID = '$itemID'";
             }
+            $update_quantity = mysqli_query($connection, $update_query);
+            header("Location: manage.php");
         }
     }
     mysqli_close($connection);
