@@ -1,82 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Friendly Pharmacy | Sale Reporting and Prediction System</title>
-    <meta charset="utf-8"/>
-    <meta name="description" content="Sale Reporting and Prediction System"/>
-    <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
-    <meta name="author" content="Phan Huy Hoang Nguyen"/>
-
-    <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="resources/css/layout.css" rel="stylesheet" type="text/css"/>
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- References to external responsive CSS file -->
-    <link href="resources/css/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
-    <link href="resources/css/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
-</head>
-
-<body>
-<header class="headerwrapper">
-    <div class="topwrapper">
-        <a href="login.php">
-            <img src="resources/images/logout_n.png" alt="admin Icon"/>
-            <span>Log Out</span></a>
-
-        <a href="">
-            <img src="resources/images/admin.png" alt="logout"/>
-            <span id="adminIcon">Login as Admin</span>
-        </a>
-    </div>
-
-    <div id="logoandsearch">
-        <a href="index.php"><img src="resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
-
-        <div class="searchwrapper">
-            <form>
-                <input type="text" name="search" placeholder="Search for Products/Brand"/>
-            </form>
-        </div>
-    </div>
-</header>
-
-
-<nav>
-    <ul>
-        <li id="active"><a href="http://pharmacy.westudyit.com/manage.php"><img src="resources/images/home.png"/><span>Home</span></a></li>
-        <li><a href=""><img src="resources/images/notification.png"/><span>Notification</span></a></li>
-        <li><a href=""><img src="resources/images/setting.png"/><span>Setting</span></a></li>
-    </ul>
-</nav>
-
-<div class="stylequote">
-    <p>Sale Report</p>
-</div>
-
-<form method="post" class="row" action="">
-    <!--<select id="month_select" name="month_select" onchange="if(this.value != 0) {this.form.submit();}" class="boxform">-->
-
-</form>
-
-<div id="horizontalbar1">
-    <ul >
-        <li><a href="reportdaily.php"><span id="icon1">Daily</span></a></li>
-        <li><a href="reportweekly.php"><span id="icon2">Weekly</span></a></li>
-        <li class="active"><a href="display_monthly_report.php"><span id="icon3">Monthly</span></a></li>
-    </ul>
-</div>
-
-<div id="horizontalbar2">
-    <ul >
-        <li><a href=""><span id="popular">Popular Product</span></a></li>
-        <li><a href=""><span id="chart">Chart View</span></a></li>
-        <li><a href=""><span id="export">Export File</span></a></li>
-        <li><a href=""><span id="predict">Predict Sale</span></a></li>
-    </ul>
-</div>
-
 <?php
 /**
  * User: phanHuyHoangNguyen
@@ -114,7 +35,7 @@ else if(isset($_POST["time_select"])) {
 
         /*Query to retrieve info from database*/
         $v_item_query = "SELECT REC.itemID, ITM.item_name, CAT.category_name, INV.quantity AS stock_count, COUNT(REC.itemID) AS TOTAL_SALE,
-                          INV.selling_price, INV.purchased_price, SUM(REC.sold_quantity) AS TOTAL_ITEM, SUM(REC.revenue) AS TOTAL_REV, 
+                          INV.selling_price, INV.purchased_price, SUM(REC.sold_quantity) AS TOTAL_ITEM_, SUM(REC.revenue) AS TOTAL_REV, 
                           SUM(REC.profit) AS TOTAL_PROFIT, INV.total_cost FROM Records REC 
                           INNER JOIN Inventory INV ON INV.itemID = REC.itemID 
                           INNER JOIN Item ITM ON ITM.itemID = INV.itemID
