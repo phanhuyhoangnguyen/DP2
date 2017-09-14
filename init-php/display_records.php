@@ -10,12 +10,15 @@
 error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "Records";
+$table_Ri = "record_items";
 $inv_table = "Inventory";
 $item_table = "Item";
 
 @mysqli_select_db($connection, $table);
 @mysqli_select_db($connection, $inv_table);
 @mysqli_select_db($connection, $item_table);
+@mysqli_select_db($connection, $table_Ri);
+
 session_start();
 
 if (!$connection)
@@ -29,7 +32,7 @@ if (!$connection)
     {
         echo "<p>You must login to view sales history.</p>";
     } else {
-        $query = "SELECT rec.*, itm.item_name AS item_name, inv.selling_price AS selling_price, inv.quantity AS remaining FROM $table rec, $inv_table inv, $item_table itm WHERE rec.itemID = inv.itemID AND inv.itemID = itm.itemID ORDER BY saleID ASC";
+        $query = "SELECT rec.saleID AS saleID, rec.date AS date, rec.revenue AS revenue, rec.profit AS profit, rec.username AS username, ri.itemID as itemID, ri.sold_quantity AS sold_quantity, itm.item_name AS item_name, inv.selling_price AS selling_price, inv.quantity AS remaining FROM $table rec, $inv_table inv, $item_table itm, $table_Ri ri WHERE ri.itemID = inv.itemID AND inv.itemID = itm.itemID AND ri.saleID = rec.saleID ORDER BY saleID ASC";
         $result = mysqli_query($connection, $query);
 
         echo "<h1>Results</h1>\n";

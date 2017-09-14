@@ -14,6 +14,7 @@ $inv_table = "Inventory";
 $ri_table = "record_items";
 @mysqli_select_db($connection, $record_table);
 @mysqli_select_db($connection, $inv_table);
+@mysqli_select_db($connection, $ri_table);
 date_default_timezone_set('Australia/Melbourne');
 session_start();
 
@@ -105,7 +106,7 @@ if (!$connection)
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-            $query_record = "INSERT INTO $record_table (date, revenue, profit, username) VALUES ('$rec_date', '$revenue', '$profit', '$rec_username')";
+            $query_record = "INSERT INTO $record_table (date, revenue, profit, username) VALUES ('$rec_date', '$total_revenue', '$total_profit', '$rec_username')";
             $add_record = mysqli_query($connection, $query_record);
 
             for ($i = 0; $i < count($checkbox); $i++)
