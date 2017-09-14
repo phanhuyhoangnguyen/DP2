@@ -9,7 +9,6 @@ error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "Records";
 @mysqli_select_db($connection, $table);
-/*events after button "Show" is clicked*/
 
 /*Check for database connection*/
 if (!$connection) {
@@ -118,4 +117,3 @@ else if(isset($_POST["time_select"])) {
         }
     }
 }
-?>
