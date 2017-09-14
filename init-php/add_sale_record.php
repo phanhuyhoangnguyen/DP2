@@ -11,6 +11,7 @@ error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $record_table = "Records";
 $inv_table = "Inventory";
+$ri_table = "record_items";
 @mysqli_select_db($connection, $record_table);
 @mysqli_select_db($connection, $inv_table);
 date_default_timezone_set('Australia/Melbourne');
@@ -27,6 +28,7 @@ if (!$connection)
     {
         echo "<p>You must login to edit the inventory.</p>";
     } else {
+
         /* Error message */
         $errMsg = "";
 
@@ -40,11 +42,16 @@ if (!$connection)
             }
         }
 
+        if (count($checkbox) == 0) {
+            $errMsg .= "<p>You must select an item.</p>";
+        }
+
         $total_revenue = 0;
         $total_profit = 0;
         $rec_date = "";
         $rec_username = "";
-        $itm_details = array();
+        $sold_q = array();
+        $new_q = array();
 
         for ($i = 0; $i < count($checkbox); $i++) {
 
@@ -58,11 +65,11 @@ if (!$connection)
             $inv_latest_update = $rec_date; //
             $sold_quantity = mysqli_real_escape_string($connection, $_POST["quantity_$checkbox[$i]"]); //
 
-            /*if ($sold_quantity == "") {
+            if ($sold_quantity == "") {
                 $errMsg .= "<p>You must provide sold quantity amount of the item.</p>";
             } else if (!preg_match("/^[0-9]*$/", $sold_quantity)) {
                 $errMsg .= "<p>You must enter a valid number for sold quantity.</p>";
-            }*/
+            }
 
             $revenue = round(($selling_price * $sold_quantity), 2);
 
@@ -91,17 +98,27 @@ if (!$connection)
                 $errMsg .= "<p>$checkbox[$i] is out of stock. Current item's quantity amount in stock is $inv_quantity. Please reduce your cart.</p>";
             }
 
-            $itm_details[] = $checkbox[$i]."-".$sold_quantity."-".$new_quantity;
+            $sold_q[] = $sold_quantity;
+            $new_q[] = $new_quantity;
         }
 
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-            echo $total_profit;
-            print_r($itm_details);
-            echo $rec_date;
-            echo $rec_username;
-            echo $total_revenue;
+            $query_record = "INSERT INTO $record_table (date, revenue, profit, username) VALUES ('$rec_date', '$revenue', '$profit', '$rec_username')";
+            $add_record = mysqli_query($connection, $query_record);
+
+            for ($i = 0; $i < count($checkbox); $i++)
+            {
+                $query_record_items = "INSERT INTO $ri_table (itemID, saleID, sold_quantity) VALUES ('$checkbox[$i]', LAST_INSERT_ID(), '$sold_q[$i]')";
+                $ri_update = mysqli_query($connection, $query_record_items);
+
+                $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_q[$i]', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$checkbox[$i]'";
+                $general_update = mysqli_query($connection, $general_update_inv_table_query);
+            }
+
         }
+        header("Location: manage.php");
     }
+    mysqli_close($connection);
 }

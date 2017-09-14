@@ -296,6 +296,9 @@
                 $itm_query = "SELECT inv.itemID AS ID, CONCAT(itm.itemID,' - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm, $cat_table cat WHERE inv.itemID = itm.itemID AND itm.categoryID = cat.categoryID AND itm.categoryID = '$cat' ORDER BY itm.categoryID ASC";
                 $list_item = mysqli_query($connection, $itm_query);
 
+                //echo "<table>";
+                //echo "<tr>";
+                //echo "<td>";
                 while ($row = $list_item->fetch_assoc()) {
                     unset($itm);
                     $itm = $row['ID'];
@@ -303,6 +306,9 @@
                     $listing[] = "$itm";
                     echo "<input type='checkbox' name='cart_$itm' id='cart_$itm' value='$itm'>" . $itm_full . "</input><label for='quantity_$m'> ------------ Quantity: </label><input type='text' name='quantity_$itm' id='quantity_$itm' size='5'/><br/>";
                 }
+                //echo "<td>";
+                //echo "</tr>";
+                //echo "</table>";
 
                 $i++;
             }
