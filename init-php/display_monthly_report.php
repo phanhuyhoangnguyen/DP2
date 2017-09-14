@@ -35,7 +35,7 @@ else if(isset($_POST["time_select"])) {
 
         /*Query to retrieve info from database*/
         $v_item_query = "SELECT REC.itemID, ITM.item_name, CAT.category_name, INV.quantity AS stock_count, COUNT(REC.itemID) AS TOTAL_SALE,
-                          INV.selling_price, INV.purchased_price, SUM(REC.sold_quantity) AS TOTAL_ITEM_, SUM(REC.revenue) AS TOTAL_REV, 
+                          INV.selling_price, INV.purchased_price, SUM(REC.sold_quantity) AS TOTAL_ITEM, SUM(REC.revenue) AS TOTAL_REV, 
                           SUM(REC.profit) AS TOTAL_PROFIT, INV.total_cost FROM Records REC 
                           INNER JOIN Inventory INV ON INV.itemID = REC.itemID 
                           INNER JOIN Item ITM ON ITM.itemID = INV.itemID
