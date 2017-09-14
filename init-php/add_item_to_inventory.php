@@ -82,7 +82,7 @@ if (!$connection)
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-            $query = "INSERT INTO $table (itemID, quantity, purchased_price, selling_price, total_cost, latest_update, update_reason, username) VALUES ('$inv_itemID', '$inv_quantity', '$inv_purchased_price', '$inv_selling_price', '$inv_total_cost', '$inv_latest_update', '$inv_update_reason', '$inv_username')";
+            $query = "INSERT INTO $table (itemID, quantity, purchased_price, selling_price, total_cost, latest_update, update_reason, username) VALUES ('$inv_itemID', '$inv_quantity', '$inv_purchased_price', '$inv_selling_price', '$inv_total_cost', '$inv_latest_update', 'add_new', '$inv_username')";
             $edit_inventory = mysqli_query($connection, $query);
         }
     }

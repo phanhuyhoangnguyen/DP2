@@ -150,7 +150,7 @@
         error_reporting(0);
         $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
         $item__table = "Item";
-        @mysqli_select_db($connection, $category__table);
+        @mysqli_select_db($connection, $item__table);
         $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
         $list_item = mysqli_query($connection, $itm_query);
         echo '<option value="">Click to select</option>';
@@ -179,8 +179,6 @@
         <!-- latest_update = date() -->
         <input type="hidden" id="inv_latest_update" name="inv_latest_update"/>
 
-        <input type="hidden" id="inv_update_reason" name="add_new"/>
-
         <!-- Assign username with username of logged in user -->
         <input type="hidden" id="inv_username" name="inv_username"/>
 
@@ -203,8 +201,11 @@
             error_reporting(0);
             $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
             $item__table = "Item";
-            @mysqli_select_db($connection, $category__table);
-            $itm_query = "SELECT itemID, CONCAT('(',itemID,') - ',item_name) AS itm_full FROM $item__table ORDER BY itemID ASC";
+            $inv__table = "Inventory";
+            @mysqli_select_db($connection, $item__table);
+            @mysqli_select_db($connection, $inv__table);
+
+            $itm_query = "SELECT inv.itemID, CONCAT('(',inv.itemID,') - ',itm.item_name) AS itm_full FROM $item__table itm, $inv__table inv WHERE itm.itemID = inv.itemID ORDER BY inv.itemID ASC";
             $list_item = mysqli_query($connection, $itm_query);
             echo '<option value="">Click to select</option>';
             while ($row = $list_item->fetch_assoc())
@@ -218,7 +219,7 @@
             ?>
         </select><br/>
 
-        <label for="inv_quantity">Quantity: </label>
+        <label for="inv_quantity">Adding amount: </label>
         <input type="text" id="inv_quantity" name="inv_quantity"/><br/>
 
         <label for="inv_purchased_price">Purchased Price: </label>
@@ -255,36 +256,58 @@
             Add Sale Record
         </legend>
 
-        <label for="rec_itemID">ItemID: </label>
-        <!-- <input type="text" id="rec_itemID" name="rec_itemID"/><br/> -->
-        <select id="rec_itemID" name="rec_itemID">
         <?php
-        /*connect database*/
-        error_reporting(0);
-        $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
-        $inv__table = "Inventory";
-        $item_table = "Item";
-        @mysqli_select_db($connection, $category__table);
-        @mysqli_select_db($connection, $item_table);
-        $itm_query = "SELECT inv.itemID AS ID, CONCAT('(',inv.itemID,') - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm WHERE inv.itemID = itm.itemID ORDER BY inv.itemID ASC";
-        $list_item = mysqli_query($connection, $itm_query);
-        echo '<option value="">Click to select</option>';
-        while ($row = $list_item->fetch_assoc())
-        {
-            unset($itm);
-            $itm = $row['ID'];
-            $itm_full = $row['itm_full'];
-            echo '<option value="'.$itm.'">'.$itm_full.'</option>';
-        }
-        mysqli_close($connection);
+            /*connect database*/
+            error_reporting(0);
+            $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
+
+            $inv__table = "Inventory";
+            $item_table = "Item";
+            $cat_table = "Category";
+
+            @mysqli_select_db($connection, $inv__table);
+            @mysqli_select_db($connection, $item_table);
+            @mysqli_select_db($connection, $cat_table);
+
+            $cat_query = "SELECT cat.categoryID AS categoryID, CONCAT(cat.category_name,' (',itm.categoryID,')') AS cat_full FROM $cat_table cat, $inv__table inv, $item_table itm WHERE itm.itemID = inv.itemID AND cat.categoryID = itm.categoryID GROUP BY itm.categoryID ORDER BY cat.categoryID ASC";
+            $list_category = mysqli_query($connection, $cat_query);
+
+            $i = 1;
+            echo "<ul>";
+            while ($row = $list_category->fetch_assoc())
+            {
+                unset($cat);
+                $cat = $row['categoryID'];
+                $cat_full = $row['cat_full'];
+
+                if ($i == 1) {
+                    echo '<li>' . $cat_full . '</li>';
+                } else
+                {
+                    echo '<br/><li>' . $cat_full . '</li>';
+                }
+
+                $itm_query = "SELECT inv.itemID AS ID, CONCAT(itm.itemID,' - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm, $cat_table cat WHERE inv.itemID = itm.itemID AND itm.categoryID = cat.categoryID AND itm.categoryID = '$cat' ORDER BY itm.categoryID ASC";
+                $list_item = mysqli_query($connection, $itm_query);
+
+                while ($row = $list_item->fetch_assoc()) {
+                    unset($itm);
+                    $itm = $row['ID'];
+                    $itm_full = $row['itm_full'];
+                    echo "<input type='checkbox' name='rec_itemID' value='.$itm.'>" . $itm_full ."</input><label for='rec_quantity'> ------------ Quantity: </label><input type='text' name='rec_quantity' id='rec_quantity' size='5'/><br/>";
+                }
+                $i++;
+            }
+            echo "</ul>";
+
+            mysqli_close($connection);
         ?>
-        </select><br/>
 
         <!-- Assign rec_date a value of current datetime when the sale record updated -->
         <input type="hidden" id="rec_date" name="rec_date"/>
 
-        <label for="rec_quantity">Sold Quantity: </label>
-        <input type="text" id="rec_quantity" name="rec_quantity"/>
+        <!--<label for="rec_quantity">Sold Quantity: </label>
+        <input type="text" id="rec_quantity" name="rec_quantity"/> -->
 
         <!-- Calculated by multiple selling_price of the item with its sold quantity  -->
         <input type="hidden" id="rec_revenue" name="rec_revenue"/>
@@ -295,7 +318,45 @@
         <!-- Assign username with username of logged in user -->
         <input type="hidden" id="rec_username" name="rec_username"/>
 
-        <br/><input type="submit" id="submit_add_sale_record" name="submit_add_sale_record" value="Add Record"/>
+        <input type="submit" id="submit_add_sale_record" name="submit_add_sale_record" value="Add Record"/>
+    </fieldset>
+</form><br/>
+
+<form id="return_manager" method="post" action="display_records.php">
+    <fieldset>
+        <legend>
+            Return Orders Management
+        </legend>
+
+        <label for="saleID">SaleID: </label>
+        <!-- <input type="text" id="rec_itemID" name="rec_itemID"/><br/> -->
+        <select id="saleID" name="saleID">
+
+            <?php
+            /*connect database*/
+            /*
+            error_reporting(0);
+            $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
+            $rec__table = "Records";
+            $rec__table = "Inventory";
+            @mysqli_select_db($connection, $rec__table);
+            @mysqli_select_db($connection, $item_table);
+
+            $itm_query = "SELECT inv.itemID AS ID, CONCAT('(',inv.itemID,') - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm WHERE inv.itemID = itm.itemID ORDER BY inv.itemID ASC";
+            $list_item = mysqli_query($connection, $itm_query);
+            echo '<option value="">Click to select</option>';
+            while ($row = $list_item->fetch_assoc())
+            {
+                unset($itm);
+                $itm = $row['ID'];
+                $itm_full = $row['itm_full'];
+                echo '<option value="'.$itm.'">'.$itm_full.'</option>';
+            }
+            mysqli_close($connection); */
+            ?>
+        </select><br/>
+
+        <input type="submit" id="submit_return" name="submit_return" value="Process Return"/>
     </fieldset>
 </form><br/>
 
