@@ -269,10 +269,16 @@
             @mysqli_select_db($connection, $item_table);
             @mysqli_select_db($connection, $cat_table);
 
+            session_start();
+
             $cat_query = "SELECT cat.categoryID AS categoryID, CONCAT(cat.category_name,' (',itm.categoryID,')') AS cat_full FROM $cat_table cat, $inv__table inv, $item_table itm WHERE itm.itemID = inv.itemID AND cat.categoryID = itm.categoryID GROUP BY itm.categoryID ORDER BY cat.categoryID ASC";
             $list_category = mysqli_query($connection, $cat_query);
 
+            $numbers = mysqli_num_rows($list_category);
             $i = 1;
+
+            $listing = array();
+
             echo "<ul>";
             while ($row = $list_category->fetch_assoc())
             {
@@ -294,11 +300,15 @@
                     unset($itm);
                     $itm = $row['ID'];
                     $itm_full = $row['itm_full'];
-                    echo "<input type='checkbox' name='rec_itemID' value='.$itm.'>" . $itm_full ."</input><label for='rec_quantity'> ------------ Quantity: </label><input type='text' name='rec_quantity' id='rec_quantity' size='5'/><br/>";
+                    $listing[] = "$itm";
+                    echo "<input type='checkbox' name='cart_$itm' id='cart_$itm' value='$itm'>" . $itm_full . "</input><label for='quantity_$m'> ------------ Quantity: </label><input type='text' name='quantity_$itm' id='quantity_$itm' size='5'/><br/>";
                 }
+
                 $i++;
             }
             echo "</ul>";
+
+            $_SESSION["listing"] = $listing;
 
             mysqli_close($connection);
         ?>

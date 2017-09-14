@@ -31,18 +31,31 @@ if (!$connection)
         /* Error message */
         $errMsg = "";
 
-        /* validates item selection */
-        if ($rec_itemID == "") {
-            $errMsg .= "<p>You must select an item.</p>";
+        $checkbox = array();
+
+        foreach ($_SESSION["listing"] as $itm)
+        {
+            if (isset($_POST["cart_$itm"]))
+            {
+                $checkbox[] = "$itm";
+            }
         }
 
-        //Get current selling price of the item
+        for ($i = 0; $i < count($checkbox); $i++) {
+
+            $inv_query = "SELECT quantity, purchased_price, selling_price FROM Inventory WHERE itemID='$checkbox[$i]'";
+            $inv_query_fetch = $connection->query($inv_query)->fetch_assoc();
+            $purchased_price = $inv_query_fetch["purchased_price"];
+        }
+
+
+        /*
         $inv_query = "SELECT quantity, purchased_price, selling_price FROM Inventory WHERE itemID='$rec_itemID'";
         $inv_query_fetch = $connection->query($inv_query)->fetch_assoc();
         $selling_price = $inv_query_fetch["selling_price"];
         $inv_quantity = $inv_query_fetch["quantity"];
 
-        /*defines*/
+
         $rec_date = date('Y-m-d H:i:s');
         $inv_latest_update = $rec_date;
 
@@ -50,7 +63,6 @@ if (!$connection)
 
         $purchased_price = $inv_query_fetch["purchased_price"];
 
-        /* validates sold quantity */
         if ($sold_quantity == "") {
             $errMsg .= "<p>You must provide sold quantity amount of the item.</p>";
         } else if (!preg_match("/^[0-9]*$/", $sold_quantity)) {
@@ -81,15 +93,6 @@ if (!$connection)
         if ($new_quantity < 0) {
             $errMsg .= "<p>Out of stock. Current item's quantity amount in stock is $inv_quantity. Please reduce your cart.</p>";
         }
-
-        if ($errMsg != "") {
-            echo $errMsg;
-        } else {
-            $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_quantity', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$rec_itemID'";
-            $general_update = mysqli_query($connection, $general_update_inv_table_query);
-
-            $query = "INSERT INTO $record_table (itemID, date, sold_quantity, revenue, profit, username) VALUES ('$rec_itemID', '$rec_date', '$sold_quantity', '$revenue', '$profit', '$rec_username')";
-            $add_record = mysqli_query($connection, $query);
-        }
+        */
     }
 }
