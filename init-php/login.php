@@ -53,7 +53,7 @@ if (!$connection)
         $_SESSION["username"] = $username;
         $_SESSION["role"] = $user_role_fetch["role"];
 
-
         header("Location: manage.php");
     }
+    mysqli_close($connection);
 }

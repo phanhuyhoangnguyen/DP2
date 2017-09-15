@@ -8,8 +8,11 @@
 error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "Records";
+$table_ri = "record_items";
+$table_inv = "Inventory";
 @mysqli_select_db($connection, $table);
-
+@mysqli_select_db($connection, $table_ri);
+@mysqli_select_db($connection, $table_inv);
 /*Check for database connection*/
 if (!$connection) {
     echo "<script type='text/javascript'>";
@@ -33,36 +36,41 @@ else if(isset($_POST["time_select"])) {
     else if ($view == "item_view") {
 
         /*Query to retrieve info from database*/
-        $v_item_query = "SELECT r.itemID, COUNT(r.itemID) AS TOTAL_ITEM, SUM(r.sold_quantity) AS TOTAL_SALE, SUM(r.revenue) AS TOTAL_REV, 
-                          SUM(r.profit) AS TOTAL_PROFIT, i.total_cost FROM Records r INNER JOIN Inventory i ON i.itemID = r.itemID WHERE 
-                          MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY r.itemID ";
+        /*$v_item_query = "SELECT ri.itemID, COUNT(ri.itemID) AS TOTAL_ITEM, SUM(ri.sold_quantity) AS TOTAL_SALE, SUM(r.revenue) AS TOTAL_REV,
+                          SUM(r.profit) AS TOTAL_PROFIT, i.total_cost FROM Records r INNER JOIN Inventory i ON i.itemID = r.itemID, Records r INNER JOIN $table_ri ri ON ri.saleID = r.saleID WHERE 
+                          MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY r.itemID ";*/
+
+        $v_item_query = "SELECT ri.itemID, ri.saleID, r.revenue FROM $table r, $table_ri ri WHERE ri.saleID = r.saleID AND MONTH(date)='$month' AND YEAR(date)='$year' GROUP BY r.saleID";
+
         $result_item = mysqli_query($connection, $v_item_query);
 
-       if ($result_item -> num_rows > 0) {
+        echo "<table id='tableReport'>";
+        echo "<tr>"
+            . "<th scope=\"col\">itemID</th>"
+            . "<th scope=\"col\">Total Sales Quantity</th>"
+            //. "<th scope=\"col\">Total Item Sold</th>"
+            //. "<th scope=\"col\">Total Revenue</th>"
+            //. "<th scope=\"col\">Total Cost</th>"
+            //. "<th scope=\"col\">Total Profit</th>"
+            . "</tr>";
+        while ($row = mysqli_fetch_assoc($result_item)) {
+            echo "<tr>";
+            echo "<td>", $row["saleID"], "</td>";
+            echo "<td>", $row["TOTAL_SALE"], "</td>";
+            //echo "<td>", $row["TOTAL_ITEM"], "</td>";
+            //echo "<td>", $row["TOTAL_REV"], "</td>";
+            //echo "<td>", $row["total_cost"], "</td>";
+            //echo "<td>", $row["TOTAL_PROFIT"], "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+
+       /*if ($result_item -> num_rows > 0) {
            echo "<p class='stylequote'>Report</p>\n";
-           echo "<table id='tableReport'>";
-            echo "<tr>"
-                . "<th scope=\"col\">itemID</th>"
-                . "<th scope=\"col\">Total Sales Quantity</th>"
-                . "<th scope=\"col\">Total Item Sold</th>"
-                . "<th scope=\"col\">Total Revenue</th>"
-                . "<th scope=\"col\">Total Cost</th>"
-                . "<th scope=\"col\">Total Profit</th>"
-                . "</tr>";
-            while ($row = mysqli_fetch_assoc($result_item)) {
-                echo "<tr>";
-                echo "<td>", $row["itemID"], "</td>";
-                echo "<td>", $row["TOTAL_SALE"], "</td>";
-                echo "<td>", $row["TOTAL_ITEM"], "</td>";
-                echo "<td>", $row["TOTAL_REV"], "</td>";
-                echo "<td>", $row["total_cost"], "</td>";
-                echo "<td>", $row["TOTAL_PROFIT"], "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
+
         } else {
             echo "There is no record!";
-        }
+        }*/
     }
         /*if the user want to View Sale Report By Day*/
     else {

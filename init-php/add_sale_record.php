@@ -53,6 +53,8 @@ if (!$connection)
         $rec_username = "";
         $sold_q = array();
         $new_q = array();
+        $rev = array();
+        $pro = array();
 
         for ($i = 0; $i < count($checkbox); $i++) {
 
@@ -89,8 +91,8 @@ if (!$connection)
                 $profit = round(($revenue - ($purchased_price * (int)$sold_quantity)), 2);
             }
 
-            $total_revenue += $revenue;
-            $total_profit += $profit;
+            //$total_revenue += $revenue;
+            //$total_profit += $profit;
 
             $rec_username = $_SESSION["username"];
             $new_quantity = $inv_quantity - $sold_quantity;
@@ -99,6 +101,8 @@ if (!$connection)
                 $errMsg .= "<p>$checkbox[$i] is out of stock. Current item's quantity amount in stock is $inv_quantity. Please reduce your cart.</p>";
             }
 
+            $rev[] = $revenue;
+            $pro[] = $profit;
             $sold_q[] = $sold_quantity;
             $new_q[] = $new_quantity;
         }
@@ -106,12 +110,12 @@ if (!$connection)
         if ($errMsg != "") {
             echo $errMsg;
         } else {
-            $query_record = "INSERT INTO $record_table (date, revenue, profit, username) VALUES ('$rec_date', '$total_revenue', '$total_profit', '$rec_username')";
+            $query_record = "INSERT INTO $record_table (date, username) VALUES ('$rec_date', '$rec_username')";
             $add_record = mysqli_query($connection, $query_record);
 
             for ($i = 0; $i < count($checkbox); $i++)
             {
-                $query_record_items = "INSERT INTO $ri_table (itemID, saleID, sold_quantity) VALUES ('$checkbox[$i]', LAST_INSERT_ID(), '$sold_q[$i]')";
+                $query_record_items = "INSERT INTO $ri_table (itemID, saleID, sold_quantity, revenue, profit) VALUES ('$checkbox[$i]', LAST_INSERT_ID(), '$sold_q[$i]', '$rev[$i]', '$pro[$i]')";
                 $ri_update = mysqli_query($connection, $query_record_items);
 
                 $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_q[$i]', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$checkbox[$i]'";

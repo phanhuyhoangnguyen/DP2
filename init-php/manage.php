@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,14 @@
     <title>Manage Pharmacy</title>
 </head>
 <body>
+
+<?php
+    if ($_SESSION["username"] != "") {
+        echo "<h3>Logged user: ".$_SESSION["username"]." "."<form id='logout' method='post' action='logout.php'><input type='submit' id='submit_logout' name='submit_logout' value='Logout'/></form>"."</h3>";
+    } else {
+        echo "<h3>Please login to use the system.</h3>";
+    }
+?>
 
 <form id="register" method="post" action="register.php">
     <fieldset>
@@ -70,6 +81,7 @@
     </fieldset>
 </form><br/>
 
+<!--
 <form id="logout" method="post" action="logout.php">
     <fieldset>
         <legend>
@@ -78,6 +90,7 @@
         <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/>
     </fieldset>
 </form><br/>
+-->
 
 <form id="add_category" method="post" action="add_category.php">
     <fieldset>
@@ -296,9 +309,6 @@
                 $itm_query = "SELECT inv.itemID AS ID, CONCAT(itm.itemID,' - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm, $cat_table cat WHERE inv.itemID = itm.itemID AND itm.categoryID = cat.categoryID AND itm.categoryID = '$cat' ORDER BY itm.categoryID ASC";
                 $list_item = mysqli_query($connection, $itm_query);
 
-                //echo "<table>";
-                //echo "<tr>";
-                //echo "<td>";
                 while ($row = $list_item->fetch_assoc()) {
                     unset($itm);
                     $itm = $row['ID'];
@@ -306,9 +316,6 @@
                     $listing[] = "$itm";
                     echo "<input type='checkbox' name='cart_$itm' id='cart_$itm' value='$itm'>" . $itm_full . "</input><label for='quantity_$m'> ------------ Quantity: </label><input type='text' name='quantity_$itm' id='quantity_$itm' size='5'/><br/>";
                 }
-                //echo "<td>";
-                //echo "</tr>";
-                //echo "</table>";
 
                 $i++;
             }
@@ -321,9 +328,6 @@
 
         <!-- Assign rec_date a value of current datetime when the sale record updated -->
         <input type="hidden" id="rec_date" name="rec_date"/>
-
-        <!--<label for="rec_quantity">Sold Quantity: </label>
-        <input type="text" id="rec_quantity" name="rec_quantity"/> -->
 
         <!-- Calculated by multiple selling_price of the item with its sold quantity  -->
         <input type="hidden" id="rec_revenue" name="rec_revenue"/>
@@ -394,20 +398,20 @@
     </fieldset>
 </form><br/>
 
-<form id="display_monthly_report" method="post" action="display_monthly_report.php">
+<form id="display_month_report" method="post" action="display_month_report.php">
     <fieldset>
         <legend>
             Display Monthly Report
         </legend>
-        <select id="month_select" name="month_select" class="boxform">
-            <option value="0">Please Select Month</option>
+        <select id="select_month" name="select_month">
+            <option value="">Please Select Month</option>
             <option value="1">January</option>
             <option value="2">February</option>
             <option value="3">March</option>
             <option value="4">April</option>
             <option value="5">May</option>
             <option value="6">June</option>
-            <option value="7" select = "selected">July</option>
+            <option value="7">July</option>
             <option value="8">August</option>
             <option value="9" >September</option>
             <option value="10">October</option>
@@ -415,21 +419,15 @@
             <option value="12">December</option>
         </select>
 
-        <!--<select id="year_select" name="year_select" onchange="if(this.value != 0) {this.form.submit();}" class="boxform">-->
-        <select id="year_select" name="year_select" class="boxform">
-            <option value="0">Please Select Year</option>
+        <select id="select_year" name="select_year">
+            <option value="">Please Select Year</option>
             <option value="2016">2016</option>
-            <option value="2017" select="selected">2017</option>
+            <option value="2017">2017</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
         </select>
 
-        <select id="view_select" name="view_select" class="boxform">
-            <option value="date_view" select="selected">View By Date</option>
-            <option value="item_view">View By Item</option>
-        </select>
-
-        <input type="submit" id="time_select" name="time_select" value="Display Monthly Report"/>
+        <input type="submit" id="submit_month_report" name="submit_month_report" value="Display Monthly Report"/>
     </fieldset>
 </form><br/>
 
@@ -440,7 +438,7 @@
         </legend>
         <!-- Select Month   >-->
         <select id="month_select_csv" name="month_select_csv" class="boxform">
-            <option value="0">Please Select Month</option>
+            <option value="">Please Select Month</option>
             <option value="1">January</option>
             <option value="2">February</option>
             <option value="3">March</option>
@@ -456,19 +454,22 @@
         </select>
         <!-- Select Year   >-->
         <select id="year_select_csv" name="year_select_csv" class="boxform">
-            <option value="0">Please Select Year</option>
+            <option value="">Please Select Year</option>
             <option value="2016">2016</option>
             <option value="2017" select="selected">2017</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
         </select>
+
+
         <!-- Select View   >-->
+        <!--
         <select id="view_select_csv" name="view_select_csv" class="boxform">
             <option value="date_view" select="selected">View By Date</option>
             <option value="item_view">View By Item</option>
         </select>
-
-        <br/><br/><input type="submit" id="export" name="export" value="Export to CSV File"/>
+        -->
+        <input type="submit" id="export" name="export" value="Export to CSV File"/>
     </fieldset>
 </form>
 

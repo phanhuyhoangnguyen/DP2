@@ -79,6 +79,5 @@ if (!$connection)
             $register = mysqli_query($connection, $register_query);
         }
     }
-
     mysqli_close($connection);
 }
