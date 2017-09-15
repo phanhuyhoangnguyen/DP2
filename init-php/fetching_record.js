@@ -27,8 +27,8 @@ function fetching_record()
             if ((xHRObject.readyState == 4) && (xHRObject.status == 200))
             {
                 var return_data = xHRObject.responseText;
-                alert(return_data);
-                //return document.getElementById("status").innerHTML = return_data;
+                //alert(return_data);
+                return document.getElementById("process_return").innerHTML = return_data;
             }
         }
     }

@@ -340,7 +340,8 @@ if ($_SESSION["username"] != "") {
     <input type="text" id="rt_order" name="rt_order"/>
     <input type="button" value="Search" onclick="return fetching_record();"/><br/>
 
-    <form id="return_manager" method="post" action="display_records.php">
+    <form id="return_manager" method="post" action="return_manager.php">
+        <div id="process_return"></div>
     </form>
 </fieldset><br/>
 
