@@ -6,6 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Manage Pharmacy</title>
+    <script type="text/javascript" src="fetching_record.js"></script>
 </head>
 <body>
 
@@ -273,42 +274,32 @@ if ($_SESSION["username"] != "") {
         /*connect database*/
         error_reporting(0);
         $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
-
         $inv__table = "Inventory";
         $item_table = "Item";
         $cat_table = "Category";
-
         @mysqli_select_db($connection, $inv__table);
         @mysqli_select_db($connection, $item_table);
         @mysqli_select_db($connection, $cat_table);
-
         session_start();
-
         $cat_query = "SELECT cat.categoryID AS categoryID, CONCAT(cat.category_name,' (',itm.categoryID,')') AS cat_full FROM $cat_table cat, $inv__table inv, $item_table itm WHERE itm.itemID = inv.itemID AND cat.categoryID = itm.categoryID GROUP BY itm.categoryID ORDER BY cat.categoryID ASC";
         $list_category = mysqli_query($connection, $cat_query);
-
         $numbers = mysqli_num_rows($list_category);
         $i = 1;
-
         $listing = array();
-
         echo "<ul>";
         while ($row = $list_category->fetch_assoc())
         {
             unset($cat);
             $cat = $row['categoryID'];
             $cat_full = $row['cat_full'];
-
             if ($i == 1) {
                 echo '<li>' . $cat_full . '</li>';
             } else
             {
                 echo '<br/><li>' . $cat_full . '</li>';
             }
-
             $itm_query = "SELECT inv.itemID AS ID, CONCAT(itm.itemID,' - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm, $cat_table cat WHERE inv.itemID = itm.itemID AND itm.categoryID = cat.categoryID AND itm.categoryID = '$cat' ORDER BY itm.categoryID ASC";
             $list_item = mysqli_query($connection, $itm_query);
-
             while ($row = $list_item->fetch_assoc()) {
                 unset($itm);
                 $itm = $row['ID'];
@@ -316,13 +307,10 @@ if ($_SESSION["username"] != "") {
                 $listing[] = "$itm";
                 echo "<input type='checkbox' name='cart_$itm' id='cart_$itm' value='$itm'>" . $itm_full . "</input><label for='quantity_$m'> ------------ Quantity: </label><input type='text' name='quantity_$itm' id='quantity_$itm' size='5'/><br/>";
             }
-
             $i++;
         }
         echo "</ul>";
-
         $_SESSION["listing"] = $listing;
-
         mysqli_close($connection);
         ?>
 
@@ -342,43 +330,20 @@ if ($_SESSION["username"] != "") {
     </fieldset>
 </form><br/>
 
-<form id="return_manager" method="post" action="display_records.php">
-    <fieldset>
-        <legend>
-            Return Orders Management
-        </legend>
 
-        <label for="saleID">SaleID: </label>
-        <!-- <input type="text" id="rec_itemID" name="rec_itemID"/><br/> -->
-        <select id="saleID" name="saleID">
+<fieldset>
+    <legend>
+        Return Orders Management
+    </legend>
 
-            <?php
-            /*connect database*/
-            /*
-            error_reporting(0);
-            $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
-            $rec__table = "Records";
-            $rec__table = "Inventory";
-            @mysqli_select_db($connection, $rec__table);
-            @mysqli_select_db($connection, $item_table);
+    <label for="rt_order">SaleID: </label>
+    <input type="text" id="rt_order" name="rt_order"/>
+    <input type="button" value="Search" onclick="return fetching_record();"/><br/>
 
-            $itm_query = "SELECT inv.itemID AS ID, CONCAT('(',inv.itemID,') - ',itm.item_name) AS itm_full FROM $inv__table inv, $item_table itm WHERE inv.itemID = itm.itemID ORDER BY inv.itemID ASC";
-            $list_item = mysqli_query($connection, $itm_query);
-            echo '<option value="">Click to select</option>';
-            while ($row = $list_item->fetch_assoc())
-            {
-                unset($itm);
-                $itm = $row['ID'];
-                $itm_full = $row['itm_full'];
-                echo '<option value="'.$itm.'">'.$itm_full.'</option>';
-            }
-            mysqli_close($connection); */
-            ?>
-        </select><br/>
+    <form id="return_manager" method="post" action="display_records.php">
+    </form>
+</fieldset><br/>
 
-        <input type="submit" id="submit_return" name="submit_return" value="Process Return"/>
-    </fieldset>
-</form><br/>
 
 <form id="display_record" method="post" action="display_records.php">
     <fieldset>
