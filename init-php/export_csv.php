@@ -11,8 +11,14 @@
 error_reporting(0);
 $connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 $table = "Records";
-@mysqli_select_db($connection, $table);
-
+$table_Ri = "record_items";
+$inv_table = "Inventory";
+$item_table = "Item";
+@mysqli_select_db($connection, $records_table);
+@mysqli_select_db($connection, $table_ri);
+@mysqli_select_db($connection, $inventory_table);
+@mysqli_select_db($connection, $item_table);
+session_start();
 
 // Check connection
 if (!$connection)
@@ -21,100 +27,81 @@ if (!$connection)
     echo "alert('Database connection failure');";
     echo "</script>";
 // After press Export
-} else if (isset($_POST["export"]))
-{
-    $month = mysqli_real_escape_string($connection, $_POST["month_select_csv"]);
-    $year = mysqli_real_escape_string($connection, $_POST["year_select_csv"]);
-    $view = mysqli_real_escape_string($connection, $_POST["view_select_csv"]);
+} else if (isset($_POST["export"])) {
 
-    //Check whether input is valid
-    if($month ==0 || $year ==0)
+    if ($_SESSION["username"] == "")
     {
-        echo "<script type='text/javascript'>";
-        echo "alert('Invalid Date and View');";
-        echo "</script>";
-        echo nl2br("Download Failed\nPlease go back to previous page.");
-    }
-    else 
-    {
-       $result_total=null;
+        echo "<p>You must login to use the system.</p>";
+    } else {
 
-        // View By Item
-        if($view == "item_view")
-        {
-            $a =  array('itemID','Item Name','Category','Stock Count','Selling Price','Purchased Price',
-                        'Total Sales Quantity','Total Item Sold','Total Revenue','Total Cost','Total Profit');
-                        
-            $query = "SELECT REC.itemID, ITM.item_name, CAT.category_name, INV.quantity , INV.selling_price,
-                             INV.purchased_price,COUNT(REC.itemID), SUM(REC.sold_quantity) , SUM(REC.revenue) , 
-                             INV.total_cost ,  SUM(REC.profit)
-                      FROM Records REC 
+        $errMsg = "";
 
-                      INNER JOIN Inventory INV 
-                      ON INV.itemID = REC.itemID 
-                          
-                      INNER JOIN Item ITM 
-                      ON ITM.itemID = INV.itemID
+        $month = mysqli_real_escape_string($connection, $_POST["month_select_csv"]);
+        $year = mysqli_real_escape_string($connection, $_POST["year_select_csv"]);
+        $view = mysqli_real_escape_string($connection, $_POST["view_select_csv"]);
 
-                      INNER JOIN Category CAT 
-                      ON ITM.categoryID = CAT.categoryID
-                      WHERE MONTH(date)='$month' 
-                      AND YEAR(date)='$year' 
-                      GROUP BY REC.itemID ";
-                            
+        //Check whether input is valid
+        if ($year == "" || $month == "") {
+            $errMsg .= "<p>You must select month and year of the report.</p>";
         }
-        // View By Date
-        else{
-            $a = array('Date','Total Sale Quanity','Total Revenue','Total Cost','Total Profit','Cashier');
-            $query = "SELECT date, SUM(sold_quantity), SUM(revenue),  (SUM(revenue) - SUM(profit)) , SUM(profit),username 
-                      FROM Records 
-                      WHERE MONTH(date)='$month' 
-                      AND YEAR(date)='$year' 
-                      GROUP BY date ";
 
-            //For Total
-            $total_query = "SELECT SUM(sold_quantity) , SUM(revenue), SUM(profit) , (SUM(revenue) - SUM(profit)) 
-                            FROM Records 
-                            WHERE MONTH(date)='$month' 
-                            AND YEAR(date)='$year'";
-            $result_total = mysqli_query($connection, $total_query);
+        if ($view == "") {
+            $errMsg .= "<p>You must select an option to save the reports.</p>";
+        }
+
+    if ($errMsg != "") {
+        echo $errMsg;
+    } else {
+
+        $query = "";
+        $a = "";
+
+        if ($view == "item_view") {
+            $a = array('itemID', 'Item Description', 'Selling Price', 'Sold in Number of Sales', 'Total Sold', 'Total Revenue',
+                'Total Profit', 'Total Cost', 'Remaining in Stock');
+
+            $query = "SELECT ri.itemID AS itemID, itm.item_name AS item_name, inv.selling_price AS selling_price, COUNT(ri.saleID) AS in_sales,
+                  SUM(ri.sold_quantity) AS total_sold, SUM(ri.revenue) AS total_revenue, SUM(ri.profit) AS total_profit, 
+                  inv.total_cost AS total_cost, inv.quantity AS remaining 
+                  FROM $table r, $table_Ri ri, $inv_table inv, $item_table itm 
+                  WHERE r.saleID = ri.saleID AND ri.itemID = inv.itemID AND itm.itemID = inv.itemID 
+                  AND YEAR(r.date)='$year' AND MONTH(r.date)='$month' GROUP BY ri.itemID ORDER BY ri.itemID ASC";
+        } else {
+            $a = array('Total Sales', 'Total Revenue', 'Total Profit', 'Total Cost of Sold Items', 'Number of Kinds of Sold Item', 'Total Sold Items');
+
+            $query = "SELECT COUNT(DISTINCT ri.saleID) AS total_sales, SUM(ri.revenue) AS total_revenue, 
+                          SUM(ri.profit) AS total_profit, SUM(DISTINCT inv.total_cost) AS total_cost, 
+                          COUNT(DISTINCT ri.itemID) AS total_items, SUM(ri.sold_quantity) AS total_items_sold 
+                          FROM $table r, $table_Ri ri, $inv_table inv WHERE ri.saleID = r.saleID AND ri.itemID = inv.itemID 
+                          AND YEAR(r.date)='$year' AND MONTH(r.date)='$month' GROUP BY ri.saleID AND YEAR(r.date) AND MONTH(r.date)";
         }
 
         $result = mysqli_query($connection, $query);
+
         //Check whether record exists
-        if(!($result -> num_rows >0))
-        {
+        if (!($result->num_rows > 0)) {
             echo "<script type='text/javascript'>";
             echo "alert('There is no record');";
             echo "</script>";
             echo nl2br("Download Failed\nPlease go back to previous page.");
-        }
-        else{
+        } else {
             //Create file type csv
-            header('Content-Type: text/csv; charset=utf-8');  
+            header('Content-Type: text/csv; charset=utf-8');
 
             //Make file downloadable and file name is data.csv
-            header('Content-Disposition: attachment; filename=data.csv'); 
+            header('Content-Disposition: attachment; filename=data.csv');
 
             //Create a write-only stream that allows write access to the output buffer mechanism
-            $output = fopen("php://output", "w");      
+            $output = fopen("php://output", "w");
 
             //Write the header
-            fputcsv($output,$a);
+            fputcsv($output, $a);
             //Write the other
-            while($row = mysqli_fetch_assoc($result))  
-            {  
-                fputcsv($output, $row);  
-            }  
-
-            // For View By Date only
-            if($result_total!=null)
-            {
-                while($row = array('Total') + mysqli_fetch_assoc($result_total))    
-                    fputcsv($output, $row);  
+            while ($row = mysqli_fetch_assoc($result)) {
+                fputcsv($output, $row);
             }
-            fclose($output);  
+                fclose($output);
+            }
         }
     }
 }
-?>

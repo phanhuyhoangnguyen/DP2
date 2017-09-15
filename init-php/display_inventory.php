@@ -15,6 +15,7 @@ $cat_table = "Category";
 @mysqli_select_db($connection, $table);
 @mysqli_select_db($connection, $itm_table);
 @mysqli_select_db($connection, $cat_table);
+
 session_start();
 
 if (!$connection)
