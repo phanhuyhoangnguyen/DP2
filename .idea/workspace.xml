@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b49b4ff-824f-4ea8-9fed-a8e289be9cd2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init-php/fetching_record.js" afterPath="$PROJECT_DIR$/init-php/fetching_record.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init-php/fetching_record.php" afterPath="$PROJECT_DIR$/init-php/fetching_record.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init-php/manage.php" afterPath="$PROJECT_DIR$/init-php/manage.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/init-php/return_manager.php" afterPath="$PROJECT_DIR$/init-php/return_manager.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,10 +19,37 @@
       <file leaf-file-name="return_manager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init-php/return_manager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="484">
+              <caret line="91" column="86" lean-forward="false" selection-start-line="91" selection-start-column="86" selection-end-line="91" selection-end-column="86" />
               <folding>
                 <element signature="e#6#96#0#PHP" expanded="true" />
+                <marker date="1505568998000" expanded="true" signature="1317:1376" ph="SELECT reven... ${$record_table}" />
+                <marker date="1505568998000" expanded="true" signature="1317:1387" ph="SELECT reven... ${$record_table}" />
+                <marker date="1505568998000" expanded="true" signature="1317:1401" ph="SELECT reven... ${$record_table}" />
+                <marker date="1505568998000" expanded="true" signature="1317:1406" ph="SELECT reven... ${$ri_table}" />
+                <marker date="1505568998000" expanded="true" signature="1317:1435" ph="SELECT reven... ${$ri_table}" />
+                <marker date="1505568998000" expanded="true" signature="1317:3011" ph="SELECT reven... $" />
+                <marker date="1505568998000" expanded="true" signature="2484:2543" ph="SELECT retur... ${$inv_table}" />
+                <marker date="1505568998000" expanded="true" signature="2484:2572" ph="SELECT retur... ${$ri_table}" />
+                <marker date="1505568998000" expanded="true" signature="2755:2809" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2820" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2835" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2845" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2860" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2872" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2912" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2925" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="2755:2939" ph="UPDATE ${$ri... " />
+                <marker date="1505568998000" expanded="true" signature="3041:3068" ph="SELECT retur... ${$inv_table}" />
+                <marker date="1505568998000" expanded="true" signature="3041:3069" ph="SELECT retur... $" />
+                <marker date="1505568998000" expanded="true" signature="3041:3093" ph="SELECT retur... ${$inv_table}" />
+                <marker date="1505568998000" expanded="true" signature="3041:3107" ph="SELECT retur... ${$inv_table}" />
+                <marker date="1505568998000" expanded="true" signature="3314:3366" ph="UPDATE ${$in... " />
+                <marker date="1505568998000" expanded="true" signature="3314:3377" ph="UPDATE ${$in... " />
+                <marker date="1505568998000" expanded="true" signature="3314:3378" ph="UPDATE ${$in... " />
+                <marker date="1505568998000" expanded="true" signature="3314:3439" ph="UPDATE ${$in... " />
+                <marker date="1505568998000" expanded="true" signature="3314:3453" ph="UPDATE ${$in... " />
+                <marker date="1505568998000" expanded="true" signature="3314:3545" ph="UPDATE ${$in... " />
               </folding>
             </state>
           </provider>
@@ -34,8 +58,8 @@
       <file leaf-file-name="add_sale_record.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="39" />
+            <state relative-caret-position="-29">
+              <caret line="87" column="161" lean-forward="false" selection-start-line="87" selection-start-column="161" selection-end-line="87" selection-end-column="161" />
               <folding>
                 <marker date="1505459585000" expanded="true" signature="1477:1568" ph="SELECT quant... Inventory" />
                 <marker date="1505459585000" expanded="true" signature="2450:2549" ph="SELECT previ... ${$inv_table}" />
@@ -57,16 +81,16 @@
             <state relative-caret-position="575">
               <caret line="307" column="67" lean-forward="false" selection-start-line="307" selection-start-column="66" selection-end-line="307" selection-end-column="67" />
               <folding>
-                <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-                <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-                <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-                <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-                <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-                <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-                <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-                <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-                <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-                <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+                <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+                <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+                <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+                <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+                <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+                <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+                <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+                <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+                <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+                <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
               </folding>
             </state>
           </provider>
@@ -75,11 +99,11 @@
       <file leaf-file-name="fetching_record.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init-php/fetching_record.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+            <state relative-caret-position="469">
+              <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="40" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
-                <marker date="1505483203000" expanded="true" signature="1250:1674" ph="SELECT rec.s... " />
+                <marker date="1505483401000" expanded="true" signature="1250:1674" ph="SELECT rec.s... " />
               </folding>
             </state>
           </provider>
@@ -118,7 +142,6 @@
         <option value="$PROJECT_DIR$/init-php/add_item_to_inventory.php" />
         <option value="$PROJECT_DIR$/init-php/display_monthly_report.php" />
         <option value="$PROJECT_DIR$/init-php/login.php" />
-        <option value="$PROJECT_DIR$/init-php/add_sale_record.php" />
         <option value="$PROJECT_DIR$/init-php/register.php" />
         <option value="$PROJECT_DIR$/init-php/display_records.php" />
         <option value="$PROJECT_DIR$/init-php/display_inventory.php" />
@@ -129,8 +152,9 @@
         <option value="$PROJECT_DIR$/init-php/inventory_fetching.php" />
         <option value="$PROJECT_DIR$/init-php/fetching_record.js" />
         <option value="$PROJECT_DIR$/init-php/manage.php" />
-        <option value="$PROJECT_DIR$/init-php/return_manager.php" />
         <option value="$PROJECT_DIR$/init-php/fetching_record.php" />
+        <option value="$PROJECT_DIR$/init-php/add_sale_record.php" />
+        <option value="$PROJECT_DIR$/init-php/return_manager.php" />
       </list>
     </option>
   </component>
@@ -142,7 +166,6 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="1011" />
@@ -305,18 +328,19 @@
       <workItem from="1505360336890" duration="18484000" />
       <workItem from="1505397184343" duration="4496000" />
       <workItem from="1505448492924" duration="21206000" />
-      <workItem from="1505476189414" duration="6128000" />
+      <workItem from="1505476189414" duration="6541000" />
+      <workItem from="1505560401757" duration="6700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93669000" />
+    <option name="totallyTimeSpent" value="100782000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1920" height="1011" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1011" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18477103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18636848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -372,16 +396,16 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -465,16 +489,16 @@
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -579,16 +603,16 @@
         <state relative-caret-position="95">
           <caret line="69" column="73" lean-forward="false" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -598,16 +622,16 @@
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -628,16 +652,16 @@
         <state relative-caret-position="515">
           <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -721,16 +745,16 @@
         <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
           </folding>
         </state>
       </provider>
@@ -909,24 +933,35 @@
         <state relative-caret-position="575">
           <caret line="307" column="67" lean-forward="false" selection-start-line="307" selection-start-column="66" selection-end-line="307" selection-end-column="67" />
           <folding>
-            <marker date="1505480214000" expanded="true" signature="596:673" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="1854:1933" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2370:2445" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2387:2424" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="2624:2705" ph="..." />
-            <marker date="1505480214000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
-            <marker date="1505480214000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
-            <marker date="1505480214000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
-            <marker date="1505480214000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+            <marker date="1505483401000" expanded="true" signature="596:673" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="1854:1933" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2370:2445" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2387:2424" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="2624:2705" ph="..." />
+            <marker date="1505483401000" expanded="true" signature="3875:3995" ph="SELECT categ... ${$category__table}" />
+            <marker date="1505483401000" expanded="true" signature="5260:5360" ph="SELECT itemI... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="7542:7709" ph="SELECT inv.i... ${$item__table}" />
+            <marker date="1505483401000" expanded="true" signature="10224:10494" ph="SELECT cat.c... ${$cat_table}" />
+            <marker date="1505483401000" expanded="true" signature="11054:11305" ph="SELECT inv.i... ${$inv__table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init-php/fetching_record.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="40" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+            <marker date="1505483401000" expanded="true" signature="1250:1674" ph="SELECT rec.s... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init-php/add_sale_record.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="39" />
+        <state relative-caret-position="-29">
+          <caret line="87" column="161" lean-forward="false" selection-start-line="87" selection-start-column="161" selection-end-line="87" selection-end-column="161" />
           <folding>
             <marker date="1505459585000" expanded="true" signature="1477:1568" ph="SELECT quant... Inventory" />
             <marker date="1505459585000" expanded="true" signature="2450:2549" ph="SELECT previ... ${$inv_table}" />
@@ -941,23 +976,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init-php/fetching_record.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-            <marker date="1505483203000" expanded="true" signature="1250:1674" ph="SELECT rec.s... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init-php/return_manager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="484">
+          <caret line="91" column="86" lean-forward="false" selection-start-line="91" selection-start-column="86" selection-end-line="91" selection-end-column="86" />
           <folding>
             <element signature="e#6#96#0#PHP" expanded="true" />
+            <marker date="1505568998000" expanded="true" signature="1317:1376" ph="SELECT reven... ${$record_table}" />
+            <marker date="1505568998000" expanded="true" signature="1317:1387" ph="SELECT reven... ${$record_table}" />
+            <marker date="1505568998000" expanded="true" signature="1317:1401" ph="SELECT reven... ${$record_table}" />
+            <marker date="1505568998000" expanded="true" signature="1317:1406" ph="SELECT reven... ${$ri_table}" />
+            <marker date="1505568998000" expanded="true" signature="1317:1435" ph="SELECT reven... ${$ri_table}" />
+            <marker date="1505568998000" expanded="true" signature="1317:3011" ph="SELECT reven... $" />
+            <marker date="1505568998000" expanded="true" signature="2484:2543" ph="SELECT retur... ${$inv_table}" />
+            <marker date="1505568998000" expanded="true" signature="2484:2572" ph="SELECT retur... ${$ri_table}" />
+            <marker date="1505568998000" expanded="true" signature="2755:2809" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2820" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2835" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2845" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2860" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2872" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2912" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2925" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="2755:2939" ph="UPDATE ${$ri... " />
+            <marker date="1505568998000" expanded="true" signature="3041:3068" ph="SELECT retur... ${$inv_table}" />
+            <marker date="1505568998000" expanded="true" signature="3041:3069" ph="SELECT retur... $" />
+            <marker date="1505568998000" expanded="true" signature="3041:3093" ph="SELECT retur... ${$inv_table}" />
+            <marker date="1505568998000" expanded="true" signature="3041:3107" ph="SELECT retur... ${$inv_table}" />
+            <marker date="1505568998000" expanded="true" signature="3314:3366" ph="UPDATE ${$in... " />
+            <marker date="1505568998000" expanded="true" signature="3314:3377" ph="UPDATE ${$in... " />
+            <marker date="1505568998000" expanded="true" signature="3314:3378" ph="UPDATE ${$in... " />
+            <marker date="1505568998000" expanded="true" signature="3314:3439" ph="UPDATE ${$in... " />
+            <marker date="1505568998000" expanded="true" signature="3314:3453" ph="UPDATE ${$in... " />
+            <marker date="1505568998000" expanded="true" signature="3314:3545" ph="UPDATE ${$in... " />
           </folding>
         </state>
       </provider>
