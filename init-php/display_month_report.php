@@ -24,8 +24,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["submit_month_report"]))
-{
+} else {
     if ($_SESSION["username"] == "")
     {
         echo "<p>You must login to use the system.</p>";

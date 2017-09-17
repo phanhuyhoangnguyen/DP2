@@ -105,7 +105,8 @@ if (!$connection)
                 $update_query = "UPDATE $table SET quantity='$new_quantity_available', purchased_price='$new_purchased_price', total_cost='$new_total_update', latest_update = '$latest_update_date', update_reason = '$update_reason', username = '$who_updated', previous_purchased_price = '$previous_purchased_price', stock_with_old_prices = '$previous_quantity', previous_selling_price = '$previous_selling_price' WHERE itemID = '$itemID'";
             }
             $update_quantity = mysqli_query($connection, $update_query);
-            header("Location: manage.php");
+
+            echo "<p></p>";
         }
     }
     mysqli_close($connection);

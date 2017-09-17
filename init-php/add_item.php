@@ -18,7 +18,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["submit_add_item"]))
+} else
 {
     if ($_SESSION["username"] == "")
     {
@@ -74,6 +74,7 @@ if (!$connection)
         } else {
             $query = "INSERT INTO $table (itemID, item_name, categoryID) VALUES ('$itemID', '$item_name', '$item_category')";
             $add_item = mysqli_query($connection, $query);
+            echo "<p>Item $itemID added.</p>";
         }
     }
 }

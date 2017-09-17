@@ -19,8 +19,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["submit_add_category"]))
-{
+} else {
     if ($_SESSION["username"] == "")
     {
         echo "<p>You must login to add a category into the system.</p>";
@@ -69,6 +68,7 @@ if (!$connection)
         } else {
             $query = "INSERT INTO $table (categoryID, category_name) VALUES ('$categoryID', '$category_name')";
             $add_category = mysqli_query($connection, $query);
+            echo "<p>Category $categoryID added.</p>";
         }
     }
 }

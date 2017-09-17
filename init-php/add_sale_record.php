@@ -121,9 +121,9 @@ if (!$connection)
                 $general_update_inv_table_query = "UPDATE $inv_table SET quantity='$new_q[$i]', latest_update='$rec_date', update_reason='new_order' WHERE itemID='$checkbox[$i]'";
                 $general_update = mysqli_query($connection, $general_update_inv_table_query);
             }
-
+            echo "<p>New record added.</p>";
         }
-        header("Location: manage.php");
+        //header("Location: manage.php");
     }
     mysqli_close($connection);
 }

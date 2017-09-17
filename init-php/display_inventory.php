@@ -23,8 +23,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["display_inv"]))
-{
+} else {
     if ($_SESSION["username"] == "")
     {
         echo "<p>You must login to view the inventory.</p>";
@@ -39,6 +38,7 @@ if (!$connection)
             . "<th scope=\"col\">Item Description</th>"
             . "<th scope=\"col\">Category of Item</th>"
             . "<th scope=\"col\">Available Quantity</th>"
+            . "<th scope=\"col\">Returned Stock</th>"
             . "<th scope=\"col\">Purchased Price</th>"
             . "<th scope=\"col\">Selling Price</th>"
             . "<th scope=\"col\">Total Cost</th>"
@@ -52,6 +52,7 @@ if (!$connection)
             echo "<td>", $row["item_name"], "</td>";
             echo "<td>", $row["category"], "</td>";
             echo "<td>", $row["quantity"], "</td>";
+            echo "<td>", $row["returned_stock"], "</td>";
             echo "<td>", $row["purchased_price"], "</td>";
             echo "<td>", $row["selling_price"], "</td>";
             echo "<td>", $row["total_cost"], "</td>";

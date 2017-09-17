@@ -94,5 +94,6 @@ if (!$connection)
             $update_inv_query = "UPDATE $inv_table SET returned_stock='$update_stock', username='$update_person', update_reason='returned_item' WHERE itemID='$selected[$t]'";
             $update_inv = mysqli_query($connection, $update_inv_query);
         }
+        header("Location: manage.php");
     }
 }

@@ -77,6 +77,8 @@ if (!$connection)
         } else {
             $register_query = "INSERT INTO $table (username, password, email, full_name, role) VALUES ('$username', '$password', '$email', '$full_name', '$role')";
             $register = mysqli_query($connection, $register_query);
+
+            echo "<p>Your account has been registered.</p>";
         }
     }
     mysqli_close($connection);

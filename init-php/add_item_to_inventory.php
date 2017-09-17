@@ -18,7 +18,7 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["submit_add_item_to_inventory"]))
+} else
 {
     if ($_SESSION["username"] == "")
     {
@@ -75,8 +75,6 @@ if (!$connection)
         //echo $date;
         $inv_latest_update = $date;
 
-        $inv_update_reason = mysqli_real_escape_string($connection, $_POST["inv_update_reason"]);
-
         $inv_username = $_SESSION["username"];
 
         if ($errMsg != "") {
@@ -84,6 +82,7 @@ if (!$connection)
         } else {
             $query = "INSERT INTO $table (itemID, quantity, purchased_price, selling_price, total_cost, latest_update, update_reason, username) VALUES ('$inv_itemID', '$inv_quantity', '$inv_purchased_price', '$inv_selling_price', '$inv_total_cost', '$inv_latest_update', 'add_new', '$inv_username')";
             $edit_inventory = mysqli_query($connection, $query);
+            echo "<p>Item #$inv_itemID added to the Inventory.</p>";
         }
     }
 }

@@ -6,7 +6,20 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Manage Pharmacy</title>
+    <!--Fetching record -->
     <script type="text/javascript" src="fetching_record.js"></script>
+    <!-- Add Category -->
+    <script type="text/javascript" src="add_category.js"></script>
+    <!-- Add Item -->
+    <script type="text/javascript" src="add_item.js"></script>
+    <!-- Add Item -->
+    <script type="text/javascript" src="add_item_to_inventory.js"></script>
+    <!-- Add Item -->
+    <script type="text/javascript" src="display_inventory.js"></script>
+    <!-- Add Item -->
+    <script type="text/javascript" src="display_records.js"></script>
+    <!-- Add Item -->
+    <script type="text/javascript" src="display_month_report.js"></script>
 </head>
 <body>
 
@@ -82,18 +95,7 @@ if ($_SESSION["username"] != "") {
     </fieldset>
 </form><br/>
 
-<!--
-<form id="logout" method="post" action="logout.php">
-    <fieldset>
-        <legend>
-            Logout
-        </legend>
-        <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/>
-    </fieldset>
-</form><br/>
--->
-
-<form id="add_category" method="post" action="add_category.php">
+<form id="add_category" method="post" action="add_category.php" onsubmit="return add_category();">
     <fieldset>
         <legend>
             Add Category
@@ -106,10 +108,11 @@ if ($_SESSION["username"] != "") {
         <input type="text" id="category_name" name="category_name"/>
 
         <br/><input type="submit" id="submit_add_category" name="submit_add_category" value="Add Category"/>
+        <div id="echo_add_category"></div>
     </fieldset>
 </form><br/>
 
-<form id='add_item' method='post' action='add_item.php'>
+<form id='add_item' method='post' action='add_item.php' onsubmit="return add_item();">
     <fieldset>
         <legend>
             Add Item to Table
@@ -146,10 +149,11 @@ if ($_SESSION["username"] != "") {
         </select>
 
         <br/><input type='submit' id='submit_add_item' name='submit_add_item' value='Add Item'/>
+        <div id="echo_add_item"></div>
     </fieldset>
 </form><br/>
 
-<form id="add_item_to_inventory" method="post" action="add_item_to_inventory.php">
+<form id="add_item_to_inventory" method="post" action="add_item_to_inventory.php" onsubmit="return add_item_to_inventory();">
     <fieldset>
         <legend>
             Add Item to Inventory
@@ -197,6 +201,7 @@ if ($_SESSION["username"] != "") {
         <input type="hidden" id="inv_username" name="inv_username"/>
 
         <br/><input type="submit" id="submit_add_item_to_inventory" name="submit_add_item_to_inventory" value="Add Item to Inventory"/>
+        <div id="echo_add_item_to_inventory"></div>
     </fieldset>
 </form><br/>
 
@@ -346,25 +351,27 @@ if ($_SESSION["username"] != "") {
 </fieldset><br/>
 
 
-<form id="display_record" method="post" action="display_records.php">
+<form id="display_record" method="post" action="display_records.php" onsubmit="return display_records();">
     <fieldset>
         <legend>
             Display sale records
         </legend>
         <input type="submit" id="display_sale_record" name="display_sale_record" value="Display Sale Records"/>
+        <div id="echo_display_sale_record"></div>
     </fieldset>
 </form><br/>
 
-<form id="display_inventory" method="post" action="display_inventory.php">
+<form id="display_inventory" method="post" action="display_inventory.php" onsubmit="return display_inventory();">
     <fieldset>
         <legend>
             Display Inventory
         </legend>
         <input type="submit" id="display_inv" name="display_inv" value="Display Inventory"/>
+        <div id="echo_display_inventory"></div>
     </fieldset>
 </form><br/>
 
-<form id="display_month_report" method="post" action="display_month_report.php">
+<form id="display_month_report" method="post" action="display_month_report.php" onsubmit="return display_month_report();">
     <fieldset>
         <legend>
             Display Monthly Report
@@ -400,6 +407,7 @@ if ($_SESSION["username"] != "") {
         </select>
 
         <input type="submit" id="submit_month_report" name="submit_month_report" value="Display Monthly Report"/>
+        <div id="echo_month_report"></div>
     </fieldset>
 </form><br/>
 

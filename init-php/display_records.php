@@ -26,13 +26,12 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if (isset($_POST["display_sale_record"]))
-{
+} else {
     if ($_SESSION["username"] == "")
     {
         echo "<p>You must login to view sales history.</p>";
     } else {
-        $query = "SELECT rec.saleID AS saleID, rec.date AS date, ri.revenue AS revenue, ri.profit AS profit, rec.username AS username, ri.itemID as itemID, ri.sold_quantity AS sold_quantity, itm.item_name AS item_name, inv.selling_price AS selling_price FROM $table rec, $inv_table inv, $item_table itm, $table_Ri ri WHERE ri.itemID = inv.itemID AND inv.itemID = itm.itemID AND ri.saleID = rec.saleID ORDER BY saleID ASC";
+        $query = "SELECT rec.saleID AS saleID, rec.date AS date, ri.revenue AS revenue, ri.profit AS profit, rec.username AS username, ri.itemID as itemID, ri.sold_quantity AS sold_quantity, itm.item_name AS item_name, inv.selling_price AS selling_price, ri.returned AS returned FROM $table rec, $inv_table inv, $item_table itm, $table_Ri ri WHERE ri.itemID = inv.itemID AND inv.itemID = itm.itemID AND ri.saleID = rec.saleID ORDER BY saleID ASC";
         $result = mysqli_query($connection, $query);
 
         echo "<h1>Results</h1>\n";
@@ -46,6 +45,7 @@ if (!$connection)
             . "<th scope=\"col\">Sold Quantity</th>"
             . "<th scope=\"col\">Revenue</th>"
             . "<th scope=\"col\">Profit</th>"
+            . "<th scope=\"col\">Returned</th>"
             . "<th scope=\"col\">Cashier</th>"
             . "</tr>";
         while ($row = mysqli_fetch_assoc($result)) {
@@ -58,6 +58,7 @@ if (!$connection)
             echo "<td>", $row["sold_quantity"], "</td>";
             echo "<td>", $row["revenue"], "</td>";
             echo "<td>", $row["profit"], "</td>";
+            echo "<td>", $row["returned"], "</td>";
             echo "<td>", $row["username"], "</td>";
             echo "</tr>";
         }
