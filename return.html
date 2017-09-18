@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Management</title>
+    <script type="text/javascript" src="javascript/fetching_record.js"></script>
+</head>
+<body>
+<fieldset>
+    <legend>
+        Return Orders Management
+    </legend>
+
+    <label for="rt_order">SaleID: </label>
+    <input type="text" id="rt_order" name="rt_order"/>
+    <input type="button" value="Search" onclick="return fetching_record();"/><br/>
+
+    <form id="return_manager" method="post" action="php/return_manager.php">
+        <div id="process_return"></div>
+    </form>
+</fieldset>
+</body>
+</html>

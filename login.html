@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript" src="javascript/login.js"></script>
+</head>
+<body>
+<form id="login" onsubmit="return login_ajax();">
+    <fieldset>
+        <legend>User Login</legend>
+
+        <label for="login_id">Username: </label>
+        <input type="text" id="login_id" name="login_id"/><br/>
+
+        <label for="login_pass">Password: </label>
+        <input type="password" id="login_pass" name="login_pass"/><br/>
+
+        <button type="submit" value="login">Login</button>
+
+        <div id="echo_login"></div>
+    </fieldset>
+</form>
+</body>
+</html>

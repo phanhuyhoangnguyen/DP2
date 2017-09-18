@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script type="text/javascript" src="javascript/register.js"></script>
+</head>
+<body>
+<form id="register" onsubmit="return register_ajax();">
+    <fieldset>
+        <legend>Register</legend>
+
+        <label for="full_name">User's Full Name: </label>
+        <input type="text" id="full_name" name="full_name"/><br/>
+
+        <label for="reg_id">Username: </label>
+        <input type="text" id="reg_id" name="reg_id"/><br/>
+
+        <label for="reg_pass">User's Passcode: </label>
+        <input type="password" id="reg_pass" name="reg_pass"/><br/>
+
+        <label for="confirm_password">Confirm Passcode: </label>
+        <input type="password" id="confirm_password" name="confirm_password"/><br/>
+
+        <label for="email">User's Email: </label>
+        <input type="text" id="email" name="email"/><br/>
+
+        <label for="role">User's Role: </label>
+        <select id="role" name="role">
+            <option value="">Click to select</option>
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
+        </select><br/>
+
+        <button type="submit" value="register">Register</button>
+        <div id="echo_register"></div>
+    </fieldset>
+</form>
+</body>
+</html>

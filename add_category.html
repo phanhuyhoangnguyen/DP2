@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+    <script type="text/javascript" src="javascript/add_category.js"></script>
+</head>
+<body>
+<form id="add_category" onsubmit="return add_category();">
+    <fieldset>
+        <legend>Add Category</legend>
+
+        <label for="categoryID">CategoryID: </label>
+        <input type="text" id="categoryID" name="categoryID"/><br/>
+
+        <label for="category_name">Category Name: </label>
+        <input type="text" id="category_name" name="category_name"/>
+
+        <br/><button type="submit" value="add_category">Add Category</button>
+        <div id="echo_add_category"></div>
+    </fieldset>
+</form>
+</body>
+</html>
