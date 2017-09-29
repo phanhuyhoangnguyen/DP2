@@ -33,12 +33,6 @@ if (!$connection)
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
 
-    echo $date;
-    echo "/";
-    echo $month;
-    echo "/";
-    echo $year;
-
     if ($year == "" || $month == "" || $date=="") {
         $errMsg .= "<p>You must select month and year of the report.</p>";
     } else {
@@ -124,11 +118,8 @@ if (!$connection)
                 break;
         }
 
-        echo "-a" + $all_transaction_result->num_rows;
-        echo "-b" +$summary_item_report_query->num_rows;
-        echo "-c" +$summary_sale_report->num_rows;
-
-        if ($result_report->num_rows > 0 || $summary_sale_report->num_rows > 0 || $all_transaction_result->num_rows > 0) {
+        if ($summary_item_report->num_rows > 0 || $summary_sale_report->num_rows > 0
+            || $all_transaction_result->num_rows > 0 || $result_report_staff>0) {
 
                 echo "<h1>Summary of $date, $month_name $year</h1>\n";
                 echo "<table border=\"1\">";
