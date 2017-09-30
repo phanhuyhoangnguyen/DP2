@@ -29,8 +29,10 @@ if ($_SESSION["username"] != "") {
     <li><a href="return.html">Process Return</a></li>
     <li><a href="display_inventory.html">Display Inventory</a></li>
     <li><a href="display_records.html">Display Sale Records</a></li>
+    <li><a href="display_daily_report.html">Display Daily Reports</a></li>
     <li><a href="display_month_report.html">Display Monthly Reports</a></li>
     <li><a href="export_csv.html">Export to CSV file</a></li>
+    <li><a href="restock_reminder.html">Restock Reminder</a></li>
 </ul>
 
 </body>

@@ -19,24 +19,28 @@ $item_table = "Item";
 @mysqli_select_db($connection, $item_table);
 session_start();
 
+/*Check for database connection*/
 if (!$connection)
 {
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
 } else if ($_SESSION["username"] == "") {
+    /* Error Mesage*/
     echo "<p>You must login to use the system.</p>";
 } else {
     $errMsg = "";
-
+    /*Retrive value from js*/
     $date = mysqli_real_escape_string($connection, $_POST["select_date"]);
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
 
+    /*check if any value is empty*/
     if ($year == "" || $month == "" || $date=="") {
         $errMsg .= "<p>You must select month and year of the report.</p>";
     } else {
         $errMsg = "";
+        /*All transaction query*/
         $all_transaction = "SELECT REC.saleID AS saleID, REC.date AS date, RIT.revenue AS revenue, RIT.profit AS profit,
                   REC.username AS username, RIT.itemID as itemID, RIT.sold_quantity AS sold_quantity,
                   ITM.item_name AS item_name, INV.selling_price AS selling_price 
@@ -47,6 +51,7 @@ if (!$connection)
                   ORDER BY REC.saleID ASC";
         $all_transaction_result = mysqli_query($connection, $all_transaction);
 
+        /*Summary Sale of the date query*/
         $summary_sale_report_query = "SELECT COUNT(DISTINCT REC.saleID) AS total_sales, SUM(RIT.revenue) AS total_revenue,
                                   SUM(RIT.profit) AS total_profit, SUM(DISTINCT INV.total_cost) AS total_cost, 
                                   COUNT(DISTINCT RIT.itemID) AS total_items, SUM(RIT.sold_quantity) AS total_items_sold 
@@ -55,6 +60,7 @@ if (!$connection)
                                   WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' AND DAY(REC.date)='$date' GROUP BY RIT.saleID AND YEAR(REC.date) AND MONTH(REC.date)";
         $summary_sale_report = mysqli_query($connection, $summary_sale_report_query);
 
+        /*Summary Sale of item sold query*/
         $summary_item_report_query = "SELECT RIT.itemID AS itemID, ITM.item_name AS item_name,
                                   SUM(RIT.sold_quantity) AS total_quantity, SUM(INV.quantity) as available, SUM(RIT.profit) as total_profit,
                                   SUM(RIT.revenue) as total_revenue, SUM(INV.total_cost) AS total_cost                  
@@ -64,6 +70,7 @@ if (!$connection)
                                   WHERE DAY(REC.date) ='$date' AND YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' GROUP BY RIT.itemID";
         $summary_item_report = mysqli_query($connection, $summary_item_report_query);
 
+        /*Summary Sale of the date displayed by staff query*/
         $report_staff_query = "SELECT REC.username AS username, COUNT(DISTINCT REC.saleID) as total_sales, SUM(RIT.revenue) AS total_revenue,
                               SUM(RIT.profit) AS total_profit, SUM(RIT.sold_quantity) AS total_sold
                           FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
@@ -73,8 +80,7 @@ if (!$connection)
                           GROUP BY username";
         $result_report_staff = mysqli_query($connection, $report_staff_query);
 
-
-
+        /*convert from number to month's name*/
         $month_name = "";
         switch ($month) {
             case 1:
@@ -118,6 +124,7 @@ if (!$connection)
                 break;
         }
 
+        /*display if the result is found*/
         if ($summary_item_report->num_rows > 0 || $summary_sale_report->num_rows > 0
             || $all_transaction_result->num_rows > 0 || $result_report_staff>0) {
 
