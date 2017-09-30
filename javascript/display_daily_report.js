@@ -19,23 +19,20 @@ function display_daily_report()
         var time = document.getElementById("select_time").value;
 
         var time_splitter;
+        var divider = "-";
 
-        switch(true){
-            case (time.indexOf('/')):
-                time_splitter = time.split("/");
-                break;
-
-            case (time.indexOf('-')):
+        if(time.match(/-/))
                 time_splitter = time.split("-");
-                break;
-        }
+        else
+                time_splitter = time.split("/");
+
         /*extract value and assign them into variable*/
         var date = time_splitter[0];
         var month = time_splitter[1];
         var year = time_splitter[2];
 
         /*if the above variable is not null*/
-        if (date != null && month != null && year != null) {
+        //if (date != null && month != null && year != null) {
             var vars = "&select_date="+encodeURIComponent(date)+"&select_month="+encodeURIComponent(month)+"&select_year="+encodeURIComponent(year);
             xHRObject.open("POST", url, true);
             xHRObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -48,7 +45,7 @@ function display_daily_report()
                     return document.getElementById("echo_daily_report").innerHTML = this.responseText;
                 }
             }
-        }
+        //}
     }
     return false;
 }
