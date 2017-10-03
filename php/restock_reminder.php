@@ -2,17 +2,17 @@
 /*
 /---------------------------------------------------------/
     Task: Restock Reminder
-    Date Created: 30 - Sep - 2017
+    Date Created: 26 - Sep - 2017
     Author: Don Dave (Duy The Nguyen)
-    Last Modified: 22:23  02 - Oct -2017
+    Last Modified: 17:48  27 - Sep -2017
  /---------------------------------------------------------/
  */
 error_reporting(0);
-$connection = @mysqli_connect("localhosts","westudyi_pharma","pharmacy", "westudyi_pharmacy");
+$connection = @mysqli_connect("localhost","westudyi_pharma","pharmacy", "westudyi_pharmacy");
 $iven_table = "Inventory";
 $itm_table = "Item";
 $cat_table = "Category";
-@mysqli_select_db($connectoin, $iven_table);
+@mysqli_select_db($connection, $iven_table);
 @mysqli_select_db($connection, $itm_table);
 @mysqli_select_db($connection, $cat_table);
 
@@ -50,7 +50,7 @@ else
         . "<th scope=\"col\">Latest Update</th>"
         
         . "</tr>";
-    while ($row = mysqli_fetch_assoc($resutl)) {
+    while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<td>", $row["quantity"], "</td>";
         echo "<td>", $row["itemID"], "</td>";
