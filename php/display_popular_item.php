@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: phanNguyen
- * Date: 20/9/17
+ * Date: 04/10/17
  * Time: 14:20 PM
  */
 
@@ -34,26 +34,37 @@ if (!$connection)
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
     $option = mysqli_real_escape_string($connection, $_POST["option"]);
 
-    if ($year == "" || $month == "" || $date=="") {
-        $errMsg = "<p>You must select month and year of the report.</p>";
-    } else if ($option == "day_view") {
-        $errMsg = "";
-        $daily_popular_item = "SELECT RIT.itemID as itemID, COUNT(DISTINCT REC.saleID) AS total_sales, 
-                              SUM(RIT.profit) AS total_profit,
-                              SUM (RIT.sold_quantity) AS sold_quantity, ITM.item_name AS item_name, INV.selling_price AS selling_price 
+    echo "<p>N</p>";
+    echo $date;
+    echo $year;
+    echo $month;
+
+
+    /*if ($year == null || $month == null || $date== null || $option == null) {
+        $errMsg1 = "<p>variable are null.</p>";
+    }
+    else if ($year == "" || $month == "" || $date== "" || $option == "") {
+        $errMsg1 = "<p>You must input time and select view.</p>";
+    }
+
+    else */if ($option == "day_view") {
+        $daily_popular_item = "SELECT RIT.itemID, ITM.item_name AS item_name,
+                              INV.selling_price AS selling_price, SUM(RIT.profit) AS total_profit,
+                              SUM(RIT.revenue) AS total_revenue, SUM(RIT.sold_quantity) AS sold_quantity,
+                              COUNT(REC.saleID) AS total_sales
                               FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
-                              WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month'
+                              WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' AND DAY(REC.date) = '$date'
                               GROUP BY itemID ORDER BY sold_quantity ASC";
         $daily_popular_item_result = mysqli_query($connection, $daily_popular_item);
-        print "option is $option";
-        print "number is $daily_popular_item_result";
+        print "number is $daily_popular_item_result->num_rows";
     }
         else if ($option == "month_view") {
-            $month_popular_item = "SELECT RIT.itemID as itemID, COUNT(DISTINCT REC.saleID) AS total_sales, 
-                              SUM(RIT.profit) AS total_profit,
-                              SUM (RIT.sold_quantity) AS sold_quantity, ITM.item_name AS item_name, INV.selling_price AS selling_price 
+            $month_popular_item = "SELECT RIT.itemID, ITM.item_name AS item_name,
+                              INV.selling_price AS selling_price, SUM(RIT.profit) AS total_profit,
+                              SUM(RIT.revenue) AS total_revenue, SUM(RIT.sold_quantity) AS sold_quantity,
+                              COUNT(REC.saleID) AS total_sales
                               FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
@@ -63,9 +74,10 @@ if (!$connection)
             $month_popular_item_result = mysqli_query($connection, $month_popular_item);
         }
         else {
-            $year_popular_item = "SELECT RIT.itemID as itemID, COUNT(DISTINCT REC.saleID) AS total_sales, 
-                              SUM (RIT.revenue) AS total_revenue, SUM(RIT.profit) AS total_profit,
-                              SUM (RIT.sold_quantity) AS sold_quantity, ITM.item_name AS item_name, INV.selling_price AS selling_price 
+            $year_popular_item = "SELECT RIT.itemID, ITM.item_name AS item_name,
+                              INV.selling_price AS selling_price, SUM(RIT.profit) AS total_profit,
+                              SUM(RIT.revenue) AS total_revenue, SUM(RIT.sold_quantity) AS sold_quantity,
+                              COUNT(REC.saleID) AS total_sales
                               FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
@@ -73,6 +85,8 @@ if (!$connection)
                               GROUP BY itemID ORDER BY sold_quantity ASC";
 
             $year_popular_item_result = mysqli_query($connection, $year_popular_item);
+            print "number is $year_popular_item_result->num_rows";
+            print "option is $option";
         }
 
         $month_name = "";
@@ -175,7 +189,6 @@ if (!$connection)
 
             else if ($option == "year_view"){
 
-
                 echo "<h1>Top Product of $year</h1>\n";
                 echo "<table border=\"1\">";
                 echo "<tr>"
@@ -201,9 +214,11 @@ if (!$connection)
                 echo "</table><br/>";
             }
         }else {
-            echo "<p>No available information.</p>";
-            print "2. option is $option";
-            print "2. number is $daily_popular_item_result";
+            $errMsg2 = "<p>No available information.</p>";
         }
+
+    echo $errMsg1;
+    echo $errMsg2;
+
     mysqli_close($connection);
 }
