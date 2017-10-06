@@ -1,5 +1,5 @@
 /**
- * Created by phanNguyen on 20/09/17.
+ * Created by phanNguyen on 04/09/17.
  */
 var xHRObject = false;
 if (window.XMLHttpRequest)
@@ -32,22 +32,41 @@ function display_popular_item()
         var vars;
 
         if (option == "day_view") {
-            date = time_splitter[0];
-            month = time_splitter[1];
-            year = time_splitter[2];
-            vars = "&option="+encodeURIComponent(option)+"&select_date="+encodeURIComponent(date)+"&select_month="+encodeURIComponent(month)+"&select_year="+encodeURIComponent(year);
+            if (time_splitter.length != 3) {
+                alert("You must input time, in the following format: dd/mm/yyyy");
+                vars = "&option="+encodeURIComponent(option)+"&select_date="+encodeURIComponent("")+"&select_month="+encodeURIComponent("")+"&select_year="+encodeURIComponent("");
+            }
+            else {
+                date = time_splitter[0];
+                month = time_splitter[1];
+                year = time_splitter[2];
+                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent(date) + "&select_month=" + encodeURIComponent(month) + "&select_year=" + encodeURIComponent(year);
+            }
         }
 
         else if (option == "month_view") {
-                            month = time_splitter[0];
-                            year = time_splitter[1];
-                            vars = "&option="+encodeURIComponent(option)+"&select_month=" + encodeURIComponent(month) + "&select_year=" + encodeURIComponent(year);
+            if (time_splitter.length != 2) {
+                alert("You must input time, in the following format: mm/yyyy");
+                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+            }
+            else {
+                month = time_splitter[0];
+                year = time_splitter[1];
+                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+            }
         }
 
 
         else if (option == "year_view") {
-            year = time_splitter[0];
-            vars = "&option="+encodeURIComponent(option)+ "&select_year=" + encodeURIComponent(year);
+
+            if (time_splitter.length != 1) {
+                alert("You must input time, in the following format: yyyy");
+                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+            }
+            else{
+                year = time_splitter[0];
+                vars = "&option="+encodeURIComponent(option)+ "&select_year=" + encodeURIComponent(year);
+            }
         }
 
         else {
