@@ -20,6 +20,7 @@ function display_popular_item()
 
         var time_splitter;
 
+        //Handle different format of date and extract to get date, month, year
         if(time.match(/-/))
             time_splitter = time.split("-");
         else
@@ -31,8 +32,11 @@ function display_popular_item()
         var year;
         var vars;
 
+        //if the view is day
         if (option == "day_view") {
+            //Check if the length of date is sufficient
             if (time_splitter.length != 3) {
+                //alert user to input correct format
                 alert("You must input time, in the following format: dd/mm/yyyy");
                 vars = "&option="+encodeURIComponent(option)+"&select_date="+encodeURIComponent("")+"&select_month="+encodeURIComponent("")+"&select_year="+encodeURIComponent("");
             }
@@ -47,12 +51,12 @@ function display_popular_item()
         else if (option == "month_view") {
             if (time_splitter.length != 2) {
                 alert("You must input time, in the following format: mm/yyyy");
-                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+                vars = "&option=" + encodeURIComponent(option) + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
             }
             else {
                 month = time_splitter[0];
                 year = time_splitter[1];
-                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+                vars = "&option=" + encodeURIComponent(option) + "&select_month=" + encodeURIComponent(month) + "&select_year=" + encodeURIComponent(year);
             }
         }
 
@@ -61,7 +65,7 @@ function display_popular_item()
 
             if (time_splitter.length != 1) {
                 alert("You must input time, in the following format: yyyy");
-                vars = "&option=" + encodeURIComponent(option) + "&select_date=" + encodeURIComponent("") + "&select_month=" + encodeURIComponent("") + "&select_year=" + encodeURIComponent("");
+                vars = "&option=" + encodeURIComponent(option) + "&select_year=" + encodeURIComponent("");
             }
             else{
                 year = time_splitter[0];
@@ -73,6 +77,7 @@ function display_popular_item()
             vars = "&option="+encodeURIComponent("")+"&select_date="+encodeURIComponent("")+"&select_month="+encodeURIComponent("")+"&select_year="+encodeURIComponent("");
 
         }
+        //Send variables value to php file
         xHRObject.open("POST", url, true);
         xHRObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xHRObject.send(vars);
@@ -84,6 +89,8 @@ function display_popular_item()
                 return document.getElementById("echo_result").innerHTML = this.responseText;
             }
         }
+
+        time_splitter = null;
     }
     return false;
 }
