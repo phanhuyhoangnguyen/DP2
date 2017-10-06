@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Popular Product</title>
+    <script type="text/javascript" src="javascript/display_popular_item.js"></script>
+</head>
+<body>
+<form id="display_popular_item" onsubmit="return display_popular_item();">
+    <fieldset>
+        <legend>
+            Select View
+        </legend>
+
+        <select id="select_view" name="select_view">
+            <option value="">Click to Select</option>
+            <option value="day_view">Top Daily Sale</option>
+            <option value="month_view">Top Monthly Sale</option>
+            <option value="year_view">Top Yearly Sale</option>
+        </select>
+       <legend>
+            Input Time
+        </legend>
+        <input id="select_time" name="select_time">
+
+        <button type="submit" value="submit_popular_item">Display Popular Product</button>
+        <div id="echo_result"></div>
+    </fieldset>
+</form>
+</body>
+</html>
