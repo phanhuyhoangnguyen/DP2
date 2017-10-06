@@ -36,48 +36,49 @@ if (!$connection)
     $option = mysqli_real_escape_string($connection, $_POST["option"]);
 
     //Convert month's number to name
-    if ($option == "month_view" || $option=="day_view")
-    $month_name = "";
-    switch ($month) {
-        case 1:
-            $month_name = "January";
-            break;
-        case 2:
-            $month_name = "February";
-            break;
-        case 3:
-            $month_name = "March";
-            break;
-        case 4:
-            $month_name = "April";
-            break;
-        case 5:
-            $month_name = "May";
-            break;
-        case 6:
-            $month_name = "June";
-            break;
-        case 7:
-            $month_name = "July";
-            break;
-        case 8:
-            $month_name = "August";
-            break;
-        case 9:
-            $month_name = "September";
-            break;
-        case 10:
-            $month_name = "October";
-            break;
-        case 11:
-            $month_name = "November";
-            break;
-        case 12:
-            $month_name = "December";
-            break;
-        default:
-            $month_name = "";
-            break;
+    if ($option == "month_view" || $option=="day_view") {
+        $month_name = "";
+        switch ($month) {
+            case 1:
+                $month_name = "January";
+                break;
+            case 2:
+                $month_name = "February";
+                break;
+            case 3:
+                $month_name = "March";
+                break;
+            case 4:
+                $month_name = "April";
+                break;
+            case 5:
+                $month_name = "May";
+                break;
+            case 6:
+                $month_name = "June";
+                break;
+            case 7:
+                $month_name = "July";
+                break;
+            case 8:
+                $month_name = "August";
+                break;
+            case 9:
+                $month_name = "September";
+                break;
+            case 10:
+                $month_name = "October";
+                break;
+            case 11:
+                $month_name = "November";
+                break;
+            case 12:
+                $month_name = "December";
+                break;
+            default:
+                $month_name = "";
+                break;
+        }
     }
 
     //if the view is day
