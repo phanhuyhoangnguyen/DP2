@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Function</title>
+    <script type="text/javascript" src="javascript/chart_function.js"></script>
+    <script type="text/javascript" src="javascript/fusioncharts.js"></script>
+</head>
+<body>
+    <form id="chart_function" onsubmit="return generate_chart();">
+        <fieldset>
+            <legend>
+                Select Type
+            </legend>
+
+            <select id="select_type" name="select_type">
+                <option value="">Click to Select</option>
+                <option value="daily_type">Daily</option>
+                <option value="monthly_type">Monthly</option>
+                
+            </select>
+        <legend>
+                Input Time
+            </legend>
+            <input id="select_time" name="select_time">
+
+            <button type="submit" value="submit_generate_chart">Display Chart</button>
+            <div id="echo_result"></div>
+        </fieldset>
+    </form>
+    
+    <div id="chart-1"><!-- Fusion Charts will render here--></div>
+</body>
+</html>
