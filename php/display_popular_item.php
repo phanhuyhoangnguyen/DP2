@@ -29,11 +29,13 @@ if (!$connection)
 } else {
     $errMsg = "";
 
+    //Receive value from js
     $date = mysqli_real_escape_string($connection, $_POST["select_date"]);
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
     $option = mysqli_real_escape_string($connection, $_POST["option"]);
 
+    //Convert month's number to name
     if ($option == "month_view" || $option=="day_view")
     $month_name = "";
     switch ($month) {
@@ -78,7 +80,9 @@ if (!$connection)
             break;
     }
 
+    //if the view is day
     if ($option == "day_view") {
+        //if the year, month or date is empty
         if ($year == "" || $month == "" || $date== "")
             $errMsg = "<p>You must input time, in the following format: dd/mm/yyyy</p>";
         else {
@@ -93,6 +97,7 @@ if (!$connection)
                               GROUP BY itemID ORDER BY sold_quantity ASC";
             $daily_popular_item_result = mysqli_query($connection, $daily_popular_item);
 
+            //print data if the query return results
             if ($daily_popular_item_result->num_rows > 0) {
                 echo "<h1>Top Product of $date, $month_name, $year</h1>\n";
                 echo "<table border=\"1\">";
@@ -121,6 +126,7 @@ if (!$connection)
             else $errMsg = "No information available for $date, $month, $year";
         }
     }
+    //if the view is month
         else if ($option == "month_view") {
             if ($year == "" || $month == "")
                 $errMsg = "<p>You must input time, in the following format: mm/yyyy</p>";
@@ -165,6 +171,7 @@ if (!$connection)
                 else $errMsg = "No information available for $month, $year";
             }
         }
+        //if the view is year
         else if ($option == "year_view") {
             if ($year == "")
                 $errMsg = "<p>You must input time, in the following format: yyyy</p>";
@@ -180,6 +187,8 @@ if (!$connection)
                               GROUP BY itemID ORDER BY sold_quantity ASC";
 
                 $year_popular_item_result = mysqli_query($connection, $year_popular_item);
+                //print "number is $year_popular_item_result->num_rows";
+                //print "option is $option";
                 if ($year_popular_item_result->num_rows > 0) {
 
                     echo "<h1>Top Product of $year</h1>\n";
@@ -209,6 +218,7 @@ if (!$connection)
                 else $errMsg = "No information available for $year";
             }
         }
+        //the view is unselected
         else{
             $errMsg = "<p>You must select the view</p>";
         }
