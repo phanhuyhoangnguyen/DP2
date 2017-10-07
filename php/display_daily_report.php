@@ -129,7 +129,7 @@ if (!$connection)
             || $all_transaction_result->num_rows > 0 || $result_report_staff>0) {
 
                 echo "<h1>Summary of $date, $month_name $year</h1>\n";
-                echo "<table border=\"1\">";
+                echo "<table>";
                 echo "<tr>"
                     . "<th scope=\"col\">Total Sales</th>"
                     . "<th scope=\"col\">Total Revenue</th>"
@@ -151,7 +151,7 @@ if (!$connection)
                 echo "</table><br/>";
 
             echo "<h1>Summary Sale By Staffs</h1>\n";
-            echo "<table border=\"1\">";
+            echo "<table>";
             echo "<tr>"
                 . "<th scope=\"col\">Staff ID</th>"
                 . "<th scope=\"col\">Number of Sale</th>"
@@ -171,7 +171,7 @@ if (!$connection)
             echo "</table>";
 
             echo "<h1>Summary Sale By Item</h1>\n";
-            echo "<table border=\"1\">";
+            echo "<table>";
             echo "<tr>"
                 . "<th scope=\"col\">Product ID</th>"
                 . "<th scope=\"col\">Product Name</th>"
@@ -195,7 +195,7 @@ if (!$connection)
             echo "</table>";
 
             echo "<h1>Transaction Records</h1>\n";
-            echo "<table border=\"1\">";
+            echo "<table>";
             echo "<tr>"
                 . "<th scope=\"col\">Sale ID</th>"
                 . "<th scope=\"col\">Date</th>"
