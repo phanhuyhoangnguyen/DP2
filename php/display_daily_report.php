@@ -37,7 +37,7 @@ if (!$connection)
 
     /*check if any value is empty*/
     if ($year == "" || $month == "" || $date=="") {
-        $errMsg .= "<p>You must select month and year of the report.</p>";
+        $errMsg = "<p>You must input time, in the following format: dd/mm/yyyy</p>";
     } else {
         $errMsg = "";
         /*All transaction query*/
