@@ -1,31 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Display Popular Product</title>
+    <title>Friendly Pharmacy | Display Popular Product</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Sale Reporting and Prediction System"/>
+    <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
+    <meta name="author" content="Phan Huy Hoang Nguyen"/>
+
+    <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- References to external responsive CSS file -->
+    <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+
     <script type="text/javascript" src="javascript/display_popular_item.js"></script>
 </head>
 <body>
-<form id="display_popular_item" onsubmit="return display_popular_item();">
-    <fieldset>
-        <legend>
-            Select View
-        </legend>
 
-        <select id="select_view" name="select_view">
-            <option value="">Click to Select</option>
-            <option value="day_view">Top Daily Sale</option>
-            <option value="month_view">Top Monthly Sale</option>
-            <option value="year_view">Top Yearly Sale</option>
-        </select>
-       <legend>
-            Input Time
-        </legend>
-        <input id="select_time" name="select_time">
+<header class="headerwrapper">
+    <div class="topwrapper">
+        <a href="">
+            <img src="../resources/images/logout_n.png" alt="admin Icon"/>
+            <span>Log Out</span></a>
 
-        <button type="submit" value="submit_popular_item">Display Popular Product</button>
-        <div id="echo_result"></div>
-    </fieldset>
+        <a href="login.html">
+            <img src="../resources/images/admin.png" alt="logout"/>
+            <span id="adminIcon">Login as Admin</span>
+        </a>
+    </div>
+
+    <div id="logoandsearch">
+        <!--Logo-->	<!-- Ref: https://www.designmantic.com/-->
+        <a href="index.php"><img src="../resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+
+        <div class="searchwrapper">
+            <form>
+                <input type="text" name="search" placeholder="Search for Products/Brand"/>
+            </form>
+        </div>
+    </div>
+</header>
+
+
+<nav>
+    <ul>
+        <li id="active"><a href="home.html"><img src="../resources/images/home.png"/><span>Home</span></a></li>
+        <li><a href=""><img src="../resources/images/notification.png"/><span>Notification</span></a></li>
+        <li><a href=""><img src="../resources/images/setting.png"/><span>Setting</span></a></li>
+    </ul>
+</nav>
+
+<div class="stylequote">
+    <p>Popular Product</p>
+</div>
+
+<form class="center" id="display_popular_item" onsubmit="return display_popular_item();">
+
+    <select id="select_view" name="select_view" class="boxform">
+        <option value="">Click to Select</option>
+        <option value="day_view">Top Daily Sale</option>
+        <option value="month_view">Top Monthly Sale</option>
+        <option value="year_view">Top Yearly Sale</option>
+    </select>
+
+    <input class="formtextfield" id="select_time" name="select_time" placeholder="DD-MM-YYYY">
+
+    <button class="formbutton" type="submit" value="submit_popular_item">Display Popular Product</button>
 </form>
+
+<div id="horizontalbar1">
+    <ul >
+        <li class="active"><a href="display_daily_report.html">Daily Sale Report</a></li>
+        <li><a href="display_month_report.html">Monthly Sale Report</a></li>
+    </ul>
+</div>
+
+<div id="echo_result">
+</div>
+
 </body>
 </html>
