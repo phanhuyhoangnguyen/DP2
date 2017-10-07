@@ -95,7 +95,7 @@ if (!$connection)
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
                               WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' AND DAY(REC.date) = '$date'
-                              GROUP BY itemID ORDER BY sold_quantity ASC";
+                              GROUP BY itemID ORDER BY sold_quantity DESC";
             $daily_popular_item_result = mysqli_query($connection, $daily_popular_item);
 
             //print data if the query return results
@@ -140,7 +140,7 @@ if (!$connection)
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
                               WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month'
-                              GROUP BY itemID ORDER BY sold_quantity ASC";
+                              GROUP BY itemID ORDER BY sold_quantity DESC";
 
                 $month_popular_item_result = mysqli_query($connection, $month_popular_item);
 
@@ -185,7 +185,7 @@ if (!$connection)
                               INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
                               INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
                               WHERE YEAR(REC.date)='$year'
-                              GROUP BY itemID ORDER BY sold_quantity ASC";
+                              GROUP BY itemID ORDER BY sold_quantity DESC";
 
                 $year_popular_item_result = mysqli_query($connection, $year_popular_item);
                 //print "number is $year_popular_item_result->num_rows";
