@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Chart Function</title>
     <script type="text/javascript" src="javascript/chart_function.js"></script>
-    <script type="text/javascript" src="javascript/fusioncharts.js"></script>
 </head>
 <body>
+    
     <form id="chart_function" onsubmit="return generate_chart();">
         <fieldset>
             <legend>
@@ -24,11 +24,11 @@
             </legend>
             <input id="select_time" name="select_time">
 
-            <button type="submit" value="submit_generate_chart">Display Chart</button>
-            <div id="echo_result"></div>
+            <button type="submit" value="submit_generate_chart" onclick=" window.open('http://pharmacy.westudyit.com/chart_show.html','_blank')">
+                Display Chart</button>
+            <div id="echo_result"><!-- Fusion Charts will render here--></div>
         </fieldset>
     </form>
-    
-    <div id="chart-1"><!-- Fusion Charts will render here--></div>
+
 </body>
 </html>
