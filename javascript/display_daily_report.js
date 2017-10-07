@@ -42,7 +42,7 @@ function display_daily_report()
             {
                 if ((xHRObject.readyState == 4) && (xHRObject.status == 200))
                 {
-                    return document.getElementById("echo_daily_report").innerHTML = this.responseText;
+                    return document.getElementById("echo_result").innerHTML = this.responseText;
                 }
             }
         //}
