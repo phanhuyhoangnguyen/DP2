@@ -1,21 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Display Daily Report</title>
+    <title>Friendly Pharmacy | Display Daily Report</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Sale Reporting and Prediction System"/>
+    <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
+    <meta name="author" content="Phan Huy Hoang Nguyen"/>
+
+    <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- References to external responsive CSS file -->
+    <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet"
+          media="screen and (max-width: 680px)"/>
+
     <script type="text/javascript" src="javascript/display_daily_report.js"></script>
 </head>
-<body>
-<form id="display_daily_report" onsubmit="return display_daily_report();">
-    <fieldset>
-        <legend>
-            Display Daily Report
-        </legend>
-        <input id="select_time" name="select_time">
 
-        <button type="submit" value="submit_daily_report">Display Daily Report</button>
-        <div id="echo_month_report"></div>
-    </fieldset>
+<body>
+<header class="headerwrapper">
+    <div class="topwrapper">
+        <a href="">
+            <img src="../resources/images/logout_n.png" alt="admin Icon"/>
+            <span>Log Out</span></a>
+
+        <a href="login.html">
+            <img src="../resources/images/admin.png" alt="logout"/>
+            <span id="adminIcon">Login as Admin</span>
+        </a>
+    </div>
+
+    <div id="logoandsearch">
+        <!--Logo-->    <!-- Ref: https://www.designmantic.com/-->
+        <a href="index.html"><img src="../resources/images/logo.png" alt="WatchStyle Logo"
+                                  title="Home - WatchStyle"/></a>
+
+        <div class="searchwrapper">
+            <form>
+                <input type="text" name="search" placeholder="Search for Products/Brand"/>
+            </form>
+        </div>
+    </div>
+</header>
+
+
+<nav>
+    <ul>
+        <li id="active"><a href="home.html"><img src="../resources/images/home.png"/><span>Home</span></a></li>
+        <li><a href=""><img src="../resources/images/notification.png"/><span>Notification</span></a></li>
+        <li><a href=""><img src="../resources/images/setting.png"/><span>Setting</span></a></li>
+    </ul>
+</nav>
+
+<div class="stylequote">
+    <p>Daily Sale Report</p>
+</div>
+
+<form class="center" id="display_daily_report" onsubmit="return display_daily_report();">
+
+
+    <input class="formtextfield" id="select_time" name="select_time" placeholder="DD-MM-YYYY">
+
+    <button class="formbutton" type="submit" value="submit_daily_report">Display Daily Report</button>
 </form>
+
+<div id="horizontalbar1">
+    <ul>
+        <li class="active"><a href="display_daily_report.html">Daily Sale Report</a></li>
+        <li><a href="reportmonthly.html">Monthly Sale Report</a></li>
+    </ul>
+</div>
+
+<div id="horizontalbar2">
+    <ul>
+        <li><a href="add_sale_records_html.php"><span id="addSale">Add Sale</span></a></li>
+        <li><a href=""><span id="editSale">Edit Sale</span></a></li>
+        <li><a href="display_popular_item.html"><span id="popular">Popular Product</span></a></li>
+    </ul>
+</div>
+<div id="echo_result">
+</div>
 </body>
 </html>
