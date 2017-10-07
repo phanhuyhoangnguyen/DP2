@@ -7,9 +7,13 @@ description		: apply Css for my website
 */
 
 .center{
-	margin: 120px auto 0 auto;
 	width: 25%;
 	text-align: center;
+	margin: 0 auto 0 auto;
+}
+
+.center img{
+	margin: 120px auto 0 auto;
 }
 
 .center img{
@@ -25,7 +29,8 @@ description		: apply Css for my website
 	margin: 10px auto;
 	padding: 5px;
 	text-align: center;
-	width: 70%;	
+	max-width: 200px;
+	width: 70%;
 	background-color: white;
 	border: solid 1px #26bfe5;
 	border-radius: 4px;
@@ -367,7 +372,7 @@ nav ul li:hover ul a:hover{
 
 /* CSS About Us Page*/
 
-.stylequote {
+.stylequote, #echo_result h1 {
 	font-size: 40px;
 	font-family: 'Times';
 	padding: 10px;
@@ -455,7 +460,7 @@ tr,th,tfoot, tbody, td{
 	padding: 8px;
 }
 
-#tableReport{
+#tableReport, #echo_result table{
 	background-color: white;
 	color: grey;
 }
@@ -510,7 +515,7 @@ p label{
 	background-color: white;
 	border: solid 1px #26bfe5;
 	border-radius: 4px;
-	width: 30%;
+	width: 40%;
 }
 
 .boxform{
@@ -534,6 +539,7 @@ p label{
 .formbutton{
 	height			: 30px;
 	width 			: 50%;
+	max-width: 170px;
 	border			: none;
 	background		: white;
 	text-align		: center;
@@ -558,7 +564,11 @@ p label{
 	text-align: center;
 }
 
-.stylequote, body{
+.stylequote, body, #echo_result h1{
 	background-color: #66BB6A;
 	
+}
+
+#echo_result{
+	text-align: center;
 }
