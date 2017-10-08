@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Friendly Pharmacy | Login</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Sale Reporting and Prediction System"/>
+    <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
+
+    <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- References to external responsive CSS file -->
+
+    <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet"
+          media="screen and (max-width: 680px)"/>
     <script type="text/javascript" src="javascript/login.js"></script>
 </head>
 <body>
-<form id="login" onsubmit="return login_ajax();">
-    <fieldset>
-        <legend>User Login</legend>
 
-        <label for="login_id">Username: </label>
-        <input type="text" id="login_id" name="login_id"/><br/>
+<div class="center">
 
-        <label for="login_pass">Password: </label>
-        <input type="password" id="login_pass" name="login_pass"/><br/>
+    <img src="../resources/images/logo.png" alt="FriendlyPharmacy Logo" title="Main Screen - FriendlyPharmacy"/>
 
-        <button type="submit" value="login">Login</button>
 
+    <form id="loginform" onsubmit="return login_ajax();">
+
+        <input class="formtextfield" type="text" name="login_id" id="login_id"
+               placeholder="User name" required/>
+
+        <input class="formtextfield" type="password" name="login_pass" id="login_pass"
+               placeholder="Password" required/>
+
+        <p>
+            <input class="formbutton" type="submit" value="login"/>
+            <a href="register.html">
+        <p>Forgot Password</p></a>
         <div id="echo_login"></div>
-    </fieldset>
-</form>
+        </p>
+
+    </form>
+
+</div>
+
 </body>
+
 </html>
