@@ -31,7 +31,7 @@ function display_month_report()
             {
                 var return_data = xHRObject.responseText;
                 //alert(return_data);
-                return document.getElementById("echo_month_report").innerHTML = return_data;
+                return document.getElementById("echo_result").innerHTML = return_data;
             }
         }
     }

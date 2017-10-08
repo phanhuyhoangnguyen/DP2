@@ -116,7 +116,7 @@ if (!$connection)
         if ($result_report->num_rows > 0 && $general_report->num_rows > 0 && $result->num_rows > 0) {
             if ($option == "by_item") {
                 echo "<h1>Detailed Report of $month_name $year</h1>\n";
-                echo "<table border=\"1\">";
+                echo "<table>";
                 echo "<tr>"
                     . "<th scope=\"col\">itemID</th>"
                     . "<th scope=\"col\">Item Description</th>"
@@ -145,7 +145,7 @@ if (!$connection)
             } else {
 
                 echo "<h1>General of $month_name $year</h1>\n";
-                echo "<table border=\"1\">";
+                echo "<table>";
                 echo "<tr>"
                     . "<th scope=\"col\">Total Sales</th>"
                     . "<th scope=\"col\">Total Revenue</th>"
@@ -168,7 +168,7 @@ if (!$connection)
             }
 
             echo "<h1>Transaction Details</h1>\n";
-            echo "<table border=\"1\">";
+            echo "<table>";
             echo "<tr>"
                 . "<th scope=\"col\">Sale ID</th>"
                 . "<th scope=\"col\">Date</th>"
