@@ -186,7 +186,7 @@ nav ul li:hover ul a:hover{
 	display		: block;
 	
 }
-.topwrapper a{
+.topwrapper a, .topwrapper div{
 	float			: right;
 	color			: green;
 	text-decoration : none;
@@ -571,4 +571,15 @@ p label{
 
 #echo_result{
 	text-align: center;
+}
+#logout {
+	text-align: center;
+}
+#logout input[type="submit"]{
+	background: none;
+	color: green;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0px;
+	cursor: pointer;
 }
