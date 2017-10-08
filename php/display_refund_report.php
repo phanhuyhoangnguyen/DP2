@@ -26,12 +26,15 @@ if (!$connection)
     echo "alert('Database connection failure');";
     echo "</script>";
 } else if ($_SESSION["username"] == "") {
+    /* Error Mesage*/
     echo "<p>You must login to use the system.</p>";
 } else {
     $errMsg = "";
+    /*Retrive value from js*/
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
 
+    /*check if any value is empty*/
     if ($year == "" || $month == "") {
         $errMsg = "<p>You must select month and year of the report.</p>";
     }
@@ -40,6 +43,7 @@ if (!$connection)
     }
     else {
         $errMsg = "";
+        /*refund query*/
         $query = "SELECT REC.saleID AS saleID, REC.date AS date, REC.username AS username,
                   RIT.itemID as itemID, RIT.sold_quantity AS sold_quantity, RIT.returned AS returned,
                   ITM.item_name AS item_name, INV.selling_price AS selling_price
@@ -51,6 +55,8 @@ if (!$connection)
         $result_report = mysqli_query($connection, $query);
 
 
+
+        /*group item view query*/
         $item_query = "SELECT RIT.itemID as itemID, SUM(RIT.sold_quantity) AS sold_quantity, SUM(RIT.returned) AS returned,
                   ITM.item_name AS item_name, INV.selling_price AS selling_price
                           FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
@@ -59,6 +65,7 @@ if (!$connection)
                   WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' GROUP BY itemID";
 
         $result_item_report = mysqli_query($connection, $item_query);
+        /*convert from number to month's name*/
         $month_name = "";
         switch ($month) {
             case 1:
@@ -102,6 +109,7 @@ if (!$connection)
                 break;
         }
 
+        /*display if the result is found*/
         if ($result_report -> num_rows > 0 || $result_item_report->num_rows > 0) {
             echo "<h1>Refund Report By Item of $month_name, $year</h1>\n";
             echo "<table border=\"1\">";
