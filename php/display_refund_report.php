@@ -27,10 +27,10 @@ if (!$connection)
 } else if ($_SESSION["username"] == "") {
     echo "<p>You must login to use the system.</p>";
 } else {
-    $errMsg = "";
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
 
+        $errMsg = "";
         $query = "SELECT REC.saleID AS saleID, REC.date AS date, REC.username AS username,
                   RIT.itemID as itemID, RIT.sold_quantity AS sold_quantity, RIT.returned AS returned,
                   ITM.item_name AS item_name, INV.selling_price AS selling_price
@@ -41,7 +41,15 @@ if (!$connection)
 
         $result_report = mysqli_query($connection, $query);
 
-        /*convert from number to month's name*/
+
+        $item_query = "SELECT RIT.itemID as itemID, SUM(RIT.sold_quantity) AS sold_quantity, SUM(RIT.returned) AS returned,
+                  ITM.item_name AS item_name, INV.selling_price AS selling_price
+                          FROM $table REC INNER JOIN $table_ri RIT ON REC.saleID = RIT.saleID
+                        INNER JOIN $inv_table INV ON RIT.itemID = INV.itemID
+                        INNER JOIN $item_table ITM ON INV.itemID = ITM.itemID
+                  WHERE YEAR(REC.date)='$year' AND MONTH(REC.date)='$month' GROUP BY itemID";
+
+        $result_item_report = mysqli_query($connection, $item_query);
         $month_name = "";
         switch ($month) {
             case 1:
@@ -84,6 +92,26 @@ if (!$connection)
                 $month_name = "";
                 break;
         }
+            echo "<h1>Refund Report By Item of $month_name, $year</h1>\n";
+            echo "<table border=\"1\">";
+            echo "<tr>"
+                . "<th scope=\"col\">Item ID</th>"
+                . "<th scope=\"col\">Item Description</th>"
+                . "<th scope=\"col\">Selling Price</th>"
+                . "<th scope=\"col\">Sold Quantity</th>"
+                . "<th scope=\"col\">Returned</th>"
+                . "</tr>";
+            while ($row = mysqli_fetch_assoc($result_item_report)) {
+                echo "<tr>";
+                echo "<td>", $row["itemID"], "</td>";
+                echo "<td>", $row["item_name"], "</td>";
+                echo "<td>", $row["selling_price"], "</td>";
+                echo "<td>", $row["sold_quantity"], "</td>";
+                echo "<td>", $row["returned"], "</td>";
+                echo "</tr>";
+            }
+            echo "</table><br>";
+
             echo "<h1>Refund Items of $month_name, $year</h1>\n";
             echo "<table border=\"1\">";
             echo "<tr>"
@@ -109,6 +137,6 @@ if (!$connection)
                 echo "</tr>";
             }
             echo "</table>";
-            
+
     mysqli_close($connection);
 }
