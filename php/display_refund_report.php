@@ -19,6 +19,7 @@ $item_table = "Item";
 @mysqli_select_db($connection, $item_table);
 session_start();
 
+/*Check for database connection*/
 if (!$connection)
 {
     echo "<script type='text/javascript'>";
@@ -27,9 +28,17 @@ if (!$connection)
 } else if ($_SESSION["username"] == "") {
     echo "<p>You must login to use the system.</p>";
 } else {
+    $errMsg = "";
     $year = mysqli_real_escape_string($connection, $_POST["select_year"]);
     $month = mysqli_real_escape_string($connection, $_POST["select_month"]);
 
+    if ($year == "" || $month == "") {
+        $errMsg = "<p>You must select month and year of the report.</p>";
+    }
+    else if ($year == null || $month == null){
+        $errMsg = "<p>variable are null</p>";
+    }
+    else {
         $errMsg = "";
         $query = "SELECT REC.saleID AS saleID, REC.date AS date, REC.username AS username,
                   RIT.itemID as itemID, RIT.sold_quantity AS sold_quantity, RIT.returned AS returned,
@@ -92,6 +101,8 @@ if (!$connection)
                 $month_name = "";
                 break;
         }
+
+        if ($result_report -> num_rows > 0 || $result_item_report->num_rows > 0) {
             echo "<h1>Refund Report By Item of $month_name, $year</h1>\n";
             echo "<table border=\"1\">";
             echo "<tr>"
@@ -137,6 +148,10 @@ if (!$connection)
                 echo "</tr>";
             }
             echo "</table>";
-
+        }
+        else {
+            echo "<p>No available information for Reports of $month_name - $year.</p>";
+        }
+    }
     mysqli_close($connection);
 }
