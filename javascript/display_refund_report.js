@@ -18,11 +18,12 @@ function display_refund_report()
 
         var month = document.getElementById("select_month").value;
         var year = document.getElementById("select_year").value;
+        var option = document.getElementById("display_option").value;
 
-        if (month == "" || year == "")
-            alert("Please select month and year");
+        if (month == "" || year == "" || option=="")
+            alert("Please select month, year and view");
 
-        var vars = "select_month="+encodeURIComponent(month)+"&select_year="+encodeURIComponent(year);
+        var vars = "&display_option=" + encodeURIComponent(option) + "&select_month="+encodeURIComponent(month)+"&select_year="+encodeURIComponent(year);
         xHRObject.open("POST", url, true);
         xHRObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xHRObject.send(vars);

@@ -1,17 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Display Refund Report</title>
+    <title>Friendly Pharmacy | Display Refund Report</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Sale Reporting and Prediction System"/>
+    <meta name="keywords" content="Sale, Report, Predict, System, Pharmacy"/>
+    <meta name="author" content="Phan Huy Hoang Nguyen"/>
+
+    <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- References to external responsive CSS file -->
+    <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet"
+          media="screen and (max-width: 680px)"/>
     <script type="text/javascript" src="javascript/display_refund_report.js"></script>
 </head>
 <body>
-<form id="display_refund_report" onsubmit="return display_refund_report();">
-    <fieldset>
-        <legend>
-            Display Refund Report
-        </legend>
-        <select id="select_month" name="select_month">
+<header class="headerwrapper">
+    <div class="topwrapper">
+        <a href="">
+            <img src="../resources/images/logout_n.png" alt="admin Icon"/>
+            <form id="logout" method="post" action="php/logout.php">
+                <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/></form>
+        </a>
+
+        <a href="login.html">
+            <img src="../resources/images/admin.png" alt="logout"/>
+            <span id="adminIcon">Login as Admin</span>
+        </a>
+    </div>
+
+    <div id="logoandsearch">
+        <!--Logo-->	<!-- Ref: https://www.designmantic.com/-->
+        <a href="home.php"><img src="../resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+
+        <div class="searchwrapper">
+            <form>
+                <input type="text" name="search" placeholder="Search for Products/Brand"/>
+            </form>
+        </div>
+    </div>
+</header>
+
+
+<nav>
+    <ul>
+        <li id="active"><a href="home.php"><img src="../resources/images/home.png"/><span>Home</span></a></li>
+        <li><a href=""><img src="../resources/images/notification.png"/><span>Notification</span></a></li>
+        <li><a href=""><img src="../resources/images/setting.png"/><span>Setting</span></a></li>
+    </ul>
+</nav>
+
+<div class="stylequote">
+    <p>Refund Report</p>
+</div>
+
+<form class="center" id="display_refund_report" onsubmit="return display_refund_report();">
+        <select id="select_month" name="select_month" class="boxform">
             <option value="">Please Select Month</option>
             <option value="1">January</option>
             <option value="2">February</option>
@@ -27,7 +75,7 @@
             <option value="12">December</option>
         </select>
 
-        <select id="select_year" name="select_year">
+        <select id="select_year" name="select_year" class="boxform">
             <option value="">Please Select Year</option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>
@@ -35,9 +83,30 @@
             <option value="2019">2019</option>
         </select>
 
-        <button type="submit" value="submit_refund_report">Display Refund Report</button>
-        <div id="echo_result"></div>
-    </fieldset>
+    <select id="display_option" name="display_option" class="boxform">
+        <option value="">Click to select</option>
+        <option value="by_item">View by Item</option>
+        <option value="general">All Refund Records</option>
+    </select>
+
+        <button class="formbutton" type="submit" value="submit_refund_report">Display Refund Report</button>
+
+
 </form>
+
+<div id="horizontalbar1">
+    <ul>
+        <li class="active"><a href="display_daily_report.html">Daily Sale Report</a></li>
+        <li><a href="display_month_report.html">Monthly Sale Report</a></li>
+        <li><a href="display_refund_report.html">Refund Report</a></li>
+    </ul>
+</div>
+
+<div id="horizontalbar2">
+    <ul >
+        <li><a href="return.html"><span id="editSale">Return Product</span></a></li>
+    </ul>
+</div>
+<div id="echo_result"></div>
 </body>
 </html>
