@@ -36,7 +36,7 @@ function login_ajax()
                     return document.getElementById("echo_login").innerHTML = return_data;
                 } else
                 {
-                    window.location.href="index.php";
+                    window.location.href="home.php";
                 }
             }
         }
