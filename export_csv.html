@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Friendly Pharmacy | Export to CSV File</title>
     <meta charset="UTF-8">
-    <title>Export to CSV file</title>
+    <meta name="description" content="Export to CSV File"/>
+    <meta name="keywords" content="CSV, export, System, Pharmacy"/>
+    <meta name="author" content="Duy The Nguyen"/>
+
+    <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- References to external responsive CSS file -->
+    <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+    <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+
+ 
 </head>
 <body>
-<form id="export_csv" method="post" action="php/export_csv.php">
-    <fieldset>
-        <legend>
-            Export to CSV File
-        </legend>
+        <header class="headerwrapper">
+                <div class="topwrapper">
+                    <a href="">
+                        <img src="../resources/images/logout_n.png" alt="admin Icon"/>
+                        <form id="logout" method="post" action="php/logout.php">
+                            <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/></form>
+                    </a>
+            
+                    <a href="login.html">
+                        <img src="../resources/images/admin.png" alt="logout"/>
+                        <span id="adminIcon">Login as Admin</span>
+                    </a>
+                </div>
+            
+                <div id="logoandsearch">
+                    <!--Logo-->	<!-- Ref: https://www.designmantic.com/-->
+                    <a href="home.php"><img src="../resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+            
+                    <div class="searchwrapper">
+                        <form>
+                            <input type="text" name="search" placeholder="Search for Products/Brand"/>
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li id="active"><a href="home.php"><img src="../resources/images/home.png"/><span>Home</span></a></li>
+                    <li><a href=""><img src="../resources/images/notification.png"/><span>Notification</span></a></li>
+                    <li><a href=""><img src="../resources/images/setting.png"/><span>Setting</span></a></li>
+                </ul>
+            </nav>
+            
+            <div class="stylequote">
+                <p>Monthly Sale Report</p>
+            </div>
+<form  class="center" id="export_csv" method="post" action="php/export_csv.php">
+    
         <!-- Select Month   >-->
         <select id="month_select_csv" name="month_select_csv" class="boxform">
             <option value="">Please Select Month</option>
@@ -43,8 +91,24 @@
             <option value="item_view">Report by Item</option>
         </select>
 
-        <input type="submit" id="export" name="export" value="Export to CSV File"/>
-    </fieldset>
+        <input type="submit" class="formbutton" name="export" value="Click here to export"/>
+    
 </form>
+<div id="horizontalbar1">
+        <ul>
+            <li class="active"><a href="display_daily_report.html">Daily Sale Report</a></li>
+            <li><a href="display_month_report.html">Monthly Sale Report</a></li>
+            <li><a href="display_refund_report.html">Refund Report</a></li>
+        </ul>
+    </div>
+    
+    <div id="horizontalbar2">
+        <ul >
+            <li><a href="display_popular_item.html"><span id="popular">Popular Product</span></a></li>
+            <li><a href="chart_function.html"><span id="chart">Chart View</span></a></li>
+            <li><a href="export_csv.html"><span id="export">Export File</span></a></li>
+            <li><a href=""><span id="predict">Predict Sale</span></a></li>
+        </ul>
+    </div>
 </body>
 </html>

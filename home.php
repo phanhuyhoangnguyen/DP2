@@ -69,9 +69,9 @@
 							<span class="buttonstyle">Sale Report</span>
 						</a>
 					</li>
-					<li><a href="check_stock.html">
+					<li><a href="restock_reminder.html">
 						<img src="../resources/images/blvgari.jpg" alt="blvgari"/></a>
-						<a href="check_stock.html">
+						<a href="restock_reminder.html">
 							<span class="buttonstyle">Stock Control</span>
 						</a>
 					</li>

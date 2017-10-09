@@ -1,34 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Chart Function</title>
-    <script type="text/javascript" src="javascript/chart_function.js"></script>
+        <title>Friendly Pharmacy | Chart Function</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Chart Function"/>
+        <meta name="keywords" content="chart, display, System, Pharmacy"/>
+        <meta name="author" content="Duy The Nguyen"/>
+        <link href="../resources/styles/style.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/styles/layout.css" rel="stylesheet" type="text/css"/>
+    
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- References to external responsive CSS file -->
+        <link href="../resources/styles/responsive_desktop.css" rel="stylesheet" media="screen and (max-width: 1919px)"/>
+        <link href="../resources/styles/responsive_tabletandmobile.css" rel="stylesheet" media="screen and (max-width: 680px)"/>
+    
+     
+        <script type="text/javascript" src="javascript/chart_function.js"></script>
 </head>
 <body>
+        <header class="headerwrapper">
+                <div class="topwrapper">
+                    <a href="">
+                        <img src="../resources/images/logout_n.png" alt="admin Icon"/>
+                        <form id="logout" method="post" action="php/logout.php">
+                            <input type="submit" id="submit_logout" name="submit_logout" value="Logout"/></form>
+                    </a>
+            
+                    <a href="login.html">
+                        <img src="../resources/images/admin.png" alt="logout"/>
+                        <span id="adminIcon">Login as Admin</span>
+                    </a>
+                </div>
+            
+                <div id="logoandsearch">
+                    <!--Logo-->	<!-- Ref: https://www.designmantic.com/-->
+                    <a href="home.php"><img src="../resources/images/logo.png" alt="WatchStyle Logo" title="Home - WatchStyle"/></a>
+            
+                    <div class="searchwrapper">
+                        <form>
+                            <input type="text" name="search" placeholder="Search for Products/Brand"/>
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li id="active"><a href="home.php"><img src="../resources/images/home.png"/><span>Home</span></a></li>
+                    <li><a href=""><img src="../resources/images/notification.png"/><span>Notification</span></a></li>
+                    <li><a href=""><img src="../resources/images/setting.png"/><span>Setting</span></a></li>
+                </ul>
+            </nav>
+            
+            <div class="stylequote">
+                <p>Monthly Sale Report</p>
+            </div>
     
-    <form id="chart_function" onsubmit="return generate_chart();">
-        <fieldset>
-            <legend>
-                Select Type
-            </legend>
+    <form  class="center" id="chart_function" onsubmit="return generate_chart();">
+       
+            
 
-            <select id="select_type" name="select_type">
+            <select id="select_type" name="select_type" class="boxform">
                 <option value="">Click to Select</option>
                 <option value="daily_type">Daily</option>
                 <option value="monthly_type">Monthly</option>
                 
             </select>
-        <legend>
-                Input Time
-            </legend>
-            <input id="select_time" name="select_time">
+           
+            <input class="formtextfield" class="formbutton" id="select_time"  name="select_time" placeholder="DD-MM-YYYY"/> 
 
-            <button type="submit" value="submit_generate_chart" onclick=" window.open('http://pharmacy.westudyit.com/chart_show.html','_blank')">
+            <button class="formbutton" type="submit" value="submit_generate_chart" onclick=" window.open('http://pharmacy.westudyit.com/chart_show.html','_blank')">
                 Display Chart</button>
-            <div id="echo_result"><!-- Fusion Charts will render here--></div>
-        </fieldset>
+           
+       
     </form>
-
+    <div id="horizontalbar1">
+            <ul>
+                <li class="active"><a href="display_daily_report.html">Daily Sale Report</a></li>
+                <li><a href="display_month_report.html">Monthly Sale Report</a></li>
+                <li><a href="display_refund_report.html">Refund Report</a></li>
+            </ul>
+        </div>
+        
+        <div id="horizontalbar2">
+            <ul >
+                <li><a href="display_popular_item.html"><span id="popular">Popular Product</span></a></li>
+                <li><a href="chart_function.html"><span id="chart">Chart View</span></a></li>
+                <li><a href="export_csv.html"><span id="export">Export File</span></a></li>
+                <li><a href=""><span id="predict">Predict Sale</span></a></li>
+            </ul>
+        </div>
+        <div id="echo_result"><!-- Fusion Charts will render here--></div>
 </body>
 </html>

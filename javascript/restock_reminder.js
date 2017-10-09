@@ -28,7 +28,7 @@ function restock_reminder()
             if ((xHRObject.readyState == 4) && (xHRObject.status == 200))
             {
                 var return_data = xHRObject.responseText;
-                document.getElementById("echo_restock_reminder").innerHTML = return_data;
+                document.getElementById("echo_result").innerHTML = return_data;
             }
         }
         xHRObject.send(null);
