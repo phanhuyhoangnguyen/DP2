@@ -38,7 +38,11 @@ if (!$connection)
     /*check if any value is empty*/
     if ($year == "" || $month == "" || $date=="") {
         $errMsg = "<p>You must input time, in the following format: dd/mm/yyyy</p>";
-    } else {
+    }
+    else if ($year == null || $month == null || $date== null) {
+        $errMsg = "<p>You must input time, in the following format: dd/mm/yyyy</p>";
+    }
+    else {
         $errMsg = "";
         /*All transaction query*/
         $all_transaction = "SELECT REC.saleID AS saleID, REC.date AS date, RIT.revenue AS revenue, RIT.profit AS profit,
@@ -120,13 +124,13 @@ if (!$connection)
                 $month_name = "December";
                 break;
             default:
-                $month_name = "";
+                $month_name = $month;
                 break;
         }
 
         /*display if the result is found*/
         if ($summary_item_report->num_rows > 0 || $summary_sale_report->num_rows > 0
-            || $all_transaction_result->num_rows > 0 || $result_report_staff>0) {
+            || $all_transaction_result->num_rows > 0 || $result_report_staff->num_rows >0) {
 
                 echo "<h1>Summary of $date, $month_name $year</h1>\n";
                 echo "<table>";
@@ -223,7 +227,7 @@ if (!$connection)
             echo "</table>";
 
         } else {
-            echo "<p>No available information for Reports of $month_name - $year.</p>";
+            echo "<p>No available information for Reports of $date, $month_name, $year.</p>";
         }
     }
     mysqli_close($connection);
