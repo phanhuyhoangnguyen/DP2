@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict</title>
+</head>
+<body>
+<form id="predict_sales" method="post" action="php/predict.php">
+    <fieldset>
+        <legend>Predict Future Sales</legend>
+        <select id="day" name="day">
+            <option value="">Click here</option>
+            <option value="Monday">Next Monday</option>
+            <option value="Tuesday">Next Tuesday</option>
+            <option value="Wednesday">Next Wednesday</option>
+            <option value="Thursday">Next Thursday</option>
+            <option value="Friday">Next Friday</option>
+            <option value="Saturday">Next Saturday</option>
+            <option value="Sunday">Next Sunday</option>
+        </select>
+        <!--<button type="submit" id="submit" value="submit">Generate Results</button>-->
+        <input type="submit" value="submit" name="submit"/>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -35,6 +35,7 @@ if ($_SESSION["username"] != "") {
     <li><a href="export_csv.html">Export to CSV file</a></li>
     <li><a href="restock_reminder.html">Restock Reminder</a></li>
     <li><a href="chart_function.html">Chart Function</a></li>
+    <li><a href="predict.html">Predict Sales</a></li>
 </ul>
 
 </body>
