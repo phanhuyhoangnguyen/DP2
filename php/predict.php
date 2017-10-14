@@ -8,7 +8,7 @@
 
 /*connect database*/
 error_reporting(0);
-$connection = @mysqli_connect("localhost", "root", "root", "westudyi_pharmacy");
+$connection = @mysqli_connect("localhost", "westudyi_pharma", "pharmacy", "westudyi_pharmacy");
 
 $user_table = "User";
 $category_table = "Category";
