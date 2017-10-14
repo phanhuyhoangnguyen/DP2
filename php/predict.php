@@ -15,22 +15,22 @@ $category_table = "Category";
 $item_table = "Item";
 $inventory_table = "Inventory";
 $Records_table = "Records";
-$Record_items_table = "Record_items";
+$record_items_table = "record_items";
 /*For statistics purposes*/
-$tdist_table = "Tdist";
-$zleft_table = "Zleft";
-$zright_table = "Zright";
+$TDist_table = "TDist";
+$ZLeft_table = "ZLeft";
+$ZRight_table = "ZRight";
 
 @mysqli_select_db($connection, $user_table);
 @mysqli_select_db($connection, $category_table);
 @mysqli_select_db($connection, $item_table);
 @mysqli_select_db($connection, $inventory_table);
 @mysqli_select_db($connection, $Records_table);
-@mysqli_select_db($connection, $Record_items_table);
+@mysqli_select_db($connection, $record_items_table);
 /*For statistics purposes*/
-@mysqli_select_db($connection, $tdist_table);
-@mysqli_select_db($connection, $zleft_table);
-@mysqli_select_db($connection, $zright_table);
+@mysqli_select_db($connection, $TDist_table);
+@mysqli_select_db($connection, $ZLeft_table);
+@mysqli_select_db($connection, $ZRight_table);
 
 session_start();
 
@@ -51,31 +51,31 @@ if (!$connection)
                     COUNT(DISTINCT r.saleID) as total_sales,
                     COUNT(DISTINCT i.itemID) as total_kinds_of_sold_products,
                     SUM(i.sold_quantity) as total_sold, SUM(i.profit) AS total_profit, SUM(i.revenue) as total_revenue
-                    FROM Records r, Record_items i
+                    FROM Records r, record_items i
                     WHERE r.saleID = i.saleID GROUP BY DAY(r.date), MONTH(r.date), YEAR(r.date)";
 
     $listing_day_query = "SELECT DAYNAME(r.date) as day, CONCAT(YEAR(r.date),'-',MONTH(r.date),'-',DAY(r.date)) as date,
                     COUNT(DISTINCT r.saleID) as total_sales,
                     COUNT(DISTINCT i.itemID) as total_kinds_of_sold_products,
                     SUM(i.sold_quantity) as total_sold, SUM(i.profit) AS total_profit, SUM(i.revenue) as total_revenue
-                    FROM Records r, Record_items i
+                    FROM Records r, record_items i
                     WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name' GROUP BY DAY(r.date), MONTH(r.date), YEAR(r.date), DAYNAME(r.date)";
     $count_day_query = "SELECT DAYNAME(date) as day, COUNT(DISTINCT DAY(date), MONTH(date), YEAR(date)) as total_occ
                     FROM Records GROUP BY DAYNAME(date)";
     $count_single_day_query = "SELECT DAYNAME(date) as day, COUNT(DISTINCT DAY(date), MONTH(date), YEAR(date)) as total_occ
                     FROM Records WHERE DAYNAME(date)='$day_name'";
 
-    $linear_observed_dates_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM Record_items i, Records r
+    $linear_observed_dates_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, Records r
                                             WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
-    $linear_observed_dates_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM Record_items i, Records r
+    $linear_observed_dates_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, Records r
                                             WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
-    $linear_observed_days_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM Record_items i, Records r
+    $linear_observed_days_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, Records r
                                             WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
                                             ORDER BY r.saleID ASC";
-    $linear_observed_days_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM Record_items i, Records r
+    $linear_observed_days_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, Records r
                                             WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
                                             ORDER BY r.saleID ASC";
-    $item_summary_query = "SELECT i.itemID as itemID, i.sold_quantity as sold, inv.quantity AS available FROM Record_items i, inventory inv WHERE i.itemID = inv.itemID GROUP BY i.itemID";
+    $item_summary_query = "SELECT i.itemID as itemID, i.sold_quantity as sold, inv.quantity AS available FROM record_items i, Inventory inv WHERE i.itemID = inv.itemID GROUP BY i.itemID";
 
     $result_listing = mysqli_query($connection, $listing_query);
     $result_day_listing = mysqli_query($connection, $listing_day_query);
@@ -263,7 +263,7 @@ if (!$connection)
             $z_index = 1001;
         }
 
-        $t_score_query = "SELECT Six FROM tdist WHERE DF='$z_index'";
+        $t_score_query = "SELECT Six FROM TDist WHERE DF='$z_index'";
         $t_soore_fetch = $connection->query($t_score_query)->fetch_assoc();
         $t = $t_soore_fetch["Six"];
         $y_o = $sum_y + $b1*$x0;
@@ -389,8 +389,8 @@ if (!$connection)
                 $col = '0';
             }
             $exact_col_left = Col_name($col);
-            $zleft_query = "SELECT $exact_col_left FROM zleft WHERE CAST(z as CHAR) = CAST($z_index as CHAR)";
-            $z_score_fetch = $connection->query($zleft_query)->fetch_assoc();
+            $ZLeft_query = "SELECT $exact_col_left FROM ZLeft WHERE CAST(z as CHAR) = CAST($z_index as CHAR)";
+            $z_score_fetch = $connection->query($ZLeft_query)->fetch_assoc();
             $percent_low_more[] = $z_score = (1 - $z_score_fetch[$exact_col_left]) * 100;
         }
 
@@ -405,8 +405,8 @@ if (!$connection)
                 $col_right = '0';
             }
             $exact_col_right = Col_name($col_right);
-            $zright_query = "SELECT $exact_col_right FROM zright WHERE CAST(z as CHAR) = CAST($z_index_right as CHAR)";
-            $z_right_score_fetch = $connection->query($zright_query)->fetch_assoc();
+            $ZRight_query = "SELECT $exact_col_right FROM ZRight WHERE CAST(z as CHAR) = CAST($z_index_right as CHAR)";
+            $z_right_score_fetch = $connection->query($ZRight_query)->fetch_assoc();
             $percent_high_more[] = ($z_right_score_fetch[$exact_col_right]) * 100;
         }
 
@@ -471,11 +471,11 @@ if (!$connection)
             echo "<td>", $red_alert[$i], "</td>";
             echo "</tr>";
         }
-        echo "</table><br/>";
+        echo "</table>";
 
         $cat = array();
         for ($i = 0; $i < count($red_alert); $i++) {
-            $cat_query = "SELECT categoryID FROM item WHERE itemID='$red_alert[$i]'";
+            $cat_query = "SELECT categoryID FROM Item WHERE itemID='$red_alert[$i]'";
             $cat_fetch = $connection->query($cat_query)->fetch_assoc();
             $cat[] = $cat_fetch["categoryID"];
         }
