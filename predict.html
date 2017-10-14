@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Predict</title>
+    <script type="text/javascript" src="javascript/predict.js"></script>
 </head>
 <body>
-<form id="predict_sales" method="post" action="php/predict.php">
+<form id="predict_sales" onsubmit="return predict_ajax();">
     <fieldset>
         <legend>Predict Future Sales</legend>
         <select id="day" name="day">
@@ -20,6 +21,7 @@
         </select>
         <!--<button type="submit" id="submit" value="submit">Generate Results</button>-->
         <input type="submit" value="submit" name="submit"/>
+        <div id="predict_result"></div>
     </fieldset>
 </form>
 </body>

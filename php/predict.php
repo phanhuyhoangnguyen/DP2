@@ -39,13 +39,13 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} /*else if ($_SESSION["username"] == "") {
-                echo "<p>You must login to view the inventory.</p>";
- }*/ else if (isset($_POST["submit"])) {
+} else if ($_SESSION["username"] == "") {
+                echo "<p>You must login to use the feature.</p>";
+ } else {
     //echo "Hello World";
     $errMsg = "";
 
-    $day_name = mysqli_escape_string($connection, $_POST["day"]);
+    $day_name = mysqli_escape_string($connection, $_POST["selected_day"]);
 
     $listing_query = "SELECT DAYNAME(r.date) as day, CONCAT(YEAR(r.date),'-',MONTH(r.date),'-',DAY(r.date)) as date,
                     COUNT(DISTINCT r.saleID) as total_sales,
@@ -490,7 +490,7 @@ if (!$connection)
             echo "<td>", $result_cat[$i], "</td>";
             echo "</tr>";
         }
-        echo "</table><br/>";
+        echo "</table>";
     }
     mysqli_close($connection);
 }
