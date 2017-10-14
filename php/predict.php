@@ -39,9 +39,9 @@ if (!$connection)
     echo "<script type='text/javascript'>";
     echo "alert('Database connection failure');";
     echo "</script>";
-} else if ($_SESSION["username"] == "") {
+} /*else if ($_SESSION["username"] == "") {
                 echo "<p>You must login to view the inventory.</p>";
-} else if (isset($_POST["submit"])) {
+ }*/ else if (isset($_POST["submit"])) {
      //echo "Hello World";
     $errMsg = "";
 
@@ -65,10 +65,29 @@ if (!$connection)
     $count_single_day_query = "SELECT DAYNAME(date) as day, COUNT(DISTINCT DAY(date), MONTH(date), YEAR(date)) as total_occ
                     FROM records WHERE DAYNAME(date)='$day_name'";
 
+    $linear_observed_dates_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, records r
+                                            WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
+    $linear_observed_dates_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, records r
+                                            WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
+    $linear_observed_days_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, records r
+                                            WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
+                                            ORDER BY r.saleID ASC";
+    $linear_observed_days_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, records r
+                                            WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
+                                            ORDER BY r.saleID ASC";
+    $item_summary_query = "SELECT i.itemID as itemID, i.sold_quantity as sold, inv.quantity AS available FROM record_items i, inventory inv WHERE i.itemID = inv.itemID GROUP BY i.itemID";
+
     $result_listing = mysqli_query($connection, $listing_query);
     $result_day_listing = mysqli_query($connection, $listing_day_query);
     $result_count_day = mysqli_query($connection, $count_day_query);
     $result_count_single_day = mysqli_query($connection, $count_single_day_query);
+    $result_count_single_day = mysqli_query($connection, $count_single_day_query);
+    $item_summary_results = mysqli_query($connection, $item_summary_query);
+
+    $linear_observed_dates_profit_results = mysqli_query($connection, $linear_observed_dates_profit_query);
+    $linear_observed_dates_revenue_results = mysqli_query($connection, $linear_observed_dates_revenue_query);
+    $linear_observed_days_profit_results = mysqli_query($connection, $linear_observed_days_profit_query);
+    $linear_observed_days_revenue_results = mysqli_query($connection, $linear_observed_days_revenue_query);
 
     function Calculating($option) {
 
@@ -188,6 +207,73 @@ if (!$connection)
         }
         return $exact_col;
     }
+    function Linear_Regression($option, $x_0) {
+
+        $results = array();
+        global $connection;
+
+        $array_x_sold_quantity = array();
+        $array_y_figures = array();
+
+        while ($row = mysqli_fetch_assoc($option)) {
+            $array_x_sold_quantity[] = $row["sold"];
+            $array_y_figures[] = $row["figure"];
+        }
+
+        $avg_x = round((array_sum($array_x_sold_quantity)/count($array_x_sold_quantity)),4);
+        $avg_y = round((array_sum($array_y_figures)/count($array_y_figures)),4);
+
+        $x_x_y_y = 0;
+        $x_avg_x_2 = 0;
+
+        $n = count($array_x_sold_quantity);
+
+        for ($i = 0; $i < count($array_x_sold_quantity); $i++) {
+            $x_x_y_y += ((($array_x_sold_quantity[$i] - $avg_x) * ($array_y_figures[$i] - $avg_y)));
+            $x_avg_x_2 += (($array_x_sold_quantity[$i] - $avg_x) * ($array_x_sold_quantity[$i] - $avg_x));
+        }
+
+        $b1 = ($x_x_y_y/$x_avg_x_2);
+        $b1 = round($b1,6);
+
+        $sum_y = 0;
+        for ($t = 0; $t < count($array_y_figures); $t++) {
+            $sum_y += (($array_y_figures[$t]) - ($b1 * $array_x_sold_quantity[$t]));
+        }
+        $sum_y = round(($sum_y/count($array_y_figures)),6);
+
+        $s_x_x = 0;
+        for ($z = 0; $z < count($array_x_sold_quantity); $z++) {
+            $s_x_x += (($array_x_sold_quantity[$z] - $avg_x) * ($array_x_sold_quantity[$z] - $avg_x));
+        }
+        $s_x_x = round($s_x_x,6);
+
+        $s_y_y = 0;
+        for ($u = 0; $u < count($array_x_sold_quantity); $u++) {
+            $s_y_y += (($array_y_figures[$u] - $avg_y) * ($array_y_figures[$u] - $avg_y));
+        }
+
+        $s_y_y = round($s_y_y,6);
+        //$s_x_y = round($x_x_y_y,6);
+        $s = round((sqrt((($s_y_y - $b1 * $x_x_y_y)/(count($array_x_sold_quantity) - 2)))), 6);
+        $z_index = ($n-2);
+        $x0 = $x_0;
+
+        if ($z_index > 1000) {
+            $z_index = 1001;
+        }
+
+        $t_score_query = "SELECT six FROM tdist WHERE DF='$z_index'";
+        $t_soore_fetch = $connection->query($t_score_query)->fetch_assoc();
+        $t = $t_soore_fetch["six"];
+        $y_o = $sum_y + $b1*$x0;
+
+        $results[] = $low = round(($y_o - $t*$s*sqrt((1/$n) + ((($x0 - $avg_x)*($x0 - $avg_x))/$s_x_x))), 6);
+        $results[] = $high = round(($y_o + $t*$s*sqrt((1/$n) + ((($x0 - $avg_x)*($x0 - $avg_x))/$s_x_x))), 6);
+        $results[] = $avg = ($low + $high) / 2;
+
+        return $results;
+    }
 
     if ($day_name == "") {
         $errMsg .= "Please complete the inputs.";
@@ -197,12 +283,36 @@ if (!$connection)
         echo "<p>$errMsg</p>";
     } else {
         echo "<p>"."Forecast results for next ".$day_name."</p>";
+        echo "<p>"."Warning: all are estimated values based on previous data."."</p>";
         $result_sum_days = array();
         $grand_results = array();
         $deviation_of_mean_results = array();
 
         $option = array($result_listing, $result_day_listing);
         $option_2 = array($result_count_day, $result_count_single_day);
+
+
+        $item_id = array();
+        $item_sold = array();
+        $item_avai = array();
+
+        while ($row = mysqli_fetch_assoc($item_summary_results)) {
+            $item_id[] = $row["itemID"];
+            $item_sold[] = $row["sold"];
+            $item_avai[] = $row["available"];
+        }
+
+        $percent_sold = array();
+        for ($i = 0; $i < count($item_id); $i++) {
+            $percent_sold[] = round((($item_sold[$i] * 100) / array_sum($item_sold)), 2);
+        }
+
+        $red_alert = array();
+        for ($i = 0; $i < count($percent_sold); $i++) {
+            if (($percent_sold[$i] >= 1) && ($item_avai[$i] < 10)) {
+                $red_alert[] = $item_id[$i];
+            }
+        }
 
         for ($t = 0; $t < count($option); $t++) {
             $result_sum_days[] = SumDay($option_2[$t]);
@@ -234,9 +344,9 @@ if (!$connection)
         $high_mean_dates_results = array();
         $avg_mean_dates_results = array();
         for ($u = 0; $u < count($avg_array[0]); $u++) {
-            $low_mean_dates_results[] = $observed_dates_results[0][$u] - $observed_dates_results[1][$u];
-            $high_mean_dates_results[] = $observed_dates_results[0][$u] + $observed_dates_results[1][$u];
-            $avg_mean_dates_results[] = $observed_dates_results[0][$u];
+            $low_mean_dates_results[] = round(($observed_dates_results[0][$u] - $observed_dates_results[1][$u]), 4);
+            $high_mean_dates_results[] = round(($observed_dates_results[0][$u] + $observed_dates_results[1][$u]), 4);
+            $avg_mean_dates_results[] = round(($observed_dates_results[0][$u]), 4);
         }
 
         $observed_day_results = array($avg_array[1], $deviation_mean[1]);
@@ -254,8 +364,11 @@ if (!$connection)
         $mean = array();
         for ($i = 0; $i < count($low_mean_dates_results); $i++) {
             $low[] = round((($low_mean_dates_results[$i] + $low_mean_days_results[$i]) / 2), 0);
+            //$low[] = round(($low_mean_days_results[$i]), 0);
             $high[] = round((($high_mean_dates_results[$i] + $high_mean_days_results[$i]) / 2), 0);
+            //$high[] = round(($high_mean_days_results[$i]), 0);
             $mean[] = round((($avg_mean_dates_results[$i] + $avg_mean_days_results[$i]) /2), 0);
+            //$mean[] = round(($avg_mean_days_results[$i]), 0);
         }
 
         $low_z_index = array();
@@ -297,15 +410,40 @@ if (!$connection)
             $percent_high_more[] = ($z_right_score_fetch[$exact_col_right]) * 100;
         }
 
+        /*print_r($low);
+        echo "<br/>";
+        print_r($high);*/
+
         $predict_results = array();
         for ($i = 0; $i < count($percent_low_more); $i++) {
-            if ($percent_low_more[$i] < $percent_high_more[$i]) {
+            if ($percent_low_more[$i] <= $percent_high_more[$i]) {
                 $predict_results[] = $high[$i];
             } else {
                 $predict_results[] = $low[$i];
             }
         }
 
+        $option_3 = array($linear_observed_dates_profit_results, $linear_observed_dates_revenue_results);
+        $dates_linear = array();
+        for ($i = 0; $i < count($option_3); $i++) {
+            $dates_linear[] = Linear_Regression($option_3[$i], $predict_results[2]);
+        }
+
+        $option_4 = array($linear_observed_days_profit_results, $linear_observed_days_revenue_results);
+        $days_linear = array();
+        for ($i = 0; $i < count($option_4); $i++) {
+            $days_linear[] = Linear_Regression($option_4[$i], $predict_results[2]);
+        }
+
+        $avg_dates_profit_linear = (($dates_linear[0][1] + $dates_linear[0][2]) / 2);
+        $avg_days_profit_linear = (($days_linear[0][1] + $days_linear[0][2]) / 2);
+        $final_predicted_profit = round((($avg_dates_profit_linear + $avg_days_profit_linear + $predict_results[3]) / 3), 0);
+
+        $avg_dates_revenue_linear = (($dates_linear[1][1] + $dates_linear[1][2]) / 2);
+        $avg_days_revenue_linear = (($days_linear[1][1] + $days_linear[1][2]) / 2);
+        $final_predicted_revenue = round((($avg_dates_revenue_linear + $avg_days_revenue_linear + $predict_results[4]) / 3), 0);
+
+        echo "<h4>Predicted future sales</h4>";
         echo "<table border='1px'>";
         echo "<tr>"
             . "<th scope=\"col\">Total Sales</th>"
@@ -318,10 +456,22 @@ if (!$connection)
             echo "<td>", $predict_results[0], "</td>";
             echo "<td>", $predict_results[1], "</td>";
             echo "<td>", $predict_results[2], "</td>";
-            echo "<td>", $predict_results[3]." (without Linear Regression)", "</td>";
-            echo "<td>", $predict_results[4]." (without Linear Regression)", "</td>";
+            echo "<td>", $final_predicted_profit, "</td>";
+            echo "<td>", $final_predicted_revenue, "</td>";
             echo "</tr>";
         echo "</table>";
+
+        echo "<h4>Items should be concerned</h4>";
+        echo "<table border='1px'>";
+        echo "<tr>"
+            . "<th scope=\"col\">itemID</th>"
+            . "</tr>";
+        for($i = 0; $i < count($red_alert); $i++) {
+            echo "<tr>";
+            echo "<td>", $red_alert[$i], "</td>";
+            echo "</tr>";
+        }
+        echo "</table><br/>";
     }
     mysqli_close($connection);
 }
