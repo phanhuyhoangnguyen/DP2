@@ -14,8 +14,8 @@ $user_table = "User";
 $category_table = "Category";
 $item_table = "Item";
 $inventory_table = "Inventory";
-$records_table = "Records";
-$record_items_table = "Record_items";
+$Records_table = "Records";
+$Record_items_table = "Record_items";
 /*For statistics purposes*/
 $tdist_table = "Tdist";
 $zleft_table = "Zleft";
@@ -25,8 +25,8 @@ $zright_table = "Zright";
 @mysqli_select_db($connection, $category_table);
 @mysqli_select_db($connection, $item_table);
 @mysqli_select_db($connection, $inventory_table);
-@mysqli_select_db($connection, $records_table);
-@mysqli_select_db($connection, $record_items_table);
+@mysqli_select_db($connection, $Records_table);
+@mysqli_select_db($connection, $Record_items_table);
 /*For statistics purposes*/
 @mysqli_select_db($connection, $tdist_table);
 @mysqli_select_db($connection, $zleft_table);
@@ -42,7 +42,7 @@ if (!$connection)
 } /*else if ($_SESSION["username"] == "") {
                 echo "<p>You must login to view the inventory.</p>";
  }*/ else if (isset($_POST["submit"])) {
-     //echo "Hello World";
+    //echo "Hello World";
     $errMsg = "";
 
     $day_name = mysqli_escape_string($connection, $_POST["day"]);
@@ -51,31 +51,31 @@ if (!$connection)
                     COUNT(DISTINCT r.saleID) as total_sales,
                     COUNT(DISTINCT i.itemID) as total_kinds_of_sold_products,
                     SUM(i.sold_quantity) as total_sold, SUM(i.profit) AS total_profit, SUM(i.revenue) as total_revenue
-                    FROM records r, record_items i
+                    FROM Records r, Record_items i
                     WHERE r.saleID = i.saleID GROUP BY DAY(r.date), MONTH(r.date), YEAR(r.date)";
 
     $listing_day_query = "SELECT DAYNAME(r.date) as day, CONCAT(YEAR(r.date),'-',MONTH(r.date),'-',DAY(r.date)) as date,
                     COUNT(DISTINCT r.saleID) as total_sales,
                     COUNT(DISTINCT i.itemID) as total_kinds_of_sold_products,
                     SUM(i.sold_quantity) as total_sold, SUM(i.profit) AS total_profit, SUM(i.revenue) as total_revenue
-                    FROM records r, record_items i
+                    FROM Records r, Record_items i
                     WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name' GROUP BY DAY(r.date), MONTH(r.date), YEAR(r.date), DAYNAME(r.date)";
     $count_day_query = "SELECT DAYNAME(date) as day, COUNT(DISTINCT DAY(date), MONTH(date), YEAR(date)) as total_occ
-                    FROM records GROUP BY DAYNAME(date)";
+                    FROM Records GROUP BY DAYNAME(date)";
     $count_single_day_query = "SELECT DAYNAME(date) as day, COUNT(DISTINCT DAY(date), MONTH(date), YEAR(date)) as total_occ
-                    FROM records WHERE DAYNAME(date)='$day_name'";
+                    FROM Records WHERE DAYNAME(date)='$day_name'";
 
-    $linear_observed_dates_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, records r
+    $linear_observed_dates_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM Record_items i, Records r
                                             WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
-    $linear_observed_dates_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, records r
+    $linear_observed_dates_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM Record_items i, Records r
                                             WHERE r.saleID = i.saleID ORDER BY r.saleID ASC";
-    $linear_observed_days_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM record_items i, records r
+    $linear_observed_days_profit_query = "SELECT i.sold_quantity AS sold, i.profit AS figure FROM Record_items i, Records r
                                             WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
                                             ORDER BY r.saleID ASC";
-    $linear_observed_days_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM record_items i, records r
+    $linear_observed_days_revenue_query = "SELECT i.sold_quantity AS sold, i.revenue AS figure FROM Record_items i, Records r
                                             WHERE r.saleID = i.saleID AND DAYNAME(r.date)='$day_name'
                                             ORDER BY r.saleID ASC";
-    $item_summary_query = "SELECT i.itemID as itemID, i.sold_quantity as sold, inv.quantity AS available FROM record_items i, inventory inv WHERE i.itemID = inv.itemID GROUP BY i.itemID";
+    $item_summary_query = "SELECT i.itemID as itemID, i.sold_quantity as sold, inv.quantity AS available FROM Record_items i, inventory inv WHERE i.itemID = inv.itemID GROUP BY i.itemID";
 
     $result_listing = mysqli_query($connection, $listing_query);
     $result_day_listing = mysqli_query($connection, $listing_day_query);
@@ -172,37 +172,37 @@ if (!$connection)
         $exact_col = "";
         switch ($col) {
             case '0':
-                $exact_col = "one";
+                $exact_col = "One";
                 break;
             case '1':
-                $exact_col = "two";
+                $exact_col = "Two";
                 break;
             case '2':
-                $exact_col = "three";
+                $exact_col = "Three";
                 break;
             case '3':
-                $exact_col = "four";
+                $exact_col = "Four";
                 break;
             case '4':
-                $exact_col = "five";
+                $exact_col = "Five";
                 break;
             case '5':
-                $exact_col = "six";
+                $exact_col = "Six";
                 break;
             case '6':
-                $exact_col = "seven";
+                $exact_col = "Seven";
                 break;
             case '7':
-                $exact_col = "eight";
+                $exact_col = "Eight";
                 break;
             case '8':
-                $exact_col = "nine";
+                $exact_col = "Nine";
                 break;
             case '9':
-                $exact_col = "ten";
+                $exact_col = "Ten";
                 break;
             default:
-                $exact_col = "one";
+                $exact_col = "One";
                 break;
         }
         return $exact_col;
@@ -263,9 +263,9 @@ if (!$connection)
             $z_index = 1001;
         }
 
-        $t_score_query = "SELECT six FROM tdist WHERE DF='$z_index'";
+        $t_score_query = "SELECT Six FROM tdist WHERE DF='$z_index'";
         $t_soore_fetch = $connection->query($t_score_query)->fetch_assoc();
-        $t = $t_soore_fetch["six"];
+        $t = $t_soore_fetch["Six"];
         $y_o = $sum_y + $b1*$x0;
 
         $results[] = $low = round(($y_o - $t*$s*sqrt((1/$n) + ((($x0 - $avg_x)*($x0 - $avg_x))/$s_x_x))), 6);
@@ -452,13 +452,13 @@ if (!$connection)
             . "<th scope=\"col\">Total Profit</th>"
             . "<th scope=\"col\">Total Revenue</th>"
             . "</tr>";
-            echo "<tr>";
-            echo "<td>", $predict_results[0], "</td>";
-            echo "<td>", $predict_results[1], "</td>";
-            echo "<td>", $predict_results[2], "</td>";
-            echo "<td>", $final_predicted_profit, "</td>";
-            echo "<td>", $final_predicted_revenue, "</td>";
-            echo "</tr>";
+        echo "<tr>";
+        echo "<td>", $predict_results[0], "</td>";
+        echo "<td>", $predict_results[1], "</td>";
+        echo "<td>", $predict_results[2], "</td>";
+        echo "<td>", $final_predicted_profit, "</td>";
+        echo "<td>", $final_predicted_revenue, "</td>";
+        echo "</tr>";
         echo "</table>";
 
         echo "<h4>Items should be concerned</h4>";
@@ -469,6 +469,25 @@ if (!$connection)
         for($i = 0; $i < count($red_alert); $i++) {
             echo "<tr>";
             echo "<td>", $red_alert[$i], "</td>";
+            echo "</tr>";
+        }
+        echo "</table><br/>";
+
+        $cat = array();
+        for ($i = 0; $i < count($red_alert); $i++) {
+            $cat_query = "SELECT categoryID FROM item WHERE itemID='$red_alert[$i]'";
+            $cat_fetch = $connection->query($cat_query)->fetch_assoc();
+            $cat[] = $cat_fetch["categoryID"];
+        }
+        $result_cat = array_unique($cat);
+        echo "<h4>Categories should be concerned</h4>";
+        echo "<table border='1px'>";
+        echo "<tr>"
+            . "<th scope=\"col\">CategoryID</th>"
+            . "</tr>";
+        for($i = 0; $i < count($result_cat); $i++) {
+            echo "<tr>";
+            echo "<td>", $result_cat[$i], "</td>";
             echo "</tr>";
         }
         echo "</table><br/>";
