@@ -10,16 +10,16 @@
 error_reporting(0);
 $connection = @mysqli_connect("localhost", "root", "root", "westudyi_pharmacy");
 
-$user_table = "user";
-$category_table = "category";
-$item_table = "item";
-$inventory_table = "inventory";
-$records_table = "records";
-$record_items_table = "record_items";
+$user_table = "User";
+$category_table = "Category";
+$item_table = "Item";
+$inventory_table = "Inventory";
+$records_table = "Records";
+$record_items_table = "Record_items";
 /*For statistics purposes*/
-$tdist_table = "tdist";
-$zleft_table = "zleft";
-$zright_table = "zright";
+$tdist_table = "Tdist";
+$zleft_table = "Zleft";
+$zright_table = "Zright";
 
 @mysqli_select_db($connection, $user_table);
 @mysqli_select_db($connection, $category_table);
